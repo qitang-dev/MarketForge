@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+
+# Conda / virtual environments
+.venv/
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Data files
+data/raw/
+data/cleaned/
