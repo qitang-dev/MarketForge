@@ -9,10 +9,9 @@ MarketForge is a quantitative research platform designed for financial data acqu
 - ETHUSDT market data
 
 ## Project Status
+## Phase 1: Environment setup and data acquisition testing.
 
-Phase 1: Environment setup and data acquisition testing.
-
-## Day 1 Progress
+## Jul 18 Progress
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
 - Installed and verified AKShare and Pandas.
 - Tested AKShare historical data acquisition.
@@ -32,3 +31,28 @@ Phase 1: Environment setup and data acquisition testing.
 -Complete batch downloading.
 -Record successful and failed requests.
 -Start data cleaning and validation.
+
+===================================================================================================================================================
+
+## Project Status
+## Phase 2: Data Acquisition and Inspection.
+
+## Jul 19 Progress
+- Loaded target stock codes from `stock_code_list.csv`
+- Added Tencent market prefixes (`sz` / `sh`)
+- Fetched daily forward-adjusted stock data through AKShare
+- Stored raw market data as CSV files in `data/raw/`
+- Added exception handling for network, file, and parsing errors
+- Recorded batch execution results with success and failure counts
+- Built a batch inspection script for all raw datasets
+- Generated individual inspection reports containing:
+  - file path
+  - dataset shape
+  - column names
+  - data types
+  - empty DataFrame status
+  - unnamed columns
+  - fully empty columns
+
+### Result
+All 16 target stock datasets were fetched and stored successfully.
