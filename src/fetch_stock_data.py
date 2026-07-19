@@ -12,7 +12,6 @@ def fetch_stock_data(stock_code: str, start_date: str, end_date: str, adjust: st
             start_date=start_date,
             end_date=end_date,
             adjust=adjust,
-            timeout=25
         )
     except Exception as error:
         raise RuntimeError(f"Failed to fetch {stock_code} : {error}.") from error
@@ -43,13 +42,14 @@ def fetch_all_stock_data() -> None:
 
     try:
         target_file_path = project_root_path / "data" / "stock_code_list.csv"
-        stock_code_df = pd.read_csv(target_file_path, dtype={"stock_code" : str})
+        stock_code_df = pd.read_csv(target_file_path, header=None, names=["stock_code"])
     except FileNotFoundError:
         print("No such 'stock_code_list.csv' existed.")
         return
 
-    stock_code_list = stock_code_df["stock_code"].astype(str).str.strip().tolist()
+    stock_code_list = stock_code_df["stock_code"].dropna().astype(str).str.strip().tolist()
     for stock_code in stock_code_list:
+        print(f"Processing: {stock_code}")
         try:
             stock_data = fetch_stock_data(stock_code, "20250101", "20251231", "qfq")
             store_stock_data(stock_data, stock_code, "qfq")
@@ -58,19 +58,20 @@ def fetch_all_stock_data() -> None:
                 "stock_code" : stock_code,
                 "status" : "success",
                 "rows" : len(stock_data),
-                "Error" : None
+                "Error" : None,
             })
         except Exception as error:
             fetch_results.append({
                 "stock_code" : stock_code,
                 "status" : "failed",
                 "rows" : 0,
-                "Error" : str(error)
+                "Error" : str(error),
                 })
             
-    fetch_results_df = pd.DataFrame(fetch_results)
-    success_count = fetch_results_df["status"].get("success", 0)
-    failed_count = fetch_results_df["status"].get("failed", 0)
+    fetch_results_df = pd.DataFrame(fetch_results, columns=["stock_code", "status", "rows", "error"])
+    result_status = fetch_results_df["status"].value_counts()
+    success_count = result_status.get("success", 0)
+    failed_count = result_status.get("failed", 0)
 
     print(fetch_results_df)
     print(f"Successful:  {success_count}")
