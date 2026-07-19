@@ -11,4 +11,5 @@ env/
 
 # Data files
 data/raw/
+data/data_inspection_results/
 data/cleaned/

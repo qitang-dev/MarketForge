@@ -16,7 +16,9 @@ Phase 1: Environment setup and data acquisition testing.
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
 - Installed and verified AKShare and Pandas.
 - Tested AKShare historical data acquisition.
-- Switched from the Eastmoney interface to the Tencent interface because of    connection issues.
+- Switched from the Eastmoney interface to the Tencent interface because of connection issues.
+- tx naming rule: add prefix "sh" when stock code starts witn 6
+                  add prefix "sz" when stock code starts with 0 or 3
 
 ### Separated the workflow into three functions:
 -fetch_stock_data()
