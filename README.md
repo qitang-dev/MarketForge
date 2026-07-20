@@ -9,9 +9,9 @@ MarketForge is a quantitative research platform designed for financial data acqu
 - ETHUSDT market data
 
 ## Project Status
-## Phase 1: Environment setup and data acquisition testing.
+## Phase 1: Environment Setup and Data Acquisition Testing.
 
-## Jul 18 Progress
+### Jul 18 Progress
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
 - Installed and verified AKShare and Pandas.
 - Tested AKShare historical data acquisition.
@@ -32,12 +32,12 @@ MarketForge is a quantitative research platform designed for financial data acqu
 -Record successful and failed requests.
 -Start data cleaning and validation.
 
-===================================================================================================================================================
+============================================================================
 
 ## Project Status
-## Phase 2: Data Acquisition and Inspection.
+## Phase 2: Data Acquisition and Inspection
 
-## Jul 19 Progress
+### Jul 19 Progress
 - Loaded target stock codes from `stock_code_list.csv`
 - Added Tencent market prefixes (`sz` / `sh`)
 - Fetched daily forward-adjusted stock data through AKShare
@@ -56,3 +56,31 @@ MarketForge is a quantitative research platform designed for financial data acqu
 
 ### Result
 All 16 target stock datasets were fetched and stored successfully.
+
+============================================================================
+
+## Project Status
+## Phase 2: Data Cleaning Pipeline
+
+### Jul 20 Progress
+A batch data-cleaning pipeline has been completed for all collected A-share datasets.
+- Loaded all raw stock CSV files from `data/raw/`
+- Standardized column names by removing surrounding whitespace
+- Converted the `date` column to Pandas datetime format
+- Converted OHLC and trading amount fields to numeric types
+- Replaced invalid date and numeric values with missing-value markers
+- Removed rows with missing values in required fields
+- Removed duplicate trading dates while retaining the latest record
+- Sorted all records in chronological order
+- Added optional support for using `date` as the DataFrame index
+- Preserved the original raw datasets without modification
+- Exported all cleaned datasets to `data/cleaned/`
+
+### Result
+All target stock datasets were cleaned and stored successfully.
+
+The project now maintains separate data layers:
+
+data/
+├── raw/       # Original data returned by AKShare
+└── cleaned/   # Standardized data ready for analysis
