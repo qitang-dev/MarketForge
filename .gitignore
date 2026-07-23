@@ -15,4 +15,5 @@ data/data_inspection_results/
 data/cleaned/
 data/indicators
 data/activity
+data/analysis
 src/__pycache__

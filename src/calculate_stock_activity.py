@@ -17,7 +17,7 @@ def calculate_stock_data_activity(stock_data: pd.DataFrame) -> pd.DataFrame:
 
     result["amount_ma_20"] = result["amount"].rolling(window=20).mean().round(2)
 
-    result["volumne_ratio"] = (result["amount"] / result["amount_ma_20"]).round(2)
+    result["volume_ratio"] = (result["amount"] / result["amount_ma_20"]).round(2)
 
     result["rolling_volatility_20"] = result["daily_return"].rolling(window=20).std(ddof=1).round(2)
 
@@ -33,7 +33,7 @@ def calculate_all_stock_data_activity() -> None:
 
     try:
         stock_code_list: list[str] = read_stock_code_list(stock_data_dir_path)
-    except RuntimeError as error:
+    except Exception as error:
         print(f"failed to read stock code list : {error}")
         return
 
