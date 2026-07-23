@@ -1,4 +1,5 @@
 from pathlib import Path
+from helper_functions import *
 import pandas as pd
 
 
@@ -32,15 +33,6 @@ def clean_stock_data(
         cleaned_stock_data = cleaned_stock_data.set_index("date")
 
     return cleaned_stock_data
-
-
-def load_stock_data_from_csv(file_path: Path, stock_code: str) -> pd.DataFrame:
-    try:
-        stock_data = pd.read_csv(file_path)
-    except Exception as error:
-        raise RuntimeError(f"failed to load {stock_code} : {error}")
-
-    return stock_data
 
     
 def load_all_cleaned_stock_data() -> None:

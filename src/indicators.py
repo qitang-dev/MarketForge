@@ -1,4 +1,5 @@
 from pathlib import Path
+from helper_functions import *
 import pandas as pd
 
 
@@ -20,15 +21,6 @@ def calculate_moving_average(
         result[f"ma_{win}"] = ma_column
 
     return result
-
-
-def load_stock_data_from_csv(file_path: Path, stock_code: str) -> pd.DataFrame:
-    try:
-        stock_data = pd.read_csv(file_path)
-    except Exception as error:
-        raise RuntimeError(f"failed to load {stock_code} : {error}") from error
-
-    return stock_data
 
 
 def calculate_all_moving_average(windows=[3, 5, 7, 10, 20, 21]) -> None:
@@ -59,7 +51,7 @@ def calculate_all_moving_average(windows=[3, 5, 7, 10, 20, 21]) -> None:
         try:
             stock_data = load_stock_data_from_csv(stock_data_path, stock_code)
             stock_data_with_ma = calculate_moving_average(stock_data, windows)
-            stock_data_with_ma_path = stock_data_indicators_path / f"cleaned_{stock_code}_with_ma_colums.csv"
+            stock_data_with_ma_path = stock_data_indicators_path / f"cleaned_{stock_code}_with_ma_columns.csv"
             stock_data_with_ma.to_csv(stock_data_with_ma_path, encoding='utf-8')
             print(f"Finished calculating moving average columns for {stock_code}")
             success_count += 1
