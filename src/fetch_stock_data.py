@@ -25,7 +25,7 @@ def fetch_stock_data(stock_code: str, start_date: str, end_date: str, adjust: st
 def store_stock_data(stock_data: pd.DataFrame, stock_code: str, adjust: str) -> None:
 
     project_root_path = Path(__file__).resolve().parent.parent
-    output_dir_path = project_root_path / "data" / "raw"
+    output_dir_path = project_root_path / "data" / "raw_unadjusted"
 
     output_dir_path.mkdir(parents=True, exist_ok=True)
 
@@ -51,8 +51,8 @@ def fetch_all_stock_data() -> None:
     for stock_code in stock_code_list:
         print(f"Processing: {stock_code}")
         try:
-            stock_data = fetch_stock_data(stock_code, "20250101", "20251231", "qfq")
-            store_stock_data(stock_data, stock_code, "qfq")
+            stock_data = fetch_stock_data(stock_code, "20250101", "20251231", "")
+            store_stock_data(stock_data, stock_code, "unadjusted")
 
             fetch_results.append({
                 "stock_code" : stock_code,

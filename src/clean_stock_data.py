@@ -54,18 +54,17 @@ def load_all_cleaned_stock_data() -> None:
     stock_code_list = stock_code_list_df["stock_code"].tolist()
 
     stock_data_dir_path = project_root_path / "data"
-    cleaned_data_dir_path = stock_data_dir_path / "cleaned"
+    cleaned_data_dir_path = stock_data_dir_path / "cleaned_unadjusted"
     cleaned_data_dir_path.mkdir(parents=True, exist_ok=True)
 
     for stock_code in stock_code_list:
         print(f"\nstart cleaning {stock_code}...")
-        raw_stock_data_path = stock_data_dir_path / "raw" / f"{stock_code}_daily_qfq_tx.csv"
-        print(f"loading {stock_code}...\n")
 
         try:
+            raw_stock_data_path = stock_data_dir_path / "raw_unadjusted" / f"{stock_code}_daily_unadjusted_tx.csv"
             raw_stock_data = load_stock_data_from_csv(raw_stock_data_path, stock_code)
-            cleaned_stock_data = clean_stock_data(raw_stock_data)
-            cleaned_stock_data_path = stock_data_dir_path / "cleaned" / f"cleaned_{stock_code}_daily_qfq_tx.csv"
+            cleaned_stock_data = clean_stock_data(raw_stock_data, ["open", "close", "high", "low", "amount"], False)
+            cleaned_stock_data_path = stock_data_dir_path / "cleaned_unadjusted" / f"cleaned_{stock_code}_daily_unadjusted_tx.csv"
             cleaned_stock_data.to_csv(cleaned_stock_data_path, encoding='utf-8')
             success_count += 1
             

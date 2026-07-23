@@ -11,9 +11,11 @@ env/
 
 # Data files
 data/raw/
+data/raw_unadjusted/
 data/data_inspection_results/
 data/cleaned/
-data/indicators
-data/activity
-data/analysis
-src/__pycache__
+data/cleaned_unadjusted/
+data/indicators/
+data/activity/
+data/analysis/
+src/__pycache__/
