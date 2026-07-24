@@ -15,7 +15,14 @@ def fetch_stock_fundamental_summary(
     if stock_financial_report.empty:
         raise ValueError(f"No financial report data returned for {stock_code}.")
 
-    latest_financial_report = stock_financial_report.iloc[0]
+    target_financial_report = stock_financial_report.loc[
+        stock_financial_report["REPORT_DATE_NAME"] == "2025年报"
+    ]
+
+    if target_financial_report.empty:
+        raise ValueError(f"No 2025 annual report returned for {stock_code}.")
+
+    latest_financial_report = target_financial_report.iloc[0]
 
     return {
         "stock_code": stock_code,
