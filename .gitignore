@@ -20,4 +20,5 @@ data/indicators/
 data/activity/
 data/analysis/
 data/patterns/
+data/fundamentals/
 src/__pycache__/
