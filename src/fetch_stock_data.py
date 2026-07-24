@@ -4,7 +4,9 @@ import pandas as pd
 import akshare as ak
 
 
-def fetch_stock_data(stock_code: str, start_date: str, end_date: str, adjust: str) -> pd.DataFrame:
+def fetch_stock_data(
+    stock_code: str, start_date: str, end_date: str, adjust: str
+) -> pd.DataFrame:
 
     try:
         stock_data: pd.DataFrame = ak.stock_zh_a_hist_tx(
@@ -16,7 +18,7 @@ def fetch_stock_data(stock_code: str, start_date: str, end_date: str, adjust: st
     except Exception as error:
         raise RuntimeError(f"Failed to fetch {stock_code} : {error}.") from error
 
-    if stock_data.empty: 
+    if stock_data.empty:
         raise ValueError(f"Empty stock data returned from {stock_code}.")
 
     return stock_data
@@ -47,28 +49,36 @@ def fetch_all_stock_data() -> None:
         print("No such 'stock_code_list.csv' existed.")
         return
 
-    stock_code_list = stock_code_df["stock_code"].dropna().astype(str).str.strip().tolist()
+    stock_code_list = (
+        stock_code_df["stock_code"].dropna().astype(str).str.strip().tolist()
+    )
     for stock_code in stock_code_list:
         print(f"Processing: {stock_code}")
         try:
             stock_data = fetch_stock_data(stock_code, "20250101", "20251231", "")
             store_stock_data(stock_data, stock_code, "unadjusted")
 
-            fetch_results.append({
-                "stock_code" : stock_code,
-                "status" : "success",
-                "rows" : len(stock_data),
-                "Error" : None,
-            })
+            fetch_results.append(
+                {
+                    "stock_code": stock_code,
+                    "status": "success",
+                    "rows": len(stock_data),
+                    "Error": None,
+                }
+            )
         except Exception as error:
-            fetch_results.append({
-                "stock_code" : stock_code,
-                "status" : "failed",
-                "rows" : 0,
-                "Error" : str(error),
-                })
-            
-    fetch_results_df = pd.DataFrame(fetch_results, columns=["stock_code", "status", "rows", "error"])
+            fetch_results.append(
+                {
+                    "stock_code": stock_code,
+                    "status": "failed",
+                    "rows": 0,
+                    "Error": str(error),
+                }
+            )
+
+    fetch_results_df = pd.DataFrame(
+        fetch_results, columns=["stock_code", "status", "rows", "error"]
+    )
     result_status = fetch_results_df["status"].value_counts()
     success_count = result_status.get("success", 0)
     failed_count = result_status.get("failed", 0)
@@ -80,13 +90,3 @@ def fetch_all_stock_data() -> None:
 
 if __name__ == "__main__":
     fetch_all_stock_data()
-
-
-
-
-    
-
-
-
-
-    

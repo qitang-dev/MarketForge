@@ -13,6 +13,7 @@ env/
 data/raw/
 data/raw_unadjusted/
 data/data_inspection_results/
+data/data_unadjusted_inspection_results/
 data/cleaned/
 data/cleaned_unadjusted/
 data/indicators/

@@ -1,13 +1,14 @@
 from pathlib import Path
-from helper_functions import *
+from data_utils import *
 import pandas as pd
 import numpy as np
+
 
 def summarize_stock_activity(
     stock_data: pd.DataFrame,
     stock_code: str,
 ) -> dict:
-    
+
     valid_volume_ratio = stock_data["volume_ratio"].dropna()
     valid_volatility = stock_data["rolling_volatility_20"].dropna()
 
@@ -31,9 +32,7 @@ def summarize_stock_activity(
         "large_fall_days": large_fall_days,
         "high_amplitude_days": high_amplitude_days,
         "volume_spike_ratio": volume_spike_days / trading_days,
-        "large_move_ratio": (
-            large_rise_days + large_fall_days
-        ) / trading_days,
+        "large_move_ratio": (large_rise_days + large_fall_days) / trading_days,
     }
 
 
@@ -55,9 +54,15 @@ def summarize_all_stock_activity() -> None:
         print(f"Start summarizing {stock_code}...")
 
         try:
-            stock_activity_path = stock_data_dir_path / "activity" / f"{stock_code}_with_activity_columns.csv"
+            stock_activity_path = (
+                stock_data_dir_path
+                / "activity"
+                / f"{stock_code}_with_activity_columns.csv"
+            )
             stock_activity = load_stock_data_from_csv(stock_activity_path, stock_code)
-            stock_activity_summary = summarize_stock_activity(stock_activity, stock_code)
+            stock_activity_summary = summarize_stock_activity(
+                stock_activity, stock_code
+            )
             stock_activity_summary_list.append(stock_activity_summary)
             success_count += 1
             print(f"Finished summarized the activity for {stock_code}")
@@ -84,9 +89,11 @@ def summarize_all_stock_activity() -> None:
             )
 
     stock_activity_summary_list_df = pd.DataFrame(stock_activity_summary_list)
-    stock_activity_summary_path = stock_data_dir_path / "analysis" / "stock_activity_summary.csv"
+    stock_activity_summary_path = (
+        stock_data_dir_path / "analysis" / "stock_activity_summary.csv"
+    )
 
-    stock_activity_summary_list_df.to_csv(stock_activity_summary_path, encoding='utf-8')
+    stock_activity_summary_list_df.to_csv(stock_activity_summary_path, encoding="utf-8")
 
     if failed_count == 0:
         print("\nSuccessfully summarized the activity for all stocks.\n")
@@ -98,10 +105,6 @@ def summarize_all_stock_activity() -> None:
     print(stock_activity_summary_list_df.head())
     print(stock_code_list)
 
+
 if __name__ == "__main__":
     summarize_all_stock_activity()
-
-
-
-
-
