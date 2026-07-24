@@ -63,7 +63,7 @@ def fetch_all_stock_data() -> None:
                     "stock_code": stock_code,
                     "status": "success",
                     "rows": len(stock_data),
-                    "Error": None,
+                    "error": None,
                 }
             )
         except Exception as error:
@@ -72,7 +72,7 @@ def fetch_all_stock_data() -> None:
                     "stock_code": stock_code,
                     "status": "failed",
                     "rows": 0,
-                    "Error": str(error),
+                    "error": str(error),
                 }
             )
 
