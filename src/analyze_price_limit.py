@@ -1,12 +1,13 @@
 from pathlib import Path
-
+from helper_functions import read_stock_code_list
 import pandas as pd
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+project_root_path = Path(__file__).resolve().parent.parent
 
-INPUT_DIR = PROJECT_ROOT / "data" / "cleaned_unadjusted"
-OUTPUT_DIR = PROJECT_ROOT / "data" / "analysis" / "limit_analysis"
+stock_data_dir_path = project_root_path / "data"
+input_dir_path = project_root_path / "data" / "cleaned_unadjusted"
+output_dir_path = project_root_path / "data" / "analysis" / "limit_analysis"
 
 
 def get_limit_rate(stock_code: str) -> float:
@@ -97,24 +98,25 @@ def analyze_price_limit(
 
 
 def process_all_stocks() -> None:
-    OUTPUT_DIR.mkdir(
+    output_dir_path.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    daily_output_dir = OUTPUT_DIR / "daily"
-    daily_output_dir.mkdir(
+    daily_output_dir_path = output_dir_path / "daily"
+    daily_output_dir_path.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    summaries = []
-
-    for file_path in INPUT_DIR.glob("*.csv"):
-        stock_code = file_path.stem.split("_")[1]
+    summaries = [] 
+    stock_code_list = read_stock_code_list(stock_data_dir_path)
+    
+    for stock_code in stock_code_list:
 
         try:
-            stock_data = pd.read_csv(file_path)
+            STOCK_DATA_PATH = input_dir_path / f"cleaned_{stock_code}_daily_unadjusted_tx.csv"
+            stock_data = pd.read_csv(STOCK_DATA_PATH)
 
             analyzed_data, summary = analyze_price_limit(
                 stock_data,
@@ -124,27 +126,21 @@ def process_all_stocks() -> None:
             summaries.append(summary)
 
             analyzed_data.to_csv(
-                daily_output_dir
-                / f"{stock_code}_limit_analysis.csv",
+                daily_output_dir_path / f"{stock_code}_limit_analysis.csv",
                 index=False,
                 encoding="utf-8-sig",
                 float_format="%.6f",
             )
 
-            print(
-                f"[SUCCESS] Price-limit analysis completed: "
-                f"{stock_code}"
-            )
+            print(f"[SUCCESS] Price-limit analysis completed: {stock_code}")
 
         except Exception as error:
-            print(
-                f"[FAILED] {stock_code}: {error}"
-            )
+            print(f"[FAILED] {stock_code}: {error}")
 
     summary_data = pd.DataFrame(summaries)
 
     summary_data.to_csv(
-        OUTPUT_DIR / "limit_summary.csv",
+        output_dir_path / "limit_summary.csv",
         index=False,
         encoding="utf-8-sig",
         float_format="%.6f",
