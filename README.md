@@ -84,3 +84,123 @@ The project now maintains separate data layers:
 data/
 ├── raw/       # Original data returned by AKShare
 └── cleaned/   # Standardized data ready for analysis
+
+============================================================================
+
+### July 22, 2026 — Technical Indicator Calculation
+
+Implemented batch calculation of moving-average indicators for all cleaned stock datasets.
+
+#### Completed Work
+
+- Read cleaned daily stock data from `data/cleaned/`.
+- Calculated the following simple moving averages:
+  - MA3
+  - MA5
+  - MA7
+  - MA10
+  - MA13
+  - MA20
+  - MA21
+- Preserved the original daily OHLC and amount fields.
+- Exported indicator-enhanced datasets for each sample stock.
+- Added batch-processing status reporting and exception handling.
+
+#### Output
+
+============================================================================
+
+### July 23, 2026 — Trading Activity Analysis
+
+- Calculated daily return, amplitude, amount change, volume ratio, and 20-day rolling volatility.
+- Generated daily activity datasets for all sample stocks.
+- Aggregated the results into a cross-sectional activity summary.
+
+**Outputs:**
+
+data/activity/
+└── {stock_code}_daily_activity.csv
+
+data/analysis/
+└── stock_activity_summary.csv
+
+
+### July 23, 2026 — Price Limit Analysis
+
+- Retrieved unadjusted stock data for price-limit analysis.
+- Applied simplified 10% limits to Main Board stocks and 20% limits to ChiNext stocks.
+- Counted potential limit-up and limit-down events for each stock.
+
+**Output:**
+
+data/analysis/
+└── stock_price_limit_summary.csv
+
+> The model does not separately account for ST stocks, newly listed stocks, special trading rules, or exchange rounding differences.
+
+============================================================================
+
+### July 24, 2026 — Stock Pattern Analysis
+
+- Calculated 20-day rolling highs, lows, average prices, box widths, and MA20 slopes.
+- Identified sideways-box, violent-fluctuation, and volume-price-surge patterns.
+- Generated a consolidated pattern summary for all sample stocks.
+
+**Outputs:**
+
+```
+data/patterns/
+└── {stock_code}_daily_patterns.csv
+
+data/analysis/
+└── stock_pattern_summary.csv
+```
+
+------
+
+### July 24, 2026 — Fundamental Data Summary
+
+- Retrieved financial statement data through AKShare.
+- Selected the 2025 annual report for each sample stock.
+- Summarized operating revenue, parent net profit, deducted net profit, year-over-year growth, and basic EPS.
+
+**Output:**
+
+```
+data/fundamentals/
+└── stock_fundamental_summary.csv
+```
+
+------
+
+### July 24, 2026 — Stock Valuation Interface Test
+
+- Completed the code for retrieving latest price, dynamic PE, PB, total market value, and free-float market value.
+- Tested the `stock_zh_a_spot_em()` interface.
+- The upstream server repeatedly closed the connection before returning data.
+
+```
+RemoteDisconnected:
+Remote end closed connection without response
+```
+
+The access and processing code was retained, but no valuation CSV was generated because the third-party endpoint was unavailable.
+
+------
+
+### July 24, 2026 — Cryptocurrency Interface Test
+
+- Tested the `crypto_js_spot()` interface.
+- The interface did not include ETHUSDT and returned only a limited set of cryptocurrency pairs.
+- Selected BTCUSD as the sample asset and exported the returned market snapshots.
+
+**Output:**
+
+```
+data/crypto/
+└── btcusd_spot.csv
+```
+
+> This module is an interface-availability test rather than a complete cryptocurrency historical-data analysis.
+
+
