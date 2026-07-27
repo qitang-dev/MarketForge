@@ -1,4 +1,4 @@
-from data_utils import *
+from market_data_pipeline.src.data_utils import *
 import pandas as pd
 import akshare as ak
 
