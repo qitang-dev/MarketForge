@@ -1,6 +1,3 @@
-# Python
-__pycache__/
-
 # Conda / virtual environments
 .venv/
 venv/
@@ -10,16 +7,18 @@ env/
 .vscode/
 
 # Data files
-data/raw/
-data/raw_unadjusted/
-data/data_inspection_results/
-data/data_unadjusted_inspection_results/
-data/cleaned/
-data/cleaned_unadjusted/
-data/indicators/
-data/activity/
-data/analysis/
-data/patterns/
-data/fundamentals/
-data/crypto/
-src/__pycache__/
+market_data_pipeline/data/raw/
+market_data_pipeline/data/raw_unadjusted/
+market_data_pipeline/data/data_inspection_results/
+market_data_pipeline/data/data_unadjusted_inspection_results/
+market_data_pipeline/data/cleaned/
+market_data_pipeline/data/cleaned_unadjusted/
+market_data_pipeline/data/indicators/
+market_data_pipeline/data/activity/
+market_data_pipeline/data/analysis/
+market_data_pipeline/data/patterns/
+market_data_pipeline/data/fundamentals/
+market_data_pipeline/data/crypto/
+
+# Python
+market_data_pipeline/src/__pycache__/
