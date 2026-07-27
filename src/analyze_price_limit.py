@@ -41,9 +41,9 @@ def analyze_price_limit(
 
     result["previous_close"] = result["close"].shift(1)
 
-    result["limit_up_price"] = (result["previous_close"] * (1 + limit_rate)).round(2)
+    result["limit_up_price"] = result["previous_close"] * (1 + limit_rate)
 
-    result["limit_down_price"] = (result["previous_close"] * (1 - limit_rate)).round(2)
+    result["limit_down_price"] = result["previous_close"] * (1 - limit_rate)
 
     result["limit_up"] = result["close"] >= result["limit_up_price"]
 
@@ -103,7 +103,7 @@ def process_all_stocks() -> None:
                 daily_output_dir_path / f"{stock_code}_limit_analysis.csv",
                 index=False,
                 encoding="utf-8-sig",
-                float_format="%.6f",
+                float_format="%.4f",
             )
 
             print(f"[SUCCESS] Price-limit analysis completed: {stock_code}")
@@ -117,7 +117,7 @@ def process_all_stocks() -> None:
         output_dir_path / "limit_summary.csv",
         index=False,
         encoding="utf-8-sig",
-        float_format="%.6f",
+        float_format="%.4f",
     )
 
     print("Price-limit analysis completed for all stock datasets.")

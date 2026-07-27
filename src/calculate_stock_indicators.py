@@ -17,7 +17,7 @@ def calculate_moving_average(
     for win in windows:
         if win <= 0:
             raise ValueError("The window size must be greater than 0.")
-        ma_column: pd.Series = result[value_column].rolling(window=win).mean().round(2)
+        ma_column: pd.Series = result[value_column].rolling(window=win).mean()
         result[f"ma_{win}"] = ma_column
 
     return result
@@ -47,16 +47,21 @@ def calculate_all_moving_average(windows=[3, 5, 7, 10, 20, 21]) -> None:
 
     for stock_code in stock_code_list:
         print(f"Start calculating moving average columns for {stock_code}...")
-        stock_data_path = (
-            stock_data_dir_path / "cleaned" / f"cleaned_{stock_code}_daily_qfq_tx.csv"
-        )
+
         try:
+            stock_data_path = (
+                stock_data_dir_path
+                / "cleaned"
+                / f"cleaned_{stock_code}_daily_qfq_tx.csv"
+            )
             stock_data = load_stock_data_from_csv(stock_data_path, stock_code)
             stock_data_with_ma = calculate_moving_average(stock_data, windows)
             stock_data_with_ma_path = (
                 stock_data_indicators_path / f"cleaned_{stock_code}_with_ma_columns.csv"
             )
-            stock_data_with_ma.to_csv(stock_data_with_ma_path, encoding="utf-8")
+            stock_data_with_ma.to_csv(
+                stock_data_with_ma_path, encoding="utf-8", float_format="%.4f"
+            )
             print(f"Finished calculating moving average columns for {stock_code}")
             success_count += 1
 

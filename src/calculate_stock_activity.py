@@ -9,20 +9,20 @@ def calculate_stock_data_activity(stock_data: pd.DataFrame) -> pd.DataFrame:
 
     result = stock_data.copy()
 
-    result["daily_return"] = result["close"].pct_change().round(2)
+    result["daily_return"] = result["close"].pct_change()
 
     result["amplitude"] = (
         (result["high"] - result["low"]) / result["close"].shift(1)
     ).round(2)
 
-    result["amount_change"] = result["amount"].pct_change().round(2)
+    result["amount_change"] = result["amount"].pct_change()
 
-    result["amount_ma_20"] = result["amount"].rolling(window=20).mean().round(2)
+    result["amount_ma_20"] = result["amount"].rolling(window=20).mean()
 
-    result["volume_ratio"] = (result["amount"] / result["amount_ma_20"]).round(2)
+    result["volume_ratio"] = result["amount"] / result["amount_ma_20"]
 
     result["rolling_volatility_20"] = (
-        result["daily_return"].rolling(window=20).std(ddof=1).round(2)
+        result["daily_return"].rolling(window=20).std(ddof=1)
     )
 
     return result
@@ -61,7 +61,9 @@ def calculate_all_stock_data_activity() -> None:
             stock_data_activity_path = (
                 stock_data_activity_dir_path / f"{stock_code}_with_activity_columns.csv"
             )
-            stock_data_activity.to_csv(stock_data_activity_path, encoding="utf-8")
+            stock_data_activity.to_csv(
+                stock_data_activity_path, encoding="utf-8", float_format="%.4f"
+            )
 
             print(f"Finished calculating the activity for {stock_code}")
             success_count += 1

@@ -6,18 +6,17 @@ import pandas as pd
 def calculate_stock_data_patterns(stock_data: pd.DataFrame) -> pd.DataFrame:
     result = stock_data.copy()
 
-    result["rolling_high_20"] = result["high"].rolling(window=20).max().round(2)
+    result["rolling_high_20"] = result["high"].rolling(window=20).max()
 
-    result["rolling_low_20"] = result["low"].rolling(window=20).min().round(2)
+    result["rolling_low_20"] = result["low"].rolling(window=20).min()
 
-    result["rolling_mean_close_20"] = result["close"].rolling(window=20).mean().round(2)
+    result["rolling_mean_close_20"] = result["close"].rolling(window=20).mean()
 
     result["box_width_20"] = (
-        (result["rolling_high_20"] - result["rolling_low_20"])
-        / result["rolling_mean_close_20"]
-    ).round(2)
+        result["rolling_high_20"] - result["rolling_low_20"]
+    ) / result["rolling_mean_close_20"]
 
-    result["ma_20_slope"] = (result["ma_20"] / result["ma_20"].shift(5) - 1).round(2)
+    result["ma_20_slope"] = result["ma_20"] / result["ma_20"].shift(5) - 1
 
     result["sideways_box"] = (result["box_width_20"] <= 0.12) & (
         result["ma_20_slope"].abs() <= 0.03
@@ -73,8 +72,7 @@ def calculate_all_stock_data_patterns() -> None:
             )
 
             stock_data_patterns.to_csv(
-                stock_data_patterns_path,
-                encoding="utf-8",
+                stock_data_patterns_path, encoding="utf-8", float_format="%.4f"
             )
 
             print(f"Finished calculating pattern indicators " f"for {stock_code}")
