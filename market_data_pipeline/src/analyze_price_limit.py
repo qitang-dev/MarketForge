@@ -82,7 +82,11 @@ def process_all_stocks() -> None:
     )
 
     summaries = []
-    stock_code_list = read_stock_code_list(stock_data_dir_path)
+    try:
+        stock_code_list = read_stock_code_list(stock_data_dir_path)
+    except RuntimeError as error:
+        print(f"Failed to read stock code list: {error}")
+        return
 
     for stock_code in stock_code_list:
 

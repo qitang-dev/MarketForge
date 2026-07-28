@@ -20,5 +20,8 @@ market_data_pipeline/data/patterns/
 market_data_pipeline/data/fundamentals/
 market_data_pipeline/data/crypto/
 
+minute_kline/data/minute/
+
 # Python
 market_data_pipeline/src/__pycache__/
+minute_kline/src/__pycache__/
