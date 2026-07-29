@@ -106,8 +106,6 @@ Implemented batch calculation of moving-average indicators for all cleaned stock
 - Exported indicator-enhanced datasets for each sample stock.
 - Added batch-processing status reporting and exception handling.
 
-#### Output
-
 ============================================================================
 
 ### July 23, 2026 — Trading Activity Analysis
@@ -202,5 +200,44 @@ data/crypto/
 ```
 
 > This module is an interface-availability test rather than a complete cryptocurrency historical-data analysis.
+
+============================================================================
+
+### July 27, 2026 — Minute-Level Data Interface Test
+
+- Tested the Eastmoney `stock_zh_a_hist_min_em()` interface for minute-level stock data.
+- The Eastmoney endpoint repeatedly returned `RemoteDisconnected` and could not be accessed successfully.
+- Tested the Sina `stock_zh_a_minute()` interface.
+- Sina successfully returned 1-minute unadjusted and forward-adjusted data, but the available history covered only approximately 12 days.
+- Confirmed that neither tested interface could directly satisfy the requirement for two years of minute-level data.
+
+> The Eastmoney interface was unavailable during testing, while the Sina interface provided insufficient historical coverage.
+
+============================================================================
+
+### July 28, 2026 — BaoStock Minute Data Pipeline
+
+- Continued troubleshooting the Eastmoney connection issue in both WSL and Windows environments.
+- Confirmed that the failure was unrelated to the local Python environment, request size, or operating system.
+- Investigation indicated that the Eastmoney endpoint was affected by upstream anti-scraping or access-control restrictions.
+- Replaced the unavailable interface with BaoStock.
+- Successfully retrieved two years of 5-minute market data.
+- Collected both unadjusted and forward-adjusted data for all 16 sample stocks.
+- Stored each stock dataset as an individual CSV file.
+
+**Outputs:**
+
+```text
+data/minute/raw/unadjusted/
+├── sz002067_5min_unadjusted_baostock.csv
+├── sz002600_5min_unadjusted_baostock.csv
+└── ...
+
+data/minute/raw/qfq/
+├── sz002067_5min_qfq_baostock.csv
+├── sz002600_5min_qfq_baostock.csv
+└── ...
+
+BaoStock successfully provided the required two-year minute-level dataset at a 5-minute frequency, including both unadjusted and forward-adjusted prices.
 
 
