@@ -46,6 +46,16 @@ def clean_stock_minute_data(
         drop=True
     )
 
+    valid_price_mask = (
+        (cleaned_data["high"] >= cleaned_data["open"])
+        & (cleaned_data["high"] >= cleaned_data["close"])
+        & (cleaned_data["high"] >= cleaned_data["low"])
+        & (cleaned_data["low"] <= cleaned_data["open"])
+        & (cleaned_data["low"] <= cleaned_data["close"])
+    )
+
+    cleaned_data = cleaned_data.loc[valid_price_mask].reset_index(drop=True)
+
     if datetime_as_index:
         cleaned_data = cleaned_data.set_index("datetime")
 

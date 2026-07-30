@@ -282,7 +282,7 @@ data/minute/raw/unadjusted/data_inspection_results
 
 ### July 30, 2026 - Baostock Raw Minute Data Cleaning
 
-- Merged `"date"` and `"time"` into a new column named `"datetime"`. `"datetime"` follows the following format: YYYY/mm/dd/MM/SS
+- Merged `"date"` and `"time"` into a new column named `"datetime"`. `"datetime"` follows the following format: YYYY/mm/dd/HH/MM/SS
 - Kept the following columns: `["datetime","open","high","low","close","volume","amount"]`
 - Dropped the following columns : `["date", "time", "code", "adjustflag"]`
 - Sorted each raw data frame with the ascending `"datetime"` order.
