@@ -80,11 +80,11 @@ A batch data-cleaning pipeline has been completed for all collected A-share data
 All target stock datasets were cleaned and stored successfully.
 
 The project now maintains separate data layers:
-
+```
 data/
 ├── raw/       # Original data returned by AKShare
 └── cleaned/   # Standardized data ready for analysis
-
+```
 ============================================================================
 
 ### July 22, 2026 — Technical Indicator Calculation
@@ -115,13 +115,13 @@ Implemented batch calculation of moving-average indicators for all cleaned stock
 - Aggregated the results into a cross-sectional activity summary.
 
 **Outputs:**
-
+```
 data/activity/
 └── {stock_code}_daily_activity.csv
 
 data/analysis/
 └── stock_activity_summary.csv
-
+```
 
 ### July 23, 2026 — Price Limit Analysis
 
@@ -130,9 +130,10 @@ data/analysis/
 - Counted potential limit-up and limit-down events for each stock.
 
 **Output:**
-
+```
 data/analysis/
 └── stock_price_limit_summary.csv
+```
 
 > The model does not separately account for ST stocks, newly listed stocks, special trading rules, or exchange rounding differences.
 
