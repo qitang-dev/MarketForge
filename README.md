@@ -11,7 +11,7 @@ MarketForge is a quantitative research platform designed for financial data acqu
 ## Project Status
 ## Phase 1: Environment Setup and Data Acquisition Testing.
 
-### Jul 18 Progress
+### Jul 18, 2026 - Progress
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
 - Installed and verified AKShare and Pandas.
 - Tested AKShare historical data acquisition.
@@ -37,7 +37,7 @@ MarketForge is a quantitative research platform designed for financial data acqu
 ## Project Status
 ## Phase 2: Data Acquisition and Inspection
 
-### Jul 19 Progress
+### Jul 19, 2026 - Progress
 - Loaded target stock codes from `stock_code_list.csv`
 - Added Tencent market prefixes (`sz` / `sh`)
 - Fetched daily forward-adjusted stock data through AKShare
@@ -62,7 +62,7 @@ All 16 target stock datasets were fetched and stored successfully.
 ## Project Status
 ## Phase 2: Data Cleaning Pipeline
 
-### Jul 20 Progress
+### Jul 20, 2026 - Progress
 A batch data-cleaning pipeline has been completed for all collected A-share datasets.
 - Loaded all raw stock CSV files from `data/raw/`
 - Standardized column names by removing surrounding whitespace
@@ -205,6 +205,7 @@ data/crypto/
 
 ### July 27, 2026 — Minute-Level Data Interface Test
 
+- Created two new general folder, market_data_pipeline and minute_kline, to contain the work for week_1 and week_2 respectively, aiming to show a more clear project structure.
 - Tested the Eastmoney `stock_zh_a_hist_min_em()` interface for minute-level stock data.
 - The Eastmoney endpoint repeatedly returned `RemoteDisconnected` and could not be accessed successfully.
 - Tested the Sina `stock_zh_a_minute()` interface.
@@ -212,6 +213,22 @@ data/crypto/
 - Confirmed that neither tested interface could directly satisfy the requirement for two years of minute-level data.
 
 > The Eastmoney interface was unavailable during testing, while the Sina interface provided insufficient historical coverage.
+
+**Output:**
+```text
+MARKETFORGE
+├── market_data_pipeline
+   ├── data
+   ├── notebooks
+   ├── src
+
+├── minute_kline
+   ├── data
+   ├── notebooks
+   ├── src
+      ├── fetch_minute_data.py
+
+```
 
 ============================================================================
 
@@ -239,5 +256,48 @@ data/minute/raw/qfq/
 └── ...
 
 BaoStock successfully provided the required two-year minute-level dataset at a 5-minute frequency, including both unadjusted and forward-adjusted prices.
+```
+
+
+============================================================================
+
+### July 29, 2026 - Baostock Raw Minute Data Quality Inspection
+
+- Inspected the number of empty column, the number of unnamed column, the column list, and the data frame shape for all raw stock minute data.
+- No empty column or unnamed column was found in each raw stock minute data, and the data quality is good.
+
+**Outputs:**
+```text
+data/minute/raw/qfq/data_inspection_results
+├── sh600231_5min_qfq_inspection_result.txt
+├── ...
+
+data/minute/raw/unadjusted/data_inspection_results
+├── sh600231_5min_unadjusted_inspection_result.txt
+├── ...
+```
+
+============================================================================
+
+### July 30, 2026 - Baostock Raw Minute Data Cleaning
+
+- Merged `"date"` and `"time"` into a new column named `"datetime"`. `"datetime"` follows the following format: YYYY/mm/dd/MM/SS
+- Kept the following columns: `["datetime","open","high","low","close","volume","amount"]`
+- Dropped the following columns : `["date", "time", "code", "adjustflag"]`
+- Sorted each raw data frame with the ascending `"datetime"` order.
+- Set the index of each raw data frame with `"datetime"`.
+
+**Outputs:**
+```text
+data/minute/cleaned/qfq
+├── cleaned_sh600231_5min_qfq_baostock.csv
+├── ...
+
+data/minute/cleaned/unadjusted
+├── cleaned_sh600231_5min_unadjusted_baostock.csv
+├── ...
+```
+
+
 
 
