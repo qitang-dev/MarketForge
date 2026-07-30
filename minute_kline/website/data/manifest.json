@@ -1,0 +1,118 @@
+{
+    "frequency": "5min",
+    "source": "BaoStock",
+    "stocks": [
+        {
+            "code": "sh600231",
+            "files": {
+                "qfq": "./data/qfq/sh600231_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh600231_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh600438",
+            "files": {
+                "qfq": "./data/qfq/sh600438_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh600438_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh600763",
+            "files": {
+                "qfq": "./data/qfq/sh600763_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh600763_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh601012",
+            "files": {
+                "qfq": "./data/qfq/sh601012_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh601012_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh601500",
+            "files": {
+                "qfq": "./data/qfq/sh601500_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh601500_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh601636",
+            "files": {
+                "qfq": "./data/qfq/sh601636_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh601636_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh603259",
+            "files": {
+                "qfq": "./data/qfq/sh603259_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh603259_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sh603799",
+            "files": {
+                "qfq": "./data/qfq/sh603799_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sh603799_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz000100",
+            "files": {
+                "qfq": "./data/qfq/sz000100_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz000100_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz002067",
+            "files": {
+                "qfq": "./data/qfq/sz002067_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz002067_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz002129",
+            "files": {
+                "qfq": "./data/qfq/sz002129_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz002129_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz002230",
+            "files": {
+                "qfq": "./data/qfq/sz002230_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz002230_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz002361",
+            "files": {
+                "qfq": "./data/qfq/sz002361_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz002361_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz002600",
+            "files": {
+                "qfq": "./data/qfq/sz002600_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz002600_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz300274",
+            "files": {
+                "qfq": "./data/qfq/sz300274_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz300274_5min_unadjusted.json"
+            }
+        },
+        {
+            "code": "sz300433",
+            "files": {
+                "qfq": "./data/qfq/sz300433_5min_qfq.json",
+                "unadjusted": "./data/unadjusted/sz300433_5min_unadjusted.json"
+            }
+        }
+    ]
+}
