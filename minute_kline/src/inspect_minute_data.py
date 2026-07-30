@@ -2,7 +2,7 @@ from pathlib import Path
 from data_utils import read_stock_code_list
 import pandas as pd
 
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STOCK_DATA_DIR = PROJECT_ROOT / "data"
 STOCK_MINUTE_DATA_DIR = STOCK_DATA_DIR / "minute"
 STOCK_MINUTE_RAW_DATA_DIR = STOCK_MINUTE_DATA_DIR / "raw"

@@ -299,6 +299,43 @@ data/minute/cleaned/unadjusted
 ├── ...
 ```
 
+### July 30, 2026 - K-Line Ploting Test
+- Installed mplfinance for k_line ploting
+- Using the latest 100 point data in each stock data frame to perform a better visualization.
+
+**Outputs:**
+```text
+minute_data/figure/qfq
+├── sh600231_5min_qfq_kline.png
+├── ...
+
+data/minute/cleaned/unadjusted
+├── sh600231_5min_unadjusted_kline.png
+├── ...
+```
+
+### July 30, 2026 — Interactive Minute K-Line Website
+
+- Verified the cleaned 5-minute data by generating a local candlestick chart with Python and `mplfinance`.
+- Converted the cleaned QFQ and unadjusted datasets into JSON files for web visualization.
+- Built an interactive K-line website using HTML, CSS, JavaScript, and TradingView Lightweight Charts.
+- Added support for switching among 16 stocks and between QFQ and unadjusted prices.
+- Implemented candlestick, volume, zoom, drag, crosshair, OHLCV display, and reset-view functions.
+- Tested the website locally with Python HTTP Server and prepared the static website for Netlify deployment.
+
+**Outputs:**
+
+```text
+website/
+├── index.html
+├── style.css
+├── chart.js
+└── data/
+    ├── qfq/
+    └── unadjusted/
+```
+The website provides an interactive visualization of two years of 5-minute market data for all 16 sample stocks.
+
 
 
 
