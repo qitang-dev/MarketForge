@@ -339,6 +339,6 @@ The website provides an interactive visualization of two years of 5-minute marke
 ============================================================================
 
 ### July 31, 2026 — Missing Value Inspection
--implemented new missing value inspection function in src/inspect_minute_data.py
--No missing values in all cleaned stock minute data, the data quality is good.
+- implemented new missing value inspection function in src/inspect_minute_data.py
+- No missing values in all cleaned stock minute data, the data quality is good.
 
