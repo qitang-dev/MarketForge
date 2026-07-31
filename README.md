@@ -206,7 +206,7 @@ data/crypto/
 
 ### July 27, 2026 — Minute-Level Data Interface Test
 
-- Created two new general folder, market_data_pipeline and minute_kline, to contain the work for week_1 and week_2 respectively, aiming to show a more clear project structure.
+- Created two new general folder, market_data_pipeline and minute_kline, to pack the work of week_1 and week_2 respectively, aiming to show a more clear project structure.
 - Tested the Eastmoney `stock_zh_a_hist_min_em()` interface for minute-level stock data.
 - The Eastmoney endpoint repeatedly returned `RemoteDisconnected` and could not be accessed successfully.
 - Tested the Sina `stock_zh_a_minute()` interface.
@@ -336,6 +336,9 @@ website/
 ```
 The website provides an interactive visualization of two years of 5-minute market data for all 16 sample stocks.
 
+============================================================================
 
-
+### July 31, 2026 — Missing Value Inspection
+-implemented new missing value inspection function in src/inspect_minute_data.py
+-No missing values in all cleaned stock minute data, the data quality is good.
 
