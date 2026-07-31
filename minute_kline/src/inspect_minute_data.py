@@ -6,6 +6,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STOCK_DATA_DIR = PROJECT_ROOT / "data"
 STOCK_MINUTE_DATA_DIR = STOCK_DATA_DIR / "minute"
 STOCK_MINUTE_RAW_DATA_DIR = STOCK_MINUTE_DATA_DIR / "raw"
+STOCK_MINUTE_CLEANED_DATA_DIR = STOCK_MINUTE_DATA_DIR / "cleaned"
 
 ADJUST_FLAG_MAP = {
     "1": "hfq",
@@ -38,7 +39,54 @@ def inspect_stock_minute_data(stock_data_path: Path, stock_code: str) -> None:
     return contents
 
 
-def inspect_all_stock_minute_data(adjust_flag: str) -> None:
+from pathlib import Path
+
+import pandas as pd
+
+
+def inspect_the_missing_value_for_cleaned_minute_data(
+    file_path: Path,
+) -> str:
+    stock_data = pd.read_csv(
+        file_path,
+        parse_dates=["datetime"],
+    )
+
+    stock_data = (
+        stock_data.dropna(subset=["datetime"])
+        .sort_values("datetime")
+        .drop_duplicates(
+            subset=["datetime"],
+            keep="last",
+        )
+    )
+
+    daily_bar_counts = stock_data.groupby(stock_data["datetime"].dt.date).size()
+
+    incomplete_days = daily_bar_counts[daily_bar_counts != 48]
+
+    contents = ""
+
+    contents += f"File: {file_path.name}\n"
+
+    contents += f"Total rows: {len(stock_data)}\n"
+    contents += f"Duplicated datetime: {stock_data['datetime'].duplicated().sum()}\n"
+
+    contents += f"Missing OHLCV values: {stock_data[['open', 'high', 'low', 'close', 'volume']].isna().sum().sum()}\n"
+
+    contents += f"Trading days with data: {len(daily_bar_counts)}"
+
+    if incomplete_days.empty:
+        contents += "[PASSED] Every recorded trading day contains 48 bars."
+    else:
+        contents += f"[NOTICE] Days with fewer or more than 48 bars: {incomplete_days}"
+
+    return contents
+
+
+def inspect_all_stock_minute_data(
+    adjust_flag: str, missing_value_inspection=True
+) -> None:
     success_count = 0
     failed_count = 0
     failed_codes = []
@@ -64,6 +112,20 @@ def inspect_all_stock_minute_data(adjust_flag: str) -> None:
         print(f"[UNEXCEPTED ERROR] : {error_1}")
         return
 
+    if missing_value_inspection:
+        try:
+            input_cleaned_data_dir_path = (
+                STOCK_MINUTE_CLEANED_DATA_DIR / f"{ADJUST_FLAG_MAP[adjust_flag]}"
+            )
+            missing_value_inspection_result_dir_path = (
+                input_cleaned_data_dir_path / "missing_value_inspection_result"
+            )
+            missing_value_inspection_result_dir_path.mkdir(parents=True, exist_ok=True)
+
+        except Exception as error:
+            print(f"[UNEXCEPTED ERROR] : {error}")
+            return
+
     for stock_code in stock_code_list:
         print(f"Start inspecting {stock_code}...")
         try:
@@ -82,6 +144,25 @@ def inspect_all_stock_minute_data(adjust_flag: str) -> None:
 
             with open(output_inspection_result_path, "w") as f:
                 f.write(inspection_result)
+
+            if missing_value_inspection:
+
+                input_clean_stock_data_file_path = (
+                    input_cleaned_data_dir_path
+                    / f"cleaned_{stock_code}_5min_{ADJUST_FLAG_MAP[adjust_flag]}_baostock.csv"
+                )
+                output_missing_value_inspection_result_file_path = (
+                    missing_value_inspection_result_dir_path
+                    / f"{stock_code}_missing_value_inspection_result.txt"
+                )
+
+                missing_value_inspection_result: str = (
+                    inspect_the_missing_value_for_cleaned_minute_data(
+                        input_clean_stock_data_file_path
+                    )
+                )
+                with open(output_missing_value_inspection_result_file_path, "w") as f:
+                    f.write(missing_value_inspection_result)
 
             success_count += 1
             print(f"Finished inspecting {stock_code}.")
