@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MarketForge two-year 5-minute A-share candlestick chart.">
+    <meta name="description" content="MarketForge two-year 5-minute A-share and ETHUSDT candlestick chart.">
     <title>MarketForge Minute K-Line</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -13,14 +13,14 @@
             <div>
                 <p class="project-label">MarketForge</p>
                 <h1 id="chart-title">5-Minute Candlestick Chart</h1>
-                <p class="page-description">Two-year minute-level market data · BaoStock</p>
+                <p class="page-description">Two-year 5-minute market data · BaoStock / Binance.US</p>
             </div>
             <div id="connection-badge" class="status-badge" aria-live="polite">Initializing</div>
         </header>
 
         <section class="control-panel" aria-label="Chart controls">
             <label class="control-group">
-                <span>Stock</span>
+                <span>Asset</span>
                 <select id="stock-select" aria-label="Select stock"></select>
             </label>
 
@@ -29,6 +29,7 @@
                 <select id="adjust-select" aria-label="Select adjustment type">
                     <option value="qfq">QFQ</option>
                     <option value="unadjusted">Unadjusted</option>
+                    <option value="spot" disabled>Spot</option>
                 </select>
             </label>
 
@@ -55,13 +56,13 @@
         </section>
 
         <section class="chart-card">
-            <div id="chart" role="img" aria-label="Interactive stock candlestick chart"></div>
+            <div id="chart" role="img" aria-label="Interactive market candlestick chart"></div>
             <p id="loading-message" class="message loading-message" aria-live="polite"></p>
             <p id="error-message" class="message error-message" aria-live="assertive"></p>
         </section>
 
         <footer class="page-footer">
-            Data source: BaoStock · Charting powered by
+            Data sources: BaoStock and Binance.US · Charting powered by
             <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">
                 TradingView Lightweight Charts™
             </a>

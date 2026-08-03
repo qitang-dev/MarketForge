@@ -1,7 +1,7 @@
 "use strict";
 
 
-const STOCK_CODES = [
+const ASSET_CODES = [
     "sh600231",
     "sh600438",
     "sh600763",
@@ -18,6 +18,7 @@ const STOCK_CODES = [
     "sz002600",
     "sz300274",
     "sz300433",
+    "ETHUSDT",
 ];
 
 
@@ -43,6 +44,11 @@ const stockSelect =
 
 const adjustSelect =
     document.getElementById("adjust-select");
+
+const spotOption =
+    adjustSelect?.querySelector(
+        'option[value="spot"]'
+    );
 
 const resetViewButton =
     document.getElementById(
@@ -91,6 +97,7 @@ function assertPageElements() {
         chartContainer,
         stockSelect,
         adjustSelect,
+        spotOption,
         resetViewButton,
         chartTitle,
         connectionBadge,
@@ -267,7 +274,7 @@ function populateStockSelect() {
 
     for (
         const stockCode
-        of STOCK_CODES
+        of ASSET_CODES
     ) {
         const option =
             document.createElement(
@@ -277,7 +284,9 @@ function populateStockSelect() {
         option.value = stockCode;
 
         option.textContent =
-            stockCode.toUpperCase();
+            stockCode === "ETHUSDT"
+                ? "ETHUSDT (Crypto)"
+                : stockCode.toUpperCase();
 
         fragment.appendChild(option);
     }
@@ -294,10 +303,46 @@ function populateStockSelect() {
 }
 
 
+function isCryptoAsset(stockCode) {
+    return stockCode === "ETHUSDT";
+}
+
+
+function updateAdjustmentControl() {
+    const stockCode = stockSelect.value;
+    const isCrypto = isCryptoAsset(stockCode);
+
+    if (isCrypto) {
+        spotOption.disabled = false;
+        adjustSelect.value = "spot";
+        adjustSelect.disabled = true;
+        return;
+    }
+
+    if (adjustSelect.value === "spot") {
+        adjustSelect.value = DEFAULT_ADJUST_NAME;
+    }
+
+    spotOption.disabled = true;
+    adjustSelect.disabled = false;
+}
+
+
 function getDataFileCandidates(
     stockCode,
     adjustName
 ) {
+    if (isCryptoAsset(stockCode)) {
+        return [
+            "./data/crypto/ETHUSDT_5min.json",
+            (
+                "./data/crypto/"
+                + "cleaned_ETHUSDT_5min_"
+                + "binance_us.json"
+            ),
+        ];
+    }
+
     return [
         (
             `./data/${adjustName}/`
@@ -576,7 +621,7 @@ function formatVolume(value) {
     ).toLocaleString(
         "en-US",
         {
-            maximumFractionDigits: 0,
+            maximumFractionDigits: 6,
         }
     );
 }
@@ -624,7 +669,7 @@ function setSuccessState(message) {
         "none";
 
     stockSelect.disabled = false;
-    adjustSelect.disabled = false;
+    updateAdjustmentControl();
 }
 
 
@@ -647,7 +692,7 @@ function setFailedState(error) {
         "block";
 
     stockSelect.disabled = false;
-    adjustSelect.disabled = false;
+    updateAdjustmentControl();
 }
 
 
@@ -692,12 +737,17 @@ function updateSummary(
         ];
 
     chartTitle.textContent =
-        (
-            `${stockCode.toUpperCase()}`
-            + " · 5-Minute "
-            + `${adjustName.toUpperCase()}`
-            + " K-Line"
-        );
+        isCryptoAsset(stockCode)
+            ? (
+                `${stockCode.toUpperCase()}`
+                + " · 5-Minute Spot K-Line"
+            )
+            : (
+                `${stockCode.toUpperCase()}`
+                + " · 5-Minute "
+                + `${adjustName.toUpperCase()}`
+                + " K-Line"
+            );
 
     barCount.textContent =
         currentCandlestickData
@@ -739,6 +789,10 @@ async function loadSelectedKlineData() {
 
     const stockCode =
         stockSelect.value;
+
+    // Keep the price-type selector consistent with
+    // the selected asset before building a file path.
+    updateAdjustmentControl();
 
     const adjustName =
         adjustSelect.value;
@@ -944,7 +998,10 @@ chart.subscribeCrosshairMove(
 
 stockSelect.addEventListener(
     "change",
-    loadSelectedKlineData
+    () => {
+        updateAdjustmentControl();
+        loadSelectedKlineData();
+    }
 );
 
 
@@ -1000,4 +1057,5 @@ window.addEventListener(
 
 
 populateStockSelect();
+updateAdjustmentControl();
 loadSelectedKlineData();

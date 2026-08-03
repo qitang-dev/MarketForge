@@ -322,6 +322,8 @@ data/minute/cleaned/unadjusted
 - Added support for switching among 16 stocks and between QFQ and unadjusted prices.
 - Implemented candlestick, volume, zoom, drag, crosshair, OHLCV display, and reset-view functions.
 - Tested the website locally with Python HTTP Server and prepared the static website for Netlify deployment.
+- implemented new missing value inspection function in src/inspect_minute_data.py
+- No missing values in all cleaned stock minute data, the data quality is good.
 
 **Outputs:**
 
@@ -338,7 +340,38 @@ The website provides an interactive visualization of two years of 5-minute marke
 
 ============================================================================
 
-### July 31, 2026 — Missing Value Inspection
-- implemented new missing value inspection function in src/inspect_minute_data.py
-- No missing values in all cleaned stock minute data, the data quality is good.
+### August 3, 2026 — ETHUSDT Data Pipeline and K-Line Website Integration
+
+- Reviewed BaoStock's financial-data coverage and compared its available indicators with the listed-company financial-statement field dictionary.
+- Confirmed that BaoStock does not support cryptocurrency market data.
+- Switched to the Binance.US public K-line API to retrieve ETHUSDT 5-minute spot data.
+- Implemented paginated requests using `startTime` and `endTime` to collect approximately two years of historical data.
+- Cleaned the ETHUSDT dataset by converting datetime and numeric fields, removing invalid or duplicated records, validating OHLC relationships, and checking nonnegative trading values.
+- Preserved valid zero-volume K-lines because they represent intervals without trades rather than missing data.
+- Converted the cleaned CSV data into a web-ready JSON format.
+- Integrated ETHUSDT into the existing interactive K-line website alongside the 16 A-share stocks.
+- Added a dedicated `Spot` price type for ETHUSDT while restricting A-share stocks to `QFQ` and `Unadjusted`.
+- Fixed an incorrect Unix timestamp conversion that caused ETHUSDT dates to appear in 1970 and reduced the number of unique displayed bars.
+- Limited the default ETHUSDT web dataset to the latest 20,000 bars to improve loading and rendering performance.
+- Verified stock selection, adjustment-type controls, candlestick display, volume display, crosshair information, zooming, and dragging.
+
+**Data flow:**
+
+```text
+Binance.US API
+→ Two-year 5-minute ETHUSDT data
+→ CSV storage
+→ Data cleaning and validation
+→ JSON conversion
+→ Interactive K-line website
+```
+
+Current website coverage:
+
+16 A-share stocks with QFQ and unadjusted prices
+ETHUSDT with spot prices
+Candlestick and volume charts
+Asset and price-type selection
+Crosshair OHLCV information
+Zoom, drag, and reset-view functions
 
