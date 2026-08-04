@@ -9,7 +9,7 @@ MarketForge is a quantitative research platform designed for financial data acqu
 - ETHUSDT market data
 
 ## Project Status
-## Phase 1: Environment Setup and Data Acquisition Testing.
+## Phase 1: Environment Setup & Data Fetching and Processing Pipeline
 
 ### Jul 18, 2026 - Progress
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
@@ -34,9 +34,6 @@ MarketForge is a quantitative research platform designed for financial data acqu
 
 ============================================================================
 
-## Project Status
-## Phase 2: Data Acquisition and Inspection
-
 ### Jul 19, 2026 - Progress
 - Loaded target stock codes from `stock_code_list.csv`
 - Added Tencent market prefixes (`sz` / `sh`)
@@ -58,9 +55,6 @@ MarketForge is a quantitative research platform designed for financial data acqu
 All 16 target stock datasets were fetched and stored successfully.
 
 ============================================================================
-
-## Project Status
-## Phase 2: Data Cleaning Pipeline
 
 ### Jul 20, 2026 - Progress
 A batch data-cleaning pipeline has been completed for all collected A-share datasets.
@@ -203,6 +197,9 @@ data/crypto/
 > This module is an interface-availability test rather than a complete cryptocurrency historical-data analysis.
 
 ============================================================================
+
+## Project Status
+## Phase 2: Minute-Level Data Fetching and Processing Pipeline & Interactive K-Line Website
 
 ### July 27, 2026 — Minute-Level Data Interface Test
 
