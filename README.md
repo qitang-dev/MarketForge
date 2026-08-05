@@ -372,3 +372,78 @@ Asset and price-type selection
 Crosshair OHLCV information
 Zoom, drag, and reset-view functions
 
+============================================================================
+
+### August 5, 2026 — Hong Kong Financial Statement Data Pipeline
+
+- Researched available interfaces for Hong Kong-listed company financial statements.
+- Confirmed that AKShare can retrieve detailed annual balance sheets, income statements, and cash flow statements through `stock_financial_hk_report_em`.
+- Tested the interface using Hong Kong stock `02180` and verified that it returned continuous multi-year financial data with standardized item codes, item names, report dates, and reported amounts.
+- Evaluated data coverage:
+  - Balance sheet: 10 annual periods and 45 unique financial items.
+  - Income statement: 10 annual periods and 29 unique financial items.
+  - Cash flow statement: 10 annual periods and 50 unique financial items.
+- Created a new `fundamentals` module parallel to `minute_kline` for financial-statement collection, cleaning, storage, and future fundamental analysis.
+- Implemented batch retrieval for the selected Hong Kong stocks:
+  - `02180`
+  - `08365`
+  - `08462`
+  - `02076`
+  - `06100`
+  - `06919`
+  - `09669`
+- Retrieved annual balance sheets, income statements, and cash flow statements for each stock.
+- Stored each statement separately by stock code and statement type.
+- Preserved the original AKShare results in the `raw` directory.
+- Standardized cleaned financial data into a long-table structure containing:
+  - Security identifier
+  - Stock code and name
+  - Organization code
+  - Statement type
+  - Reporting currency
+  - Report date and start date
+  - Fiscal year
+  - Financial item code and name
+  - Reported amount
+- Cleaned the data by:
+  - Stripping whitespace from column names.
+  - Standardizing different report-date fields.
+  - Converting report dates and start dates to datetime values.
+  - Converting reported amounts to numeric values.
+  - Renaming source fields into consistent English column names.
+  - Removing rows with missing key identifiers.
+  - Removing duplicated stock, statement, report-date, and item-code records.
+  - Sorting records by report date and financial item code.
+- Retained missing financial amounts where the reporting item itself was valid, since missing values may represent non-applicable or undisclosed items rather than invalid records.
+- Added a `currency` column using a stock-to-currency mapping, allowing reporting currencies to be managed consistently and extended for future stocks.
+
+**Outputs:**
+
+```text
+fundamentals/
+├── src/
+│   └── fetch_clean_financial_reports.py
+└── data/
+    ├── cleaned/
+    │   └── hk/
+    │       ├── balance_sheet/
+    │       │     ├── 02180_balance_sheet_annual.csv
+    │       │     └── ...
+    │       ├── cash_flow_statement/
+    │       │     ├── 02180_cash_flow_statement_annual.csv
+    │       │     └── ...
+    │       └── income_statement/
+    │             ├── 02180_income_statement_annual.csv
+    │             └── ...
+    └── raw/
+        └── hk/
+            ├── balance_sheet/
+            │     ├── 02180_balance_sheet_annual.csv
+            │     └── ...
+            ├── cash_flow_statement/
+            │     ├── 02180_cash_flow_statement_annual.csv
+            │     └── ...
+            └── income_statement/
+                  ├── 02180_income_statement_annual.csv
+                  └── ...
+```

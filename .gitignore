@@ -22,8 +22,10 @@ market_data_pipeline/data/crypto/
 
 minute_kline/data/minute/
 
+fundamentals/data/
+
 # Figure Files
-minute_kline/figure
+minute_kline/figure/
 
 # Python
 market_data_pipeline/src/__pycache__/
