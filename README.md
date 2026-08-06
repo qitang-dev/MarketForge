@@ -495,3 +495,41 @@ fundamentals/
     └── summary/
         └── a_share_financial_fetch_summary.csv
 ```
+
+
+### August 6, 2026: Fundamental Data Inspection and Factor Construction
+
+- Inspected the A-share financial statement data, including the balance sheet, income statement, and cash flow statement.
+- Checked available columns and identified the required financial fields.
+- Created a field mapping for revenue, net profit, assets, liabilities, equity, and operating cash flow.
+- Cleaned and standardized the financial statement data.
+- Preserved `report_date` and `notice_date` for future point-in-time analysis.
+- Built nine fundamental factors:
+  - Revenue growth
+  - Parent net profit growth
+  - Gross margin
+  - Net margin
+  - ROE
+  - Debt-to-asset ratio
+  - Operating cash flow to net profit
+  - Current ratio
+  - Total asset growth
+- Generated individual factor files for all 16 A-share companies.
+- Combined all individual results into one fundamental factor dataset.
+- Saved the outputs under the `fundamentals/data/factors/a_share/` directory.
+
+
+**Outputs:**
+
+```text
+fundamentals/
+├── data/
+│   └── factors
+│       └── a_share
+│           ├── individual
+│           │   ├── sh600231_fundamental_factors.csv
+│           │   └── ...
+│           └── a_share_fundamental_factors.csv          
+└── src/
+    ├── build_a_fundamental_factors.py
+    └── inspect_a_factor_fields.py
