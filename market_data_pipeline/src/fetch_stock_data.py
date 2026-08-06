@@ -1,7 +1,18 @@
 from pathlib import Path
+from data_utils import read_stock_code_list
 
 import pandas as pd
 import akshare as ak
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+RAW_STOCK_DATA_DIR = STOCK_DATA_DIR / "raw"
+
+ADJUST_FLAG_MAP = {
+    "unadjusted": "",
+    "qfq": "qfq",
+    "hfq": "hfq",
+}
 
 
 def fetch_stock_data(
@@ -24,39 +35,36 @@ def fetch_stock_data(
     return stock_data
 
 
-def store_stock_data(stock_data: pd.DataFrame, stock_code: str, adjust: str) -> None:
-
-    project_root_path = Path(__file__).resolve().parent.parent
-    output_dir_path = project_root_path / "data" / "raw_unadjusted"
-
-    output_dir_path.mkdir(parents=True, exist_ok=True)
-
-    output_path = output_dir_path / f"{stock_code}_daily_{adjust}_tx.csv"
-
-    stock_data.to_csv(output_path, index=False, encoding="utf-8-sig")
-
-    print(f"Stored {stock_code} at {output_path}.")
-
-
-def fetch_all_stock_data() -> None:
+def fetch_all_stock_data(adjust_flag: str) -> None:
     fetch_results = []
-    project_root_path = Path(__file__).resolve().parent.parent
 
     try:
-        target_file_path = project_root_path / "data" / "stock_code_list.csv"
-        stock_code_df = pd.read_csv(target_file_path, header=None, names=["stock_code"])
-    except FileNotFoundError:
-        print("No such 'stock_code_list.csv' existed.")
+        stock_code_list: list[str] = read_stock_code_list(STOCK_DATA_DIR)
+    except RuntimeError as error:
+        print(f"[FAILED] unable to read the stock code list : {error}")
         return
 
-    stock_code_list = (
-        stock_code_df["stock_code"].dropna().astype(str).str.strip().tolist()
-    )
+    try:
+        output_dir_path = RAW_STOCK_DATA_DIR / f"{adjust_flag}"
+        output_dir_path.mkdir(parents=True, exist_ok=True)
+    except Exception as error:
+        print(f"[FAILED] unable to created the directory : {error}")
+        return
+
     for stock_code in stock_code_list:
-        print(f"Processing: {stock_code}")
+        print(f"Start fetching {stock_code}...")
         try:
-            stock_data = fetch_stock_data(stock_code, "20250101", "20251231", "")
-            store_stock_data(stock_data, stock_code, "unadjusted")
+            stock_data = fetch_stock_data(
+                stock_code, "20250101", "20251231", ADJUST_FLAG_MAP[adjust_flag]
+            )
+
+            output_file_path = (
+                output_dir_path / f"{stock_code}_daily_{adjust_flag}_tx.csv"
+            )
+
+            stock_data.to_csv(output_file_path, index=False, encoding="utf-8-sig")
+
+            print(f"Finished fetching {stock_code}...")
 
             fetch_results.append(
                 {
@@ -85,8 +93,9 @@ def fetch_all_stock_data() -> None:
 
     print(fetch_results_df)
     print(f"Successful:  {success_count}")
-    print(f"Failed: {failed_count}")
+    print(f"Failed: {failed_count}\n")
 
 
 if __name__ == "__main__":
-    fetch_all_stock_data()
+    fetch_all_stock_data("qfq")
+    fetch_all_stock_data("unadjusted")

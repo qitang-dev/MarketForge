@@ -1,5 +1,5 @@
 from pathlib import Path
-from data_utils import *
+from data_utils import read_stock_code_list, load_stock_data_from_csv
 import pandas as pd
 
 

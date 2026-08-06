@@ -1,6 +1,10 @@
 from pathlib import Path
-
+from data_utils import read_stock_code_list
 import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+RAW_STOCK_DATA_DIR = STOCK_DATA_DIR / "raw"
 
 
 def inspect_single_stock_data(stock_code: str, stock_data_path: Path) -> str:
@@ -26,40 +30,39 @@ def inspect_single_stock_data(stock_code: str, stock_data_path: Path) -> str:
     return contents
 
 
-def inspect_all_stock_data() -> None:
-    project_root_path = Path(__file__).resolve().parent.parent
+def inspect_all_stock_data(adjust_flag: str) -> None:
+
     try:
-        stock_list_path = project_root_path / "data" / "stock_code_list.csv"
-        stock_list_df = pd.read_csv(stock_list_path, header=None, names=["stock_code"])
-        stock_list = (
-            stock_list_df["stock_code"].dropna().astype(str).str.strip().tolist()
-        )
-    except FileNotFoundError:
-        print("No such file: 'stock_code.csv'.")
+        stock_code_list: list[str] = read_stock_code_list(STOCK_DATA_DIR)
+    except RuntimeError as error:
+        print(f"[FAILED] unable to read the stock code list : {error}")
         return
 
-    stock_data_dir_path = project_root_path / "data"
-    inspection_result_dir_path = (
-        stock_data_dir_path / "data_unadjusted_inspection_results"
-    )
-    inspection_result_dir_path.mkdir(parents=True, exist_ok=True)
+    try:
+        output_dir_path = RAW_STOCK_DATA_DIR / f"{adjust_flag}" / "inspection_result"
+        output_dir_path.mkdir(parents=True, exist_ok=True)
+    except Exception as error:
+        print(f"[FAILED] unable to created the directory : {error}")
+        return
 
     success_count = 0
     failed_count = 0
-    failed_to_read_stock = []
+    failed_codes = []
 
-    for stock_code in stock_list:
+    for stock_code in stock_code_list:
         print(f"start inspecting {stock_code} ...")
-        file_path = (
-            stock_data_dir_path
-            / "raw_unadjusted"
-            / f"{stock_code}_daily_unadjusted_tx.csv"
+        input_file_path = (
+            RAW_STOCK_DATA_DIR
+            / f"{adjust_flag}"
+            / f"{stock_code}_daily_{adjust_flag}_tx.csv"
         )
 
         try:
-            stock_inspection_result = inspect_single_stock_data(stock_code, file_path)
+            stock_inspection_result = inspect_single_stock_data(
+                stock_code, input_file_path
+            )
 
-            inspection_result_path = inspection_result_dir_path / f"{stock_code}.txt"
+            inspection_result_path = output_dir_path / f"{stock_code}.txt"
 
             with open(inspection_result_path, "w", encoding="utf-8") as f:
                 f.write(stock_inspection_result)
@@ -68,7 +71,7 @@ def inspect_all_stock_data() -> None:
 
         except Exception as error:
             print(f"Failed to inspect {stock_code} : {error}")
-            failed_to_read_stock.append(stock_code)
+            failed_codes.append(stock_code)
             failed_count += 1
 
         print(f"Finished inspecting {stock_code}.")
@@ -76,12 +79,13 @@ def inspect_all_stock_data() -> None:
     if failed_count == 0:
         print("All stock data inspected.")
         print(f"Successfully inspected: {success_count}")
-        print(f"Failed inspected: {failed_count}")
+        print(f"Failed inspected: {failed_count}\n")
     else:
         print(f"Successfully inspected: {success_count}")
         print(f"Failed inspected: {failed_count}")
-        print(failed_to_read_stock=[])
+        print(f"Failed to inspect stock code(s): {failed_codes}\n")
 
 
 if __name__ == "__main__":
-    inspect_all_stock_data()
+    inspect_all_stock_data("qfq")
+    inspect_all_stock_data("unadjusted")

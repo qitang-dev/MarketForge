@@ -1,6 +1,10 @@
 from pathlib import Path
-from data_utils import *
+from data_utils import read_stock_code_list
 import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+RAW_STOCK_DATA_DIR = STOCK_DATA_DIR / "raw"
 
 
 def clean_stock_data(
@@ -40,46 +44,48 @@ def clean_stock_data(
     return cleaned_stock_data
 
 
-def load_all_cleaned_stock_data() -> None:
-    project_root_path = Path(__file__).parent.parent
-    stock_code_list_path = project_root_path / "data" / "stock_code_list.csv"
+def clean_all_stock_data(adjust_flag: str) -> None:
     success_count = 0
     failed_count = 0
     failed_codes = []
+
     try:
-        stock_code_list_df = pd.read_csv(
-            stock_code_list_path, header=None, names=["stock_code"]
-        )
-    except FileExistsError as error:
-        print(f"No such file 'stock_code_list.csv' in {stock_code_list} : {error}")
+        stock_code_list: list[str] = read_stock_code_list(STOCK_DATA_DIR)
+    except RuntimeError as error:
+        print(f"[FAILED] unable to read the stock code list : {error}")
         return
 
-    stock_code_list = stock_code_list_df["stock_code"].tolist()
-
-    stock_data_dir_path = project_root_path / "data"
-    cleaned_data_dir_path = stock_data_dir_path / "cleaned_unadjusted"
-    cleaned_data_dir_path.mkdir(parents=True, exist_ok=True)
+    try:
+        cleaned_data_dir_path = STOCK_DATA_DIR / "cleaned" / f"{adjust_flag}"
+        cleaned_data_dir_path.mkdir(parents=True, exist_ok=True)
+    except Exception as error:
+        print(f"[FAILED] unable to created the directory : {error}")
+        return
 
     for stock_code in stock_code_list:
-        print(f"\nstart cleaning {stock_code}...")
+        print(f"\nStart cleaning {stock_code}...")
 
         try:
-            raw_stock_data_path = (
-                stock_data_dir_path
-                / "raw_unadjusted"
-                / f"{stock_code}_daily_unadjusted_tx.csv"
+
+            input_dir_path = RAW_STOCK_DATA_DIR / f"{adjust_flag}"
+            input_file_path = (
+                input_dir_path / f"{stock_code}_daily_{adjust_flag}_tx.csv"
             )
-            raw_stock_data = load_stock_data_from_csv(raw_stock_data_path, stock_code)
+
+            raw_stock_data = pd.read_csv(input_file_path, encoding="utf-8")
+
             cleaned_stock_data = clean_stock_data(
-                raw_stock_data, ["open", "close", "high", "low", "amount"], False
+                raw_stock_data, ["open", "close", "high", "low", "amount"], True
             )
-            cleaned_stock_data_path = (
-                stock_data_dir_path
-                / "cleaned_unadjusted"
-                / f"cleaned_{stock_code}_daily_unadjusted_tx.csv"
+
+            cleaned_stock_data_file_path = (
+                cleaned_data_dir_path
+                / f"cleaned_{stock_code}_daily_{adjust_flag}_tx.csv"
             )
-            cleaned_stock_data.to_csv(cleaned_stock_data_path, encoding="utf-8")
+
+            cleaned_stock_data.to_csv(cleaned_stock_data_file_path, encoding="utf-8")
             success_count += 1
+            print(f"\nFinished cleaning {stock_code}.")
 
         except Exception as error:
             print(f"faile to clean {stock_code} : {error}")
@@ -103,4 +109,5 @@ def load_all_cleaned_stock_data() -> None:
 
 
 if __name__ == "__main__":
-    load_all_cleaned_stock_data()
+    clean_all_stock_data("qfq")
+    clean_all_stock_data("unadjusted")

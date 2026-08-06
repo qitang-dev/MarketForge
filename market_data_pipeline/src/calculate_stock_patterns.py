@@ -2,6 +2,9 @@ from pathlib import Path
 from data_utils import *
 import pandas as pd
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+
 
 def calculate_stock_data_patterns(stock_data: pd.DataFrame) -> pd.DataFrame:
     result = stock_data.copy()
@@ -38,17 +41,14 @@ def calculate_all_stock_data_patterns() -> None:
     failed_count = 0
     failed_codes = []
 
-    project_root_path = Path(__file__).resolve().parent.parent
-    stock_data_dir_path = project_root_path / "data"
-
     try:
-        stock_code_list: list[str] = read_stock_code_list(stock_data_dir_path)
+        stock_code_list: list[str] = read_stock_code_list(STOCK_DATA_DIR)
 
-    except Exception as error:
-        print(f"Failed to read stock code list: {error}")
+    except RuntimeError as error:
+        print(f"[FAILED] unable to read the stock code list : {error}")
         return
 
-    stock_data_patterns_dir_path = stock_data_dir_path / "patterns"
+    stock_data_patterns_dir_path = STOCK_DATA_DIR / "patterns"
 
     stock_data_patterns_dir_path.mkdir(parents=True, exist_ok=True)
 
@@ -56,7 +56,7 @@ def calculate_all_stock_data_patterns() -> None:
         print(f"Start calculating pattern indicators for {stock_code}...")
 
         stock_data_activity_path = (
-            stock_data_dir_path / "activity" / f"{stock_code}_with_activity_columns.csv"
+            STOCK_DATA_DIR / "activity" / f"{stock_code}_with_activity_columns.csv"
         )
 
         try:

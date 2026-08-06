@@ -447,3 +447,51 @@ fundamentals/
                   ├── 02180_income_statement_annual.csv
                   └── ...
 ```
+============================================================================
+
+### August 6, 2026 — A-Share Financial Statements and Project Structure Optimization
+
+- Implemented a batch financial-statement pipeline for 16 A-share stocks.
+- Added retrieval of complete historical:
+  - Balance sheets
+  - Income statements
+  - Cash flow statements
+- Used AKShare report-period interfaces to obtain annual, semiannual, first-quarter, and third-quarter financial data.
+- Stored both raw and cleaned financial statements by stock code and statement type.
+- Standardized stock codes, report dates, statement types, currency fields, and common identification columns.
+- Preserved all available financial-statement fields while removing invalid key records and duplicated report entries.
+- Added fetch summaries containing retrieval status, row count, column count, report-period coverage, missing-cell count, and report-date range.
+- Optimized the directory structure of `market_data_pipeline` to make market-data files easier to classify and maintain.
+- Improved the output paths and processing logic in:
+  - `fetch_stock_data.py`
+  - `inspect_stock_data.py`
+  - `clean_stock_data.py`
+- Refactored related algorithms and file-handling logic to improve code readability, consistency, and maintainability.
+- Reorganized generated data into clearer raw, cleaned, inspection, and summary categories.
+- Moved all fundamental-data-related files and modules from `market_data_pipeline` into the independent `fundamentals` directory.
+- Separated market-data processing from financial-statement processing, resulting in a clearer and more modular overall project structure.
+
+**Outputs:**
+
+```text
+fundamentals/
+├── src/
+│   └── fetch_a_financial_reports.py
+│
+└── data/
+    ├── raw/
+    │   └── a_share/
+    │       ├── balance_sheet/
+    │       ├── income_statement/
+    │       ├── cash_flow_statement/
+    │       └── stock_fundamental_summary/
+    │
+    ├── cleaned/
+    │   └── a_share/
+    │       ├── balance_sheet/
+    │       ├── income_statement/
+    │       └── cash_flow_statement/
+    │
+    └── summary/
+        └── a_share_financial_fetch_summary.csv
+```

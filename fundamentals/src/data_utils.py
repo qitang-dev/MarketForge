@@ -25,12 +25,3 @@ def read_stock_code_list(
     )
 
     return stock_code_list
-
-
-def load_stock_data_from_csv(file_path: Path, stock_code: str) -> pd.DataFrame:
-    try:
-        stock_data = pd.read_csv(file_path)
-    except Exception as error:
-        raise RuntimeError(f"failed to load {stock_code} : {error}") from error
-
-    return stock_data

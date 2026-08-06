@@ -2,11 +2,10 @@ from pathlib import Path
 from data_utils import read_stock_code_list
 import pandas as pd
 
-project_root_path = Path(__file__).resolve().parent.parent
-
-stock_data_dir_path = project_root_path / "data"
-input_dir_path = project_root_path / "data" / "cleaned_unadjusted"
-output_dir_path = project_root_path / "data" / "analysis" / "limit_analysis"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+CLEANED_STOCK_DATA_UNJUSTED_DIR = STOCK_DATA_DIR / "cleaned" / "unadjusted"
+OUTPUT_DIR = STOCK_DATA_DIR / "analysis" / "limit_analysis"
 
 
 def get_limit_rate(stock_code: str) -> float:
@@ -70,12 +69,12 @@ def analyze_price_limit(
 
 
 def process_all_stocks() -> None:
-    output_dir_path.mkdir(
+    OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    daily_output_dir_path = output_dir_path / "daily"
+    daily_output_dir_path = OUTPUT_DIR / "daily"
     daily_output_dir_path.mkdir(
         parents=True,
         exist_ok=True,
@@ -83,7 +82,7 @@ def process_all_stocks() -> None:
 
     summaries = []
     try:
-        stock_code_list = read_stock_code_list(stock_data_dir_path)
+        stock_code_list = read_stock_code_list(STOCK_DATA_DIR)
     except RuntimeError as error:
         print(f"Failed to read stock code list: {error}")
         return
@@ -92,7 +91,8 @@ def process_all_stocks() -> None:
 
         try:
             stock_data_path = (
-                input_dir_path / f"cleaned_{stock_code}_daily_unadjusted_tx.csv"
+                CLEANED_STOCK_DATA_UNJUSTED_DIR
+                / f"cleaned_{stock_code}_daily_unadjusted_tx.csv"
             )
             stock_data = pd.read_csv(stock_data_path)
 
@@ -118,7 +118,7 @@ def process_all_stocks() -> None:
     summary_data = pd.DataFrame(summaries)
 
     summary_data.to_csv(
-        output_dir_path / "limit_summary.csv",
+        OUTPUT_DIR / "limit_summary.csv",
         index=False,
         encoding="utf-8-sig",
         float_format="%.4f",

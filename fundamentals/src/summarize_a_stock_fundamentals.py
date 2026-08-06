@@ -1,5 +1,5 @@
 from pathlib import Path
-from data_utils import *
+from data_utils import read_stock_code_list
 
 import akshare as ak
 import pandas as pd
@@ -43,7 +43,7 @@ def fetch_stock_fundamental_summary(
     }
 
 
-def summarize_all_stock_fundamentals() -> None:
+def summarize_all_a_stock_fundamentals() -> None:
     success_count = 0
     failed_count = 0
     failed_codes = []
@@ -60,7 +60,9 @@ def summarize_all_stock_fundamentals() -> None:
         print(f"Failed to read stock code list: {error}")
         return
 
-    stock_fundamentals_dir_path = stock_data_dir_path / "fundamentals"
+    stock_fundamentals_dir_path = (
+        stock_data_dir_path / "cleaned" / "a_share" / "stock_fundamental_summary"
+    )
 
     stock_fundamentals_dir_path.mkdir(
         parents=True,
@@ -109,4 +111,4 @@ def summarize_all_stock_fundamentals() -> None:
 
 
 if __name__ == "__main__":
-    summarize_all_stock_fundamentals()
+    summarize_all_a_stock_fundamentals()

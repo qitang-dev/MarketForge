@@ -2,6 +2,9 @@ from pathlib import Path
 from data_utils import *
 import pandas as pd
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+STOCK_DATA_DIR = PROJECT_ROOT / "data"
+
 
 def calculate_moving_average(
     stock_data: pd.DataFrame,
@@ -27,22 +30,14 @@ def calculate_all_moving_average(windows=[3, 5, 7, 10, 20, 21]) -> None:
     success_count = 0
     failed_count = 0
     failed_codes = []
-    project_root = Path(__file__).resolve().parent.parent
-    stock_data_dir_path = project_root / "data"
-    stock_code_list_path = stock_data_dir_path / "stock_code_list.csv"
 
     try:
-        stock_code_df = pd.read_csv(
-            stock_code_list_path,
-            header=None,
-            names=["stock_code"],
-        )
-    except FileNotFoundError as error:
-        print(f"No such file 'stock_code_list.csv' in {stock_code_list_path} : {error}")
+        stock_code_list: list[str] = read_stock_code_list(STOCK_DATA_DIR)
+    except RuntimeError as error:
+        print(f"[FAILED] unable to read the stock code list : {error}")
         return
 
-    stock_code_list = stock_code_df["stock_code"].tolist()
-    stock_data_indicators_path: Path = stock_data_dir_path / "indicators"
+    stock_data_indicators_path: Path = STOCK_DATA_DIR / "indicators"
     stock_data_indicators_path.mkdir(parents=True, exist_ok=True)
 
     for stock_code in stock_code_list:
@@ -50,8 +45,9 @@ def calculate_all_moving_average(windows=[3, 5, 7, 10, 20, 21]) -> None:
 
         try:
             stock_data_path = (
-                stock_data_dir_path
+                STOCK_DATA_DIR
                 / "cleaned"
+                / "qfq"
                 / f"cleaned_{stock_code}_daily_qfq_tx.csv"
             )
             stock_data = load_stock_data_from_csv(stock_data_path, stock_code)
