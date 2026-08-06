@@ -7,18 +7,7 @@ env/
 .vscode/
 
 # Data Files
-market_data_pipeline/data/raw/
-market_data_pipeline/data/raw_unadjusted/
-market_data_pipeline/data/data_inspection_results/
-market_data_pipeline/data/data_unadjusted_inspection_results/
-market_data_pipeline/data/cleaned/
-market_data_pipeline/data/cleaned_unadjusted/
-market_data_pipeline/data/indicators/
-market_data_pipeline/data/activity/
-market_data_pipeline/data/analysis/
-market_data_pipeline/data/patterns/
-market_data_pipeline/data/fundamentals/
-market_data_pipeline/data/crypto/
+market_data_pipeline/data/
 
 minute_kline/data/minute/
 
@@ -29,5 +18,9 @@ minute_kline/figure/
 
 # Python
 market_data_pipeline/src/__pycache__/
+market_data_pipeline/src/analyze_all_limit_events.py
+market_data_pipeline/src/fetch_stock_valuation.py
+
 minute_kline/src/__pycache__/
+
 fundamentals/src/__pycache__/
