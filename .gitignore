@@ -18,8 +18,6 @@ minute_kline/figure/
 
 # Python
 market_data_pipeline/src/__pycache__/
-market_data_pipeline/src/analyze_all_limit_events.py
-market_data_pipeline/src/fetch_stock_valuation.py
 
 minute_kline/src/__pycache__/
 

@@ -496,6 +496,7 @@ fundamentals/
         └── a_share_financial_fetch_summary.csv
 ```
 
+============================================================================
 
 ### August 6, 2026: Fundamental Data Inspection and Factor Construction
 
@@ -533,3 +534,65 @@ fundamentals/
 └── src/
     ├── build_a_fundamental_factors.py
     └── inspect_a_factor_fields.py
+```
+
+###  August 6, 2026: Valuation and Limit Event Analysis
+
+- Collected historical A-share valuation data, including:
+  - PE (TTM)
+  - Static PE
+  - PB
+  - Total market capitalization
+- Cleaned and filtered valuation data for the 2025 analysis period.
+- Generated individual and combined valuation datasets for all 16 stocks.
+- Tested historical fund flow data interfaces and added retry handling for network failures.
+- Identified connectivity issues with the Eastmoney fund flow endpoint and treated fund flow data as an optional data source.
+- Designed a simplified price-limit rule:
+  - ChiNext stocks (`300xxx`): 20%
+  - Other sample stocks: 10%
+  - Historical ST status temporarily excluded
+- Implemented daily limit event detection using unadjusted price data.
+- Identified:
+  - Limit-up events
+  - One-word limit-up events
+  - Failed limit-up events
+  - Consecutive limit-up events
+- Calculated post-limit performance:
+  - Next-day open return
+  - Next-day close return
+  - 3-day return
+  - 5-day return
+- Added 5-day maximum return and drawdown measurements.
+- Added volume and turnover-related features for limit events.
+- Tested the pipeline on `sz002067` and verified the event detection results.
+- Extended the analysis pipeline to process all 16 A-share stocks.
+- Generated individual event data, combined event data, and stock-level summary datasets.
+
+**Outputs:**
+
+```text
+market_data_pipeline/
+├── src/
+│   ├── analyze_all_limit_events.py
+│   └── fetch_stock_valuation.py
+│
+└── data/
+    └── analysis/
+        └── limit_analysis/
+            ├── daily/
+            │     ├── sh600231_limit_analysis.csv
+            │     └── ...
+            ├── events/
+            │     ├── sh600231_limit_events.csv
+            │     └── ...
+            ├── individual/
+            │     ├── sh600231_limit_analysis.csv
+            │     └── ...
+            ├── summary/
+            │     ├── sh600231_limit_summary.csv
+            │     └── ...
+            ├── combined_limit_events.csv
+            ├── combined_limit_summary.csv
+            ├── limit_summary.csv
+            └── processing_summary.csv
+```
