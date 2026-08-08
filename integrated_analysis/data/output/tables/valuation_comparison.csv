@@ -1,0 +1,17 @@
+﻿stock_code,stock_name,pe_ttm_median,pb_median,total_market_value_year_end,pe_ttm_nonpositive_day_rate,valuation_score,valuation_profile
+sh600231,凌钢股份,-3.29,1.03,60.98,1.0,0.9375,loss_making_pe
+sz002129,TCL中环,-3.51,1.13,346.5,1.0,0.875,loss_making_pe
+sh603799,华友钴业,15.63,1.79,1294.71,0.0,0.7708333333333333,relatively_low_valuation
+sh601500,通用股份,22.97,1.24,76.61,0.0,0.75,relatively_low_valuation
+sh601636,旗滨集团,32.73,1.2,175.45,0.0,0.7395833333333333,relatively_low_valuation
+sz002067,景兴纸业,123.64,0.96,83.33,0.0,0.625,mid_valuation
+sz300274,阳光电源,14.94,4.35,3546.02,0.0,0.59375,mid_valuation
+sz000100,TCL科技,36.56,1.62,944.36,0.0,0.59375,mid_valuation
+sh603259,药明康德,19.32,3.43,2704.48,0.0,0.5729166666666667,mid_valuation
+sh600438,通威股份,-11.43,2.01,923.81,1.0,0.5625,loss_making_pe
+sh601012,隆基绿能,-16.29,2.08,1379.21,1.0,0.5,loss_making_pe
+sz300433,蓝思科技,34.8,2.7,1599.57,0.0,0.4947916666666667,mid_valuation
+sz002600,领益智造,41.64,3.47,1135.4,0.0,0.29166666666666663,relatively_high_valuation
+sh600763,通策医疗,38.08,4.55,179.85,0.0,0.27083333333333337,relatively_high_valuation
+sz002361,神剑股份,173.05,2.7,136.38,0.0,0.24479166666666666,relatively_high_valuation
+sz002230,科大讯飞,166.61,6.44,1162.63,0.0,0.11458333333333333,relatively_high_valuation

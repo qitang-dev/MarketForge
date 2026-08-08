@@ -1,0 +1,17 @@
+﻿stock_code,stock_name,fundamental_score,growth_profile,profitability_profile,valuation_score,valuation_profile,activity_score,relative_activity_profile,limit_event_score,limit_event_profile,consolidation_score,consolidation_profile,market_style
+sh603259,药明康德,0.9583333333333334,strong_growth,high_profitability,0.5729166666666667,mid_valuation,0.59375,moderate_activity,0.546875,moderate_limit_activity,0.4375,mixed_structure,balanced
+sz300274,阳光电源,0.7291666666666666,moderate_growth,high_profitability,0.59375,mid_valuation,0.7734375,high_activity,0.21875,low_limit_activity,0.375,mixed_structure,active_mixed
+sz002230,科大讯飞,0.7291666666666666,strong_growth,high_profitability,0.11458333333333333,relatively_high_valuation,0.3671875,moderate_activity,0.21875,low_limit_activity,0.71875,consolidation_dominant,moderate_consolidating
+sh600763,通策医疗,0.6805555555555557,weak_growth,high_profitability,0.27083333333333337,relatively_high_valuation,0.21875,low_activity,0.546875,moderate_limit_activity,0.90625,consolidation_dominant,quiet_consolidating
+sz002600,领益智造,0.6736111111111112,strong_growth,high_profitability,0.29166666666666663,relatively_high_valuation,0.8203125,high_activity,0.859375,strong_limit_activity,0.25,trend_dominant,active_trending
+sh603799,华友钴业,0.65625,strong_growth,high_profitability,0.7708333333333333,relatively_low_valuation,0.5390625,moderate_activity,0.21875,low_limit_activity,0.1875,trend_dominant,moderate_trending
+sz300433,蓝思科技,0.6527777777777778,moderate_growth,high_profitability,0.4947916666666667,mid_valuation,0.7109375,high_activity,0.21875,low_limit_activity,0.0625,trend_dominant,active_trending
+sz002067,景兴纸业,0.59375,moderate_growth,moderate_profitability,0.625,mid_valuation,0.8984375,high_activity,0.9375,strong_limit_activity,0.46875,mixed_structure,active_mixed
+sh601636,旗滨集团,0.5243055555555556,moderate_growth,moderate_profitability,0.7395833333333333,relatively_low_valuation,0.1796875,low_activity,0.21875,low_limit_activity,0.71875,consolidation_dominant,quiet_consolidating
+sz000100,TCL科技,0.4826388888888889,moderate_growth,moderate_profitability,0.59375,mid_valuation,0.1640625,low_activity,0.21875,low_limit_activity,0.96875,consolidation_dominant,quiet_consolidating
+sz002361,神剑股份,0.4756944444444444,weak_growth,moderate_profitability,0.24479166666666666,relatively_high_valuation,0.9296875,high_activity,1.0,strong_limit_activity,0.53125,mixed_structure,active_mixed
+sh601500,通用股份,0.3854166666666667,moderate_growth,moderate_profitability,0.75,relatively_low_valuation,0.359375,moderate_activity,0.625,moderate_limit_activity,0.9375,consolidation_dominant,moderate_consolidating
+sh601012,隆基绿能,0.34722222222222215,moderate_growth,low_profitability,0.5,loss_making_pe,0.390625,moderate_activity,0.546875,moderate_limit_activity,0.625,mixed_structure,balanced
+sh600438,通威股份,0.2222222222222222,weak_growth,low_profitability,0.5625,loss_making_pe,0.53125,moderate_activity,0.671875,strong_limit_activity,0.21875,trend_dominant,moderate_trending
+sz002129,TCL中环,0.20138888888888892,weak_growth,low_profitability,0.875,loss_making_pe,0.5703125,moderate_activity,0.75,strong_limit_activity,0.71875,consolidation_dominant,moderate_consolidating
+sh600231,凌钢股份,0.1875,moderate_growth,low_profitability,0.9375,loss_making_pe,0.453125,moderate_activity,0.703125,strong_limit_activity,0.375,mixed_structure,balanced

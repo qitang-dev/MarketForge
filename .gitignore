@@ -9,7 +9,7 @@ env/
 # Data Files
 market_data_pipeline/data/
 
-minute_kline/data/minute/
+minute_kline/data/
 
 fundamentals/data/
 
@@ -23,4 +23,7 @@ minute_kline/src/__pycache__/
 
 fundamentals/src/__pycache__/
 
+# Website
 integrated_analysis/market_forge_dashboard/
+
+minute_kline/website/

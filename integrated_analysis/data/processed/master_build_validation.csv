@@ -1,0 +1,6 @@
+﻿source,rows,unique_stocks,missing_stock_count,missing_stocks,extra_stock_count,extra_stocks,duplicate_stock_count,duplicate_stocks
+fundamental,16,16,0,,0,,0,
+valuation,16,16,0,,0,,0,
+activity,16,16,0,,0,,0,
+limit,16,16,0,,0,,0,
+consolidation,16,16,0,,0,,0,
