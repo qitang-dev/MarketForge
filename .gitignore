@@ -22,3 +22,5 @@ market_data_pipeline/src/__pycache__/
 minute_kline/src/__pycache__/
 
 fundamentals/src/__pycache__/
+
+integrated_analysis/market_forge_dashboard/

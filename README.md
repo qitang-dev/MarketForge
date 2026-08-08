@@ -536,7 +536,7 @@ fundamentals/
     └── inspect_a_factor_fields.py
 ```
 
-###  August 6, 2026: Valuation and Limit Event Analysis
+###  August 7, 2026: Valuation and Limit Event Analysis
 
 - Collected historical A-share valuation data, including:
   - PE (TTM)
@@ -595,4 +595,35 @@ market_data_pipeline/
             ├── combined_limit_summary.csv
             ├── limit_summary.csv
             └── processing_summary.csv
+```
+
+###  August 7, 2026: Activity Analysis Module
+
+- Implemented stock activity analysis module to evaluate trading behavior and market activity characteristics based on historical price and volume data.
+- Developed activity analysis scripts:
+  - `analyze_stock_activity.py`
+  - `analyze_consolidation_patterns.py`
+- Implemented individual stock activity analysis:
+  - Generated activity analysis results for each stock.
+  - Evaluated price-volume behavior and trading activity characteristics.
+  - Saved individual analysis outputs.
+- Implemented activity summary generation:
+  - Generated summarized activity profiles for each stock.
+  - Combined individual results into unified summary files.
+
+**Outputs:**
+
+```text
+market_data_pipeline/data/analysis/activity_analysis/
+├── individual/
+│   ├── sz002067_activity_analysis.csv
+│   └── ...
+├── summary/
+│   ├── sz002067_activity_summary.csv
+│   └── ...
+├── combined_activity_summary.csv
+└── processing_summary.csv
+market_data_pipeline/data/analysis/activity_analysis/
+├── analyze_consolidation_patterns.py
+└── analyze_stock_activity.py
 ```

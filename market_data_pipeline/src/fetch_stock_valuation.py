@@ -50,9 +50,7 @@ COMBINED_OUTPUT_PATH = (
     PROJECT_ROOT / "data" / "cleaned" / "valuation" / "a_share_valuation.csv"
 )
 
-SUMMARY_OUTPUT_PATH = (
-    PROJECT_ROOT / "data" / "valuation" / "valuation_fetch_summary.csv"
-)
+SUMMARY_OUTPUT_PATH = PROJECT_ROOT / "data" / "summary" / "valuation_fetch_summary.csv"
 
 
 def normalize_stock_code(
