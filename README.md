@@ -672,3 +672,74 @@ integrated_analysis/
     ├── stock_summary_table.csv
     └── integrated_stock_profiles.csv
 ```
+
+============================================================================
+
+## Project Status
+## Phase 2: C++ Quantitative Strategy and Backtesting Engine Development
+
+### August 9, 2026: Strategy and Order Management Framework
+
+- Implemented the initial strategy framework with signal-based decision making.
+- Created `Signal` structure to represent trading decisions:
+  - BUY
+  - SELL
+  - HOLD
+
+- Refactored `MovingAverageStrategy` into separate header and source files:
+  - Added strategy declaration in `.hpp`
+  - Implemented strategy logic in `.cpp`
+
+- Upgraded moving average strategy from simple trend comparison to true crossover detection:
+  - Golden Cross → BUY signal
+  - Death Cross → SELL signal
+  - No crossover → HOLD signal
+
+- Extended `MarketSnapshot` structure to include:
+  - Symbol
+  - Timestamp
+  - Close price
+  - Indicator values
+
+- Added position sizing module:
+  - Introduced abstract `PositionSizer` interface.
+  - Implemented `FullPositionSizer` for full capital allocation.
+
+- Implemented `OrderManager`:
+  - Converted trading signals into executable orders.
+  - Integrated portfolio information and position sizing logic.
+  - Added symbol and timestamp propagation from market data.
+
+### Testing
+
+Successfully tested the complete workflow:
+```text
+MarketSnapshot
+↓
+MovingAverageStrategy
+↓
+Signal
+↓
+PositionSizer
+↓
+OrderManager
+↓
+Order
+```
+
+### Current Status
+
+Completed:
+- Core trading components
+- Strategy interface
+- Moving average crossover strategy
+- Signal generation
+- Position sizing
+- Order generation
+
+Next Step:
+- Implement Execution Engine:
+  - Convert Order into Trade.
+  - Apply slippage.
+  - Calculate commission and stamp duty.
+  - Connect Trade with Portfolio updates.
