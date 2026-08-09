@@ -1,3 +1,0 @@
-/home/silicafield/MarketForge/quant_engine/build/CMakeFiles/quantlab.dir
-/home/silicafield/MarketForge/quant_engine/build/CMakeFiles/edit_cache.dir
-/home/silicafield/MarketForge/quant_engine/build/CMakeFiles/rebuild_cache.dir

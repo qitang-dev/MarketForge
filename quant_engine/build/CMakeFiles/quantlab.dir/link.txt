@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/quantlab.dir/link.d CMakeFiles/quantlab.dir/src/main.cpp.o CMakeFiles/quantlab.dir/src/strategy/moving_average_strategy.cpp.o CMakeFiles/quantlab.dir/src/execution/full_position_sizer.cpp.o CMakeFiles/quantlab.dir/src/execution/order_manager.cpp.o -o quantlab

@@ -27,3 +27,6 @@ fundamentals/src/__pycache__/
 integrated_analysis/market_forge_dashboard/
 
 minute_kline/website/
+
+# C++
+quant_engine/build/

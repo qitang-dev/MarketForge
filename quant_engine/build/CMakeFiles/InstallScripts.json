@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/silicafield/MarketForge/quant_engine/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
