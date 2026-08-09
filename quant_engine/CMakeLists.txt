@@ -16,6 +16,7 @@ set(SOURCES
     src/strategy/moving_average_strategy.cpp
     src/execution/full_position_sizer.cpp
     src/execution/order_manager.cpp
+    src/execution/execution_engine.cpp
 )
 
 add_executable(

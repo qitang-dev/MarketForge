@@ -737,9 +737,85 @@ Completed:
 - Position sizing
 - Order generation
 
-Next Step:
+### Next Step:
+
 - Implement Execution Engine:
   - Convert Order into Trade.
   - Apply slippage.
   - Calculate commission and stamp duty.
   - Connect Trade with Portfolio updates.
+
+
+### August 9, 2026: Order Management and Trade Execution Framework
+
+- Refactored the order generation workflow by introducing a dedicated position sizing module.
+- Added `PositionSizer` abstraction to separate capital allocation logic from order generation.
+- Implemented `FullPositionSizer` for full capital allocation strategy.
+
+- Improved `OrderManager` design:
+  - Separated signal interpretation, position sizing, and order creation responsibilities.
+  - Converted order generation interface to `std::optional<Order>`.
+  - Removed unnecessary HOLD orders by returning `std::nullopt` when no trade is required.
+  - Improved order generation logic for BUY and SELL signals.
+
+- Implemented `ExecutionEngine` to simulate order execution:
+  - Converted `Order` objects into `Trade` objects.
+  - Applied slippage model to calculate execution price.
+  - Integrated transaction cost calculation:
+    - Commission
+    - Stamp duty
+    - Slippage cost
+
+- Refined transaction cost calculation:
+  - Kept trade value based on actual execution price.
+  - Updated slippage calculation to measure the difference between market price and execution price.
+  - Improved separation between trading price and transaction costs.
+
+### Testing
+
+Successfully validated the workflow:
+```text
+Signal
+↓
+OrderManager
+↓
+Order
+↓
+ExecutionEngine
+↓
+Trade
+```
+
+### Current Status
+
+Completed:
+
+- Strategy signal generation
+- Position sizing framework
+- Order management system
+- Execution simulation framework
+
+Current trading flow:
+```text
+Market Data
+↓
+Strategy
+↓
+Signal
+↓
+PositionSizer
+↓
+OrderManager
+↓
+Order
+↓
+ExecutionEngine
+↓
+Trade
+```
+
+### Next Step:
+
+- Integrate Trade with Portfolio.
+- Complete account balance and equity updates.
+- Build the complete backtesting workflow.

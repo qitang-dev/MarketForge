@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "backtest_config.hpp"
 #include "order.hpp"
 
@@ -24,7 +26,8 @@ struct TransactionCostModel {
     return 0.0;
   }
 
-  double calculate_slippage(double trade_value) const {
-    return trade_value * slippage_rate;
+  double calculate_slippage(double market_price, double execution_price,
+                            int quantity) const {
+    return std::abs((execution_price - market_price) * quantity);
   }
 };
