@@ -17,6 +17,8 @@ set(SOURCES
     src/execution/full_position_sizer.cpp
     src/execution/order_manager.cpp
     src/execution/execution_engine.cpp
+    src/execution/execution_model.cpp
+    src/execution/order_validator.cpp
 )
 
 add_executable(

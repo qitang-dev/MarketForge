@@ -10,3 +10,5 @@ struct BacktestConfig {
     return commission_rate >= 0 && stamp_duty_rate >= 0 && slippage_rate >= 0;
   }
 };
+
+constexpr int LOT_SIZE_A = 100;

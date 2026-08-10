@@ -737,14 +737,6 @@ Completed:
 - Position sizing
 - Order generation
 
-### Next Step:
-
-- Implement Execution Engine:
-  - Convert Order into Trade.
-  - Apply slippage.
-  - Calculate commission and stamp duty.
-  - Connect Trade with Portfolio updates.
-
 
 ### August 9, 2026: Order Management and Trade Execution Framework
 
@@ -814,8 +806,129 @@ ExecutionEngine
 Trade
 ```
 
-### Next Step:
+============================================================================
 
-- Integrate Trade with Portfolio.
-- Complete account balance and equity updates.
-- Build the complete backtesting workflow.
+## Trading Execution Framework Development
+
+### Aug 10, 2026: Order Validation and Execution Model Refactoring
+
+- Investigated and resolved negative cash issue during full-position BUY execution.
+- Identified that execution price slippage and transaction fees caused the actual trading cost to exceed the estimated order value.
+
+- Introduced `OrderValidator` module to separate order generation from order feasibility checking.
+  - Validates whether an order can be executed under current portfolio constraints.
+  - Adjusts order quantity according to available cash and A-share trading lot size.
+  - Prevents invalid BUY orders caused by insufficient capital.
+  - Adjusts SELL orders according to available positions.
+
+- Introduced `ExecutionQuote` data structure.
+  - Represents pre-trade execution estimation.
+  - Stores:
+    - Execution price
+    - Trade value
+    - Commission
+    - Stamp duty
+    - Slippage cost
+    - Total transaction fee
+
+- Introduced `ExecutionModel`.
+  - Centralized execution price simulation and transaction cost estimation.
+  - Removed duplicated cost calculation logic from execution-related modules.
+  - Provides a single source of truth for execution cost estimation.
+
+- Refactored `ExecutionEngine`.
+  - Simplified execution responsibility.
+  - ExecutionEngine now converts validated orders and execution quotes into final Trade records.
+  - Removed responsibility for calculating transaction costs.
+
+---
+
+### Architecture Improvement
+
+#### Before:
+```text
+Order
+|
+↓
+ExecutionEngine
+|
+├── Execution Price Calculation
+├── Commission Calculation
+├── Stamp Duty Calculation
+├── Slippage Calculation
+|
+↓
+Trade
+```
+
+#### After
+
+```teSignal
+↓
+OrderManager
+↓
+Order
+↓
+OrderValidator
+↓
+Valid Order
+↓
+ExecutionModel
+↓
+ExecutionQuote
+↓
+ExecutionEngine
+↓
+Trade
+↓
+Portfolio
+```
+
+### Testing:
+## Testing
+```text
+Successfully tested the complete BUY execution workflow:
+
+Initial Portfolio:
+Cash: 100000
+Shares: 0
+
+Original Order:
+Side: BUY
+Quantity: 10000
+
+After validation:
+Adjusted Quantity: 9900
+
+Execution Result:
+Execution Price: 10.005
+Commission: 49.5247
+Stamp Duty: 0
+Slippage Cost: 49.5
+
+Portfolio Update:
+Cash: 900.975
+Market Value: 99000
+Equity: 99901
+Shares: 9900
+
+The result confirms:
+
+- Transaction costs are correctly applied.
+- Full-position trading does not create negative cash.
+- Execution price and cost calculations are consistent between validation and execution.
+```
+---
+## Design Reflection
+
+A seemingly simple negative cash issue revealed the importance of separating position sizing, order validation, execution modeling, and portfolio management.
+
+This refactoring improved the architecture by ensuring:
+
+- PositionSizer determines intended position size.
+- OrderValidator ensures orders are executable.
+- ExecutionModel provides consistent execution estimation.
+- ExecutionEngine generates final trade records.
+- Portfolio maintains account state.
+
+

@@ -13,9 +13,14 @@ std::optional<Order> OrderManager::generate_order(
   order.symbol = snapshot.symbol;
 
   if (signal.type == SignalType::BUY) {
+    int quantity = sizer.calculate_quantity(portfolio, snapshot.close);
+    if (quantity <= 0) return std::nullopt;
     order.side = OrderSide::BUY;
-    order.quantity = sizer.calculate_quantity(portfolio, snapshot.close);
+    order.quantity = quantity;
   } else if (signal.type == SignalType::SELL) {
+    if (portfolio.shares <= 0) {
+      return std::nullopt;
+    }
     order.side = OrderSide::SELL;
     order.quantity = portfolio.shares;
   } else {

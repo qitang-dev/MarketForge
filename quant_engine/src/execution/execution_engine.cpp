@@ -2,26 +2,24 @@
 
 #include <stdexcept>
 
-ExecutionEngine::ExecutionEngine(const TransactionCostModel& cost_model)
-    : cost_model_(cost_model) {}
+ExecutionEngine::ExecutionEngine(const ExecutionModel& execution_model)
+    : execution_model_(execution_model) {}
 
-Trade ExecutionEngine::execute(const Order& order, double market_price) {
-  if (order.side == OrderSide::HOLD) {
+Trade ExecutionEngine::execute(const Order& valid_order, double market_price) {
+  if (valid_order.side == OrderSide::HOLD) {
     throw std::runtime_error("HOLD order cannot be executed.");
   }
-  double slippage_rate = cost_model_.slippage_rate;
+  const ExecutionQuote kExecutionQuote =
+      execution_model_.generate_quote(valid_order, market_price);
 
-  double execution_price = (order.side == OrderSide::BUY)
-                               ? market_price * (1 + slippage_rate)
-                               : market_price * (1 - slippage_rate);
-
-  double trade_value = execution_price * order.quantity;
-
-  double commission = cost_model_.calculate_commission(trade_value);
-  double stamp_duty = cost_model_.calculate_stamp_duty(trade_value, order.side);
-  double slippage_cost = cost_model_.calculate_slippage(
-      market_price, execution_price, order.quantity);
-
-  return Trade{order.timestamp, order.symbol, order.side, order.quantity,
-               execution_price, commission,   stamp_duty, slippage_cost};
+  return Trade{
+      .timestamp = valid_order.timestamp,
+      .symbol = valid_order.symbol,
+      .side = valid_order.side,
+      .quantity = valid_order.quantity,
+      .execution_price = kExecutionQuote.execution_price,
+      .commission = kExecutionQuote.commission,
+      .stamp_duty = kExecutionQuote.stamp_duty,
+      .slippage_cost = kExecutionQuote.slippage_cost,
+  };
 }
