@@ -19,6 +19,10 @@ set(SOURCES
     src/execution/execution_engine.cpp
     src/execution/execution_model.cpp
     src/execution/order_validator.cpp
+    src/indicator/moving_average.cpp
+    src/data/data_loader.cpp
+    src/data/data_utils.cpp
+    src/backtest/backtester.cpp
 )
 
 add_executable(

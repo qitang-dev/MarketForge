@@ -3,17 +3,18 @@
 #include <optional>
 #include <stdexcept>
 
-std::optional<Order> OrderManager::generate_order(
-    const Signal& signal, const Portfolio& portfolio,
-    const MarketSnapShot& snapshot, const PositionSizer& sizer) {
+std::optional<Order> OrderManager::generate_order(const Signal& signal,
+                                                  const Portfolio& portfolio,
+                                                  const PriceBar& price_bar,
+                                                  const PositionSizer& sizer) {
   if (signal.type == SignalType::HOLD) return std::nullopt;
 
   Order order;
-  order.timestamp = snapshot.timestamp;
-  order.symbol = snapshot.symbol;
+  order.timestamp = price_bar.timestamp;
+  order.symbol = price_bar.symbol;
 
   if (signal.type == SignalType::BUY) {
-    int quantity = sizer.calculate_quantity(portfolio, snapshot.close);
+    int quantity = sizer.calculate_quantity(portfolio, price_bar.close);
     if (quantity <= 0) return std::nullopt;
     order.side = OrderSide::BUY;
     order.quantity = quantity;

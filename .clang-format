@@ -6,3 +6,11 @@ BinPackArguments: false
 BinPackParameters: false
 Cpp11BracedListStyle: true
 ColumnLimit: 80
+SortIncludes: true
+IncludeBlocks: Regroup
+MaxEmptyLinesToKeep: 1
+IncludeCategories:
+  - Regex: '^<.*>'
+    Priority: 1
+  - Regex: '^".*"'
+    Priority: 2

@@ -678,6 +678,8 @@ integrated_analysis/
 ## Project Status
 ## Phase 2: C++ Quantitative Strategy and Backtesting Engine Development
 
+## Quant Engine Framework Construction
+
 ### August 9, 2026: Strategy and Order Management Framework
 
 - Implemented the initial strategy framework with signal-based decision making.
@@ -885,7 +887,6 @@ Portfolio
 ```
 
 ### Testing:
-## Testing
 ```text
 Successfully tested the complete BUY execution workflow:
 
@@ -931,4 +932,91 @@ This refactoring improved the architecture by ensuring:
 - ExecutionEngine generates final trade records.
 - Portfolio maintains account state.
 
+============================================================================
 
+### Aug 11, 2026: Completed Backtester Integration and End-to-End Trading Simulation
+
+#### Optimized Strategy Data Interface with std::span
+- Replaced the previous historical data copying approach in `Backtester` with `std::span<const PriceBar>`.
+- Removed unnecessary `PriceFrame` duplication during each backtest iteration.
+- Updated the `Strategy` interface and `MovingAverageStrategy` implementation to accept read-only market data views.
+Design improvement:
+- `PriceFrame` remains responsible for owning market data.
+- `std::span<const PriceBar>` provides a lightweight, non-owning view for strategy calculation.
+- Improved memory efficiency while maintaining clear ownership boundaries.
+
+#### Updated MovingAverageStrategy for std::span Support
+- Modified `MovingAverageStrategy::generate_signal()` to process `std::span<const PriceBar>`.
+- Preserved SMA crossover logic while removing unnecessary data copying.
+- Verified that the strategy correctly identifies crossover events.
+
+
+### Testing:
+- Created custom price data containing a downward trend followed by a recovery phase.
+- Confirmed:
+  - Insufficient history returns `HOLD`.
+  - Golden-cross events correctly generate `BUY` signals.
+
+Backtester now supports:
+
+- Iterating through historical market data.
+- Passing historical data views to strategies.
+- Generating orders based on strategy signals.
+- Validating and adjusting orders according to account constraints.
+- Executing trades with transaction costs.
+- Updating portfolio positions and market value.
+
+##### Performed Full End-to-End Backtest Validation
+
+Successfully tested a complete BUY transaction.
+
+Test scenario:
+
+Initial Cash: 100000
+Strategy: Moving Average Crossover
+Signal: BUY
+Market Price: 20
+
+
+Order process:
+Original Quantity: 5000
+Adjusted Quantity: 4900
+
+
+Execution result:
+Execution Price: 20.01
+Commission: 49.0245
+Slippage Cost: 49
+
+
+Portfolio update:
+Cash: 1901.98
+Shares: 4900
+Market Value: 98000
+Equity: 99902
+
+
+Validated:
+
+- Correct signal generation.
+- Correct order adjustment.
+- Correct transaction cost calculation.
+- Correct portfolio accounting after execution.
+
+---
+
+### Fixed C++20 Development Environment Configuration
+
+Resolved VSCode IntelliSense compatibility issue.
+
+Updated configuration:
+Compiler:
+gcc → g++
+
+Language Standard:
+C17 → C++20
+
+Enabled proper recognition of modern C++ features including:
+```cpp
+std::span<T>
+```
