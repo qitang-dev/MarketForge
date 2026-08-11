@@ -1,0 +1,1523 @@
+Account Cash: 100000
+Market Value: 0
+Equity: 0
+Shares: 0
+243
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-01-09
+Order Side: BUY
+Order Quantity: 59500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-01-09
+Order Side: BUY
+Order Quantity: 59400
+
+Trade Symbol: 
+Trade Time: 2025-01-09
+Trade Type: BUY
+Execution Price: 1.68084
+Execution Quantity: 59400
+Commission: 49.9209
+Stamp Duty: 0
+Slippage Cost: 49.896
+
+Account Cash: 108.183
+Market Value: 99792
+Equity: 99900.2
+Shares: 59400
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-01-10
+Order Side: SELL
+Order Quantity: 59400
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-01-10
+Order Side: SELL
+Order Quantity: 59400
+
+Trade Symbol: 
+Trade Time: 2025-01-10
+Trade Type: SELL
+Execution Price: 1.61919
+Execution Quantity: 59400
+Commission: 48.0899
+Stamp Duty: 48.0899
+Slippage Cost: 48.114
+
+Account Cash: 96191.9
+Market Value: 0
+Equity: 96191.9
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-01-16
+Order Side: BUY
+Order Quantity: 56900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-01-16
+Order Side: BUY
+Order Quantity: 56800
+
+Trade Symbol: 
+Trade Time: 2025-01-16
+Trade Type: BUY
+Execution Price: 1.69084
+Execution Quantity: 56800
+Commission: 48.02
+Stamp Duty: 0
+Slippage Cost: 47.996
+
+Account Cash: 103.873
+Market Value: 95992
+Equity: 96095.9
+Shares: 56800
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-01-21
+Order Side: SELL
+Order Quantity: 56800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-01-21
+Order Side: SELL
+Order Quantity: 56800
+
+Trade Symbol: 
+Trade Time: 2025-01-21
+Trade Type: SELL
+Execution Price: 1.69915
+Execution Quantity: 56800
+Commission: 48.2559
+Stamp Duty: 48.2559
+Slippage Cost: 48.28
+
+Account Cash: 96519.1
+Market Value: 0
+Equity: 96519.1
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-01-23
+Order Side: BUY
+Order Quantity: 57100
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-01-23
+Order Side: BUY
+Order Quantity: 57000
+
+Trade Symbol: 
+Trade Time: 2025-01-23
+Trade Type: BUY
+Execution Price: 1.69084
+Execution Quantity: 57000
+Commission: 48.1891
+Stamp Duty: 0
+Slippage Cost: 48.165
+
+Account Cash: 92.7274
+Market Value: 96330
+Equity: 96422.7
+Shares: 57000
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-02-13
+Order Side: SELL
+Order Quantity: 57000
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-02-13
+Order Side: SELL
+Order Quantity: 57000
+
+Trade Symbol: 
+Trade Time: 2025-02-13
+Trade Type: SELL
+Execution Price: 1.75912
+Execution Quantity: 57000
+Commission: 50.1349
+Stamp Duty: 50.1349
+Slippage Cost: 50.16
+
+Account Cash: 100262
+Market Value: 0
+Equity: 100262
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-02-27
+Order Side: BUY
+Order Quantity: 54700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-02-27
+Order Side: BUY
+Order Quantity: 54700
+
+Trade Symbol: 
+Trade Time: 2025-02-27
+Trade Type: BUY
+Execution Price: 1.83092
+Execution Quantity: 54700
+Commission: 50.0755
+Stamp Duty: 0
+Slippage Cost: 50.0505
+
+Account Cash: 61.1715
+Market Value: 100101
+Equity: 100162
+Shares: 54700
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-05
+Order Side: SELL
+Order Quantity: 54700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-05
+Order Side: SELL
+Order Quantity: 54700
+
+Trade Symbol: 
+Trade Time: 2025-03-05
+Trade Type: SELL
+Execution Price: 1.77911
+Execution Quantity: 54700
+Commission: 48.6587
+Stamp Duty: 48.6587
+Slippage Cost: 48.683
+
+Account Cash: 97281.2
+Market Value: 0
+Equity: 97281.2
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-10
+Order Side: BUY
+Order Quantity: 53700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-10
+Order Side: BUY
+Order Quantity: 53600
+
+Trade Symbol: 
+Trade Time: 2025-03-10
+Trade Type: BUY
+Execution Price: 1.8109
+Execution Quantity: 53600
+Commission: 48.5323
+Stamp Duty: 0
+Slippage Cost: 48.508
+
+Account Cash: 168.131
+Market Value: 97016
+Equity: 97184.1
+Shares: 53600
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-12
+Order Side: SELL
+Order Quantity: 53600
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-12
+Order Side: SELL
+Order Quantity: 53600
+
+Trade Symbol: 
+Trade Time: 2025-03-12
+Trade Type: SELL
+Execution Price: 1.77911
+Execution Quantity: 53600
+Commission: 47.6801
+Stamp Duty: 47.6801
+Slippage Cost: 47.704
+
+Account Cash: 95433.1
+Market Value: 0
+Equity: 95433.1
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-18
+Order Side: BUY
+Order Quantity: 53300
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-18
+Order Side: BUY
+Order Quantity: 53200
+
+Trade Symbol: 
+Trade Time: 2025-03-18
+Trade Type: BUY
+Execution Price: 1.79089
+Execution Quantity: 53200
+Commission: 47.6378
+Stamp Duty: 0
+Slippage Cost: 47.614
+
+Account Cash: 109.815
+Market Value: 95228
+Equity: 95337.8
+Shares: 53200
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-20
+Order Side: SELL
+Order Quantity: 53200
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-20
+Order Side: SELL
+Order Quantity: 53200
+
+Trade Symbol: 
+Trade Time: 2025-03-20
+Trade Type: SELL
+Execution Price: 1.76912
+Execution Quantity: 53200
+Commission: 47.0585
+Stamp Duty: 47.0585
+Slippage Cost: 47.082
+
+Account Cash: 94132.6
+Market Value: 0
+Equity: 94132.6
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-24
+Order Side: BUY
+Order Quantity: 52800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-24
+Order Side: BUY
+Order Quantity: 52800
+
+Trade Symbol: 
+Trade Time: 2025-03-24
+Trade Type: BUY
+Execution Price: 1.78089
+Execution Quantity: 52800
+Commission: 47.0155
+Stamp Duty: 0
+Slippage Cost: 46.992
+
+Account Cash: 54.6084
+Market Value: 93984
+Equity: 94038.6
+Shares: 52800
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-03-27
+Order Side: SELL
+Order Quantity: 52800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-03-27
+Order Side: SELL
+Order Quantity: 52800
+
+Trade Symbol: 
+Trade Time: 2025-03-27
+Trade Type: SELL
+Execution Price: 1.75912
+Execution Quantity: 52800
+Commission: 46.4408
+Stamp Duty: 46.4408
+Slippage Cost: 46.464
+
+Account Cash: 92843.3
+Market Value: 0
+Equity: 92843.3
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-04-11
+Order Side: BUY
+Order Quantity: 58000
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-04-11
+Order Side: BUY
+Order Quantity: 57900
+
+Trade Symbol: 
+Trade Time: 2025-04-11
+Trade Type: BUY
+Execution Price: 1.6008
+Execution Quantity: 57900
+Commission: 46.3432
+Stamp Duty: 0
+Slippage Cost: 46.32
+
+Account Cash: 110.6
+Market Value: 92640
+Equity: 92750.6
+Shares: 57900
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-04-17
+Order Side: SELL
+Order Quantity: 57900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-04-17
+Order Side: SELL
+Order Quantity: 57900
+
+Trade Symbol: 
+Trade Time: 2025-04-17
+Trade Type: SELL
+Execution Price: 1.62918
+Execution Quantity: 57900
+Commission: 47.1649
+Stamp Duty: 47.1649
+Slippage Cost: 47.1885
+
+Account Cash: 94346.1
+Market Value: 0
+Equity: 94346.1
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-04-21
+Order Side: BUY
+Order Quantity: 57800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-04-21
+Order Side: BUY
+Order Quantity: 57800
+
+Trade Symbol: 
+Trade Time: 2025-04-21
+Trade Type: BUY
+Execution Price: 1.63081
+Execution Quantity: 57800
+Commission: 47.1306
+Stamp Duty: 0
+Slippage Cost: 47.107
+
+Account Cash: 37.8439
+Market Value: 94214
+Equity: 94251.8
+Shares: 57800
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-04-28
+Order Side: SELL
+Order Quantity: 57800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-04-28
+Order Side: SELL
+Order Quantity: 57800
+
+Trade Symbol: 
+Trade Time: 2025-04-28
+Trade Type: SELL
+Execution Price: 1.63918
+Execution Quantity: 57800
+Commission: 47.3723
+Stamp Duty: 47.3723
+Slippage Cost: 47.396
+
+Account Cash: 94687.7
+Market Value: 0
+Equity: 94687.7
+Shares: 0
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-04-29
+Order Side: BUY
+Order Quantity: 57000
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-04-29
+Order Side: BUY
+Order Quantity: 56900
+
+Trade Symbol: 
+Trade Time: 2025-04-29
+Trade Type: BUY
+Execution Price: 1.66083
+Execution Quantity: 56900
+Commission: 47.2506
+Stamp Duty: 0
+Slippage Cost: 47.227
+
+Account Cash: 139.226
+Market Value: 94454
+Equity: 94593.2
+Shares: 56900
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-05-13
+Order Side: SELL
+Order Quantity: 56900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-05-13
+Order Side: SELL
+Order Quantity: 56900
+
+Trade Symbol: 
+Trade Time: 2025-05-13
+Trade Type: SELL
+Execution Price: 1.67916
+Execution Quantity: 56900
+Commission: 47.7721
+Stamp Duty: 47.7721
+Slippage Cost: 47.796
+
+Account Cash: 95587.9
+Market Value: 0
+Equity: 95587.9
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-05-15
+Order Side: BUY
+Order Quantity: 56500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-05-15
+Order Side: BUY
+Order Quantity: 56500
+
+Trade Symbol: 
+Trade Time: 2025-05-15
+Trade Type: BUY
+Execution Price: 1.69084
+Execution Quantity: 56500
+Commission: 47.7664
+Stamp Duty: 0
+Slippage Cost: 47.7425
+
+Account Cash: 7.37656
+Market Value: 95485
+Equity: 95492.4
+Shares: 56500
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-05-26
+Order Side: SELL
+Order Quantity: 56500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-05-26
+Order Side: SELL
+Order Quantity: 56500
+
+Trade Symbol: 
+Trade Time: 2025-05-26
+Trade Type: SELL
+Execution Price: 1.69915
+Execution Quantity: 56500
+Commission: 48.001
+Stamp Duty: 48.001
+Slippage Cost: 48.025
+
+Account Cash: 95913.3
+Market Value: 0
+Equity: 95913.3
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-06-05
+Order Side: BUY
+Order Quantity: 56400
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-06-05
+Order Side: BUY
+Order Quantity: 56300
+
+Trade Symbol: 
+Trade Time: 2025-06-05
+Trade Type: BUY
+Execution Price: 1.70085
+Execution Quantity: 56300
+Commission: 47.8789
+Stamp Duty: 0
+Slippage Cost: 47.855
+
+Account Cash: 107.616
+Market Value: 95710
+Equity: 95817.6
+Shares: 56300
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-06-16
+Order Side: SELL
+Order Quantity: 56300
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-06-16
+Order Side: SELL
+Order Quantity: 56300
+
+Trade Symbol: 
+Trade Time: 2025-06-16
+Trade Type: SELL
+Execution Price: 1.69915
+Execution Quantity: 56300
+Commission: 47.8311
+Stamp Duty: 47.8311
+Slippage Cost: 47.855
+
+Account Cash: 95674.1
+Market Value: 0
+Equity: 95674.1
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-06-18
+Order Side: BUY
+Order Quantity: 55900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-06-18
+Order Side: BUY
+Order Quantity: 55800
+
+Trade Symbol: 
+Trade Time: 2025-06-18
+Trade Type: BUY
+Execution Price: 1.71085
+Execution Quantity: 55800
+Commission: 47.7329
+Stamp Duty: 0
+Slippage Cost: 47.709
+
+Account Cash: 160.657
+Market Value: 95418
+Equity: 95578.7
+Shares: 55800
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-06-20
+Order Side: SELL
+Order Quantity: 55800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-06-20
+Order Side: SELL
+Order Quantity: 55800
+
+Trade Symbol: 
+Trade Time: 2025-06-20
+Trade Type: SELL
+Execution Price: 1.68915
+Execution Quantity: 55800
+Commission: 47.1274
+Stamp Duty: 47.1274
+Slippage Cost: 47.151
+
+Account Cash: 94321.3
+Market Value: 0
+Equity: 94321.3
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-06-25
+Order Side: BUY
+Order Quantity: 54500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-06-25
+Order Side: BUY
+Order Quantity: 54400
+
+Trade Symbol: 
+Trade Time: 2025-06-25
+Trade Type: BUY
+Execution Price: 1.73086
+Execution Quantity: 54400
+Commission: 47.0795
+Stamp Duty: 0
+Slippage Cost: 47.056
+
+Account Cash: 115.115
+Market Value: 94112
+Equity: 94227.1
+Shares: 54400
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-07-16
+Order Side: SELL
+Order Quantity: 54400
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-07-16
+Order Side: SELL
+Order Quantity: 54400
+
+Trade Symbol: 
+Trade Time: 2025-07-16
+Trade Type: SELL
+Execution Price: 1.85907
+Execution Quantity: 54400
+Commission: 50.5667
+Stamp Duty: 50.5667
+Slippage Cost: 50.592
+
+Account Cash: 101147
+Market Value: 0
+Equity: 101147
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-07-21
+Order Side: BUY
+Order Quantity: 50300
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-07-21
+Order Side: BUY
+Order Quantity: 50200
+
+Trade Symbol: 
+Trade Time: 2025-07-21
+Trade Type: BUY
+Execution Price: 2.011
+Execution Quantity: 50200
+Commission: 50.4762
+Stamp Duty: 0
+Slippage Cost: 50.451
+
+Account Cash: 144.463
+Market Value: 100902
+Equity: 101046
+Shares: 50200
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-07-28
+Order Side: SELL
+Order Quantity: 50200
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-07-28
+Order Side: SELL
+Order Quantity: 50200
+
+Trade Symbol: 
+Trade Time: 2025-07-28
+Trade Type: SELL
+Execution Price: 2.05897
+Execution Quantity: 50200
+Commission: 51.6801
+Stamp Duty: 51.6801
+Slippage Cost: 51.706
+
+Account Cash: 103401
+Market Value: 0
+Equity: 103401
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-01
+Order Side: BUY
+Order Quantity: 50900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-01
+Order Side: BUY
+Order Quantity: 50800
+
+Trade Symbol: 
+Trade Time: 2025-08-01
+Trade Type: BUY
+Execution Price: 2.03101
+Execution Quantity: 50800
+Commission: 51.5878
+Stamp Duty: 0
+Slippage Cost: 51.562
+
+Account Cash: 174.247
+Market Value: 103124
+Equity: 103298
+Shares: 50800
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-04
+Order Side: SELL
+Order Quantity: 50800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-04
+Order Side: SELL
+Order Quantity: 50800
+
+Trade Symbol: 
+Trade Time: 2025-08-04
+Trade Type: SELL
+Execution Price: 1.999
+Execution Quantity: 50800
+Commission: 50.7746
+Stamp Duty: 50.7746
+Slippage Cost: 50.8
+
+Account Cash: 101622
+Market Value: 0
+Equity: 101622
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-06
+Order Side: BUY
+Order Quantity: 49500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-06
+Order Side: BUY
+Order Quantity: 49500
+
+Trade Symbol: 
+Trade Time: 2025-08-06
+Trade Type: BUY
+Execution Price: 2.05102
+Execution Quantity: 49500
+Commission: 50.7629
+Stamp Duty: 0
+Slippage Cost: 50.7375
+
+Account Cash: 45.397
+Market Value: 101475
+Equity: 101520
+Shares: 49500
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-15
+Order Side: SELL
+Order Quantity: 49500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-15
+Order Side: SELL
+Order Quantity: 49500
+
+Trade Symbol: 
+Trade Time: 2025-08-15
+Trade Type: SELL
+Execution Price: 2.04897
+Execution Quantity: 49500
+Commission: 50.7121
+Stamp Duty: 50.7121
+Slippage Cost: 50.7375
+
+Account Cash: 101368
+Market Value: 0
+Equity: 101368
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-20
+Order Side: BUY
+Order Quantity: 49200
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-20
+Order Side: BUY
+Order Quantity: 49100
+
+Trade Symbol: 
+Trade Time: 2025-08-20
+Trade Type: BUY
+Execution Price: 2.06103
+Execution Quantity: 49100
+Commission: 50.5983
+Stamp Duty: 0
+Slippage Cost: 50.573
+
+Account Cash: 121.064
+Market Value: 101146
+Equity: 101267
+Shares: 49100
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-08-28
+Order Side: SELL
+Order Quantity: 49100
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-08-28
+Order Side: SELL
+Order Quantity: 49100
+
+Trade Symbol: 
+Trade Time: 2025-08-28
+Trade Type: SELL
+Execution Price: 2.02899
+Execution Quantity: 49100
+Commission: 49.8116
+Stamp Duty: 49.8116
+Slippage Cost: 49.8365
+
+Account Cash: 99644.6
+Market Value: 0
+Equity: 99644.6
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-09-09
+Order Side: BUY
+Order Quantity: 49800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-09-09
+Order Side: BUY
+Order Quantity: 49700
+
+Trade Symbol: 
+Trade Time: 2025-09-09
+Trade Type: BUY
+Execution Price: 2.001
+Execution Quantity: 49700
+Commission: 49.7248
+Stamp Duty: 0
+Slippage Cost: 49.7
+
+Account Cash: 145.179
+Market Value: 99400
+Equity: 99545.2
+Shares: 49700
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-09-12
+Order Side: SELL
+Order Quantity: 49700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-09-12
+Order Side: SELL
+Order Quantity: 49700
+
+Trade Symbol: 
+Trade Time: 2025-09-12
+Trade Type: SELL
+Execution Price: 2.01899
+Execution Quantity: 49700
+Commission: 50.1719
+Stamp Duty: 50.1719
+Slippage Cost: 50.197
+
+Account Cash: 100389
+Market Value: 0
+Equity: 100389
+Shares: 0
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-09-15
+Order Side: BUY
+Order Quantity: 48700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-09-15
+Order Side: BUY
+Order Quantity: 48600
+
+Trade Symbol: 
+Trade Time: 2025-09-15
+Trade Type: BUY
+Execution Price: 2.06103
+Execution Quantity: 48600
+Commission: 50.083
+Stamp Duty: 0
+Slippage Cost: 50.058
+
+Account Cash: 172.498
+Market Value: 100116
+Equity: 100288
+Shares: 48600
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-09-22
+Order Side: SELL
+Order Quantity: 48600
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-09-22
+Order Side: SELL
+Order Quantity: 48600
+
+Trade Symbol: 
+Trade Time: 2025-09-22
+Trade Type: SELL
+Execution Price: 2.05897
+Execution Quantity: 48600
+Commission: 50.033
+Stamp Duty: 50.033
+Slippage Cost: 50.058
+
+Account Cash: 100138
+Market Value: 0
+Equity: 100138
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-10-09
+Order Side: BUY
+Order Quantity: 48800
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-10-09
+Order Side: BUY
+Order Quantity: 48700
+
+Trade Symbol: 
+Trade Time: 2025-10-09
+Trade Type: BUY
+Execution Price: 2.05102
+Execution Quantity: 48700
+Commission: 49.9425
+Stamp Duty: 0
+Slippage Cost: 49.9175
+
+Account Cash: 203.514
+Market Value: 99835
+Equity: 100039
+Shares: 48700
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-10-28
+Order Side: SELL
+Order Quantity: 48700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-10-28
+Order Side: SELL
+Order Quantity: 48700
+
+Trade Symbol: 
+Trade Time: 2025-10-28
+Trade Type: SELL
+Execution Price: 2.24887
+Execution Quantity: 48700
+Commission: 54.7601
+Stamp Duty: 54.7601
+Slippage Cost: 54.7875
+
+Account Cash: 109614
+Market Value: 0
+Equity: 109614
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-10-31
+Order Side: BUY
+Order Quantity: 47000
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-10-31
+Order Side: BUY
+Order Quantity: 46900
+
+Trade Symbol: 
+Trade Time: 2025-10-31
+Trade Type: BUY
+Execution Price: 2.33116
+Execution Quantity: 46900
+Commission: 54.6658
+Stamp Duty: 0
+Slippage Cost: 54.6385
+
+Account Cash: 227.902
+Market Value: 109277
+Equity: 109505
+Shares: 46900
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-11-10
+Order Side: SELL
+Order Quantity: 46900
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-11-10
+Order Side: SELL
+Order Quantity: 46900
+
+Trade Symbol: 
+Trade Time: 2025-11-10
+Trade Type: SELL
+Execution Price: 2.29885
+Execution Quantity: 46900
+Commission: 53.908
+Stamp Duty: 53.908
+Slippage Cost: 53.935
+
+Account Cash: 107936
+Market Value: 0
+Equity: 107936
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-11-12
+Order Side: BUY
+Order Quantity: 45500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-11-12
+Order Side: BUY
+Order Quantity: 45400
+
+Trade Symbol: 
+Trade Time: 2025-11-12
+Trade Type: BUY
+Execution Price: 2.37119
+Execution Quantity: 45400
+Commission: 53.8259
+Stamp Duty: 0
+Slippage Cost: 53.799
+
+Account Cash: 230.526
+Market Value: 107598
+Equity: 107829
+Shares: 45400
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-11-19
+Order Side: SELL
+Order Quantity: 45400
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-11-19
+Order Side: SELL
+Order Quantity: 45400
+
+Trade Symbol: 
+Trade Time: 2025-11-19
+Trade Type: SELL
+Execution Price: 2.4088
+Execution Quantity: 45400
+Commission: 54.6796
+Stamp Duty: 54.6796
+Slippage Cost: 54.707
+
+Account Cash: 109480
+Market Value: 0
+Equity: 109480
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-12-03
+Order Side: BUY
+Order Quantity: 49700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-12-03
+Order Side: BUY
+Order Quantity: 49700
+
+Trade Symbol: 
+Trade Time: 2025-12-03
+Trade Type: BUY
+Execution Price: 2.2011
+Execution Quantity: 49700
+Commission: 54.6973
+Stamp Duty: 0
+Slippage Cost: 54.67
+
+Account Cash: 31.0921
+Market Value: 109340
+Equity: 109371
+Shares: 49700
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-12-04
+Order Side: SELL
+Order Quantity: 49700
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-12-04
+Order Side: SELL
+Order Quantity: 49700
+
+Trade Symbol: 
+Trade Time: 2025-12-04
+Trade Type: SELL
+Execution Price: 2.12893
+Execution Quantity: 49700
+Commission: 52.904
+Stamp Duty: 52.904
+Slippage Cost: 52.9305
+
+Account Cash: 105733
+Market Value: 0
+Equity: 105733
+Shares: 0
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-12-19
+Order Side: BUY
+Order Quantity: 51300
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-12-19
+Order Side: BUY
+Order Quantity: 51200
+
+Trade Symbol: 
+Trade Time: 2025-12-19
+Trade Type: BUY
+Execution Price: 2.06103
+Execution Quantity: 51200
+Commission: 52.7624
+Stamp Duty: 0
+Slippage Cost: 52.736
+
+Account Cash: 155.855
+Market Value: 105472
+Equity: 105628
+Shares: 51200
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-12-25
+Order Side: SELL
+Order Quantity: 51200
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-12-25
+Order Side: SELL
+Order Quantity: 51200
+
+Trade Symbol: 
+Trade Time: 2025-12-25
+Trade Type: SELL
+Execution Price: 2.06896
+Execution Quantity: 51200
+Commission: 52.9655
+Stamp Duty: 52.9655
+Slippage Cost: 52.992
+
+Account Cash: 105981
+Market Value: 0
+Equity: 105981
+Shares: 0
+ON HOLD, no order generated.
+
+Original Order
+Order Symbol: 
+Order Timestamp: 2025-12-29
+Order Side: BUY
+Order Quantity: 49500
+
+Adjusted Order
+Order Symbol: 
+Order Timestamp: 2025-12-29
+Order Side: BUY
+Order Quantity: 49400
+
+Trade Symbol: 
+Trade Time: 2025-12-29
+Trade Type: BUY
+Execution Price: 2.14107
+Execution Quantity: 49400
+Commission: 52.8844
+Stamp Duty: 0
+Slippage Cost: 52.858
+
+Account Cash: 159.19
+Market Value: 105716
+Equity: 105875
+Shares: 49400
+ON HOLD, no order generated.
+ON HOLD, no order generated.

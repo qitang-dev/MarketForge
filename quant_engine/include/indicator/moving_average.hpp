@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-#include "../data/market_snapshot.hpp"
 #include "../data/price_bar.hpp"
 #include "../data/signal.hpp"
 #include "../data/time_series.hpp"

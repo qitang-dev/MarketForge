@@ -22,11 +22,13 @@ std::optional<Order> OrderValidator::validate_order(const Order& order,
     }
     return std::nullopt;
 
-  } else if (order.side == OrderSide::BUY) {
+  } else if (order.side == OrderSide::SELL) {
     if (portfolio.shares <= 0) {
       return std::nullopt;
     }
     adjusted_order.quantity = std::min(portfolio.shares, order.quantity);
+    adjusted_order.quantity =
+        (adjusted_order.quantity / LOT_SIZE_A) * LOT_SIZE_A;
     ExecutionQuote sell_quote =
         execution_model_.generate_quote(adjusted_order, market_price);
 

@@ -6,6 +6,8 @@
 #include "../include/core/portfolio.hpp"
 #include "../include/core/trade.hpp"
 #include "../include/core/transaction_cost.hpp"
+#include "../include/data/data_loader.hpp"
+#include "../include/data/market_data.hpp"
 #include "../include/execution/execution_engine.hpp"
 #include "../include/execution/execution_model.hpp"
 #include "../include/execution/full_position_sizer.hpp"
@@ -21,7 +23,18 @@ int main() {
             << "Market Value: " << portfolio.market_value << '\n'
             << "Equity: " << portfolio.equity << '\n'
             << "Shares: " << portfolio.shares << '\n';
+  DataLoader loader(',');
+  PriceFrame test_data =
+      loader.load_csv("data/day_1/cleaned_sh600231_daily_qfq_tx.csv");
 
+  MarketData market_data;
+  market_data.add_data("sh600231", TimeFrame::DAY_1, std::move(test_data));
+
+  const PriceFrame& history =
+      market_data.get_data("sh600231", TimeFrame::DAY_1);
+
+  std::cout << history.size() << '\n';
+  /*
   PriceFrame test_data{
       {"2026-01-01", "sh001", 20, 20, 20, 20, 1000},
       {"2026-01-02", "sh001", 18, 18, 18, 18, 1000},
@@ -34,6 +47,8 @@ int main() {
       {"2026-01-09", "sh001", 23, 23, 23, 23, 1000},
       {"2026-01-10", "sh001", 26, 26, 26, 26, 1000},
   };
+  */
+
   MovingAverageStrategy sma(3, 5);
   FullPositionSizer sizer;
   OrderManager manager;
@@ -46,7 +61,7 @@ int main() {
   Backtester backtester(
       sma, sizer, manager, order_validator, execution, portfolio);
 
-  backtester.run(test_data);
+  backtester.run(history);
 
   /*
 MovingAverageStrategy strategy;

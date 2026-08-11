@@ -23,6 +23,7 @@ set(SOURCES
     src/data/data_loader.cpp
     src/data/data_utils.cpp
     src/backtest/backtester.cpp
+    src/data/market_data.cpp
 )
 
 add_executable(

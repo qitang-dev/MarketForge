@@ -27,6 +27,8 @@ PriceFrame DataLoader::load_csv(const std::string& filename) const {
     std::string low;
     std::string close;
     std::string volume;
+    std::string turnover;
+    std::string amount;
 
     std::getline(ss, timestamp, delimiter_);
     std::getline(ss, open, delimiter_);
@@ -34,14 +36,18 @@ PriceFrame DataLoader::load_csv(const std::string& filename) const {
     std::getline(ss, low, delimiter_);
     std::getline(ss, close, delimiter_);
     std::getline(ss, volume, delimiter_);
+    std::getline(ss, turnover, delimiter_);
+    std::getline(ss, amount, delimiter_);
 
     output.push_back(PriceBar{
         .timestamp = timestamp,
         .open = std::stod(open),
+        .close = std::stod(close),
         .high = std::stod(high),
         .low = std::stod(low),
-        .close = std::stod(close),
         .volume = std::stod(volume),
+        .turnover = std::stod(turnover),
+        .amount = std::stod(amount),
     });
   }
   return output;

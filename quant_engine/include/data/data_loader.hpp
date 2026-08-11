@@ -2,7 +2,6 @@
 
 #include <string>
 
-#include "market_snapshot.hpp"
 #include "price_bar.hpp"
 #include "time_series.hpp"
 

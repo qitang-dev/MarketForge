@@ -30,3 +30,5 @@ minute_kline/website/
 
 # C++
 quant_engine/build/
+
+quant_engine/data/

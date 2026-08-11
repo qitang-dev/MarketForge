@@ -1020,3 +1020,70 @@ Enabled proper recognition of modern C++ features including:
 ```cpp
 std::span<T>
 ```
+
+
+### Aug 11, 2026: MarketData Structure and Real Market Data Integration
+
+- Designed and implemented `MarketData` structure to support multiple symbols and multiple time frequencies.
+
+  - Used nested `unordered_map` structure:
+    - Symbol → TimeFrame → PriceFrame
+  - Added `TimeFrameHash` to support using `enum class TimeFrame` as `unordered_map` key.
+  - Added `TimeFrameData` alias to improve readability.
+
+- Implemented `MarketData` data access interface.
+
+  - Added `add_data()` for storing loaded market data.
+  - Used move semantics to transfer ownership of `PriceFrame` into `MarketData`.
+  - Added read-only `get_data()` interface returning `const PriceFrame&`.
+  - Used iterator-based lookup to avoid unnecessary data insertion during retrieval.
+
+- Connected CSV data loading pipeline with `MarketData` and `Backtester`.
+
+  - Replaced manually constructed `PriceFrame` test data with real historical market data loaded from CSV files.
+  - Completed data flow:
+    - CSV
+    - DataLoader
+    - PriceFrame
+    - MarketData
+    - Backtester
+
+- Tested Moving Average Crossover Strategy using real A-share historical data.
+
+  - Successfully generated BUY and SELL signals from loaded market data.
+  - Verified complete order lifecycle:
+    - Signal generation
+    - Order creation
+    - Order validation
+    - Trade execution
+    - Portfolio update
+
+- Fixed `OrderValidator` SELL validation issue.
+
+  - Identified incorrect condition in SELL branch:
+  
+### Testing:
+```text
+Example backtest result:
+Order Side: BUY
+Original Quantity: 59500
+Adjusted Quantity: 59400
+
+Execution Price: 1.68084
+Commission: 49.9209
+Stamp Duty: 0
+Slippage Cost: 49.896
+
+Shares: 59400
+Order Side: SELL
+Quantity: 59400
+
+Execution Price: 1.61919
+Commission: 48.0899
+Stamp Duty: 48.0899
+Slippage Cost: 48.114
+
+Shares: 0
+...
+```
+
