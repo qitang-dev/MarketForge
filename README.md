@@ -1203,3 +1203,36 @@ PerformanceAnalyzer
   - ratios are displayed as concise decimal values
   - PnL statistics use fixed decimal precision
   - prepared performance results for cleaner terminal and future report output
+
+
+### Aug 12, 2026: Bollinger Breakout Strategy Implementation and Validation
+
+- Added `BollingerStrategy` as the second concrete strategy derived from the common `Strategy` interface.
+
+- Refactored the existing SMA calculation from `MovingAverageStrategy` into the indicator layer so it can be reused by multiple strategies.
+
+- Added rolling standard deviation calculation for Bollinger Band construction.
+
+  - used population standard deviation for rolling price windows
+  - preserved the original rolling-window structure when handling price data
+  - added parameter and insufficient-data validation
+
+- Implemented Bollinger breakout signal generation using historical price data through `std::span`.
+
+  - constructed upper and lower Bollinger Bands from rolling SMA and standard deviation
+  - generated BUY signals when price crossed above the upper band
+  - generated SELL signals when price crossed below the lower band
+  - used crossing conditions instead of continuous above/below-band conditions to avoid repeated signals
+
+- Integrated `BollingerStrategy` into the existing backtesting pipeline without modifying the Backtester, execution, portfolio, or performance components.
+
+- Tested the strategy using real A-share daily historical data.
+
+  - confirmed 243 price bars produced 243 equity-history records
+  - verified that the strategy generated two completed BUY-to-SELL trading cycles
+  - inspected individual entry/exit timestamps, prices, quantities, realized PnL, and return rates
+  - confirmed that closed-trade details matched the aggregated win/loss statistics
+
+- Validated the resulting portfolio-level and trade-level performance metrics, including return, volatility, Sharpe Ratio, Sortino Ratio, Calmar Ratio, maximum drawdown, win rate, and profit-loss statistics.
+
+- Confirmed that the strategy abstraction supports replacing the trading strategy while reusing the complete order, execution, portfolio, backtesting, and performance-analysis infrastructure.

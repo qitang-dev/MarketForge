@@ -26,7 +26,7 @@ MovingAverageStrategy::MovingAverageStrategy(std::size_t short_window,
 Signal MovingAverageStrategy::generate_signal(
     std::span<const PriceBar> price_history) const {
   if (price_history.size() < long_window_ + 1) {
-    return Signal{SignalType::HOLD};
+    return Signal{.type = SignalType::HOLD};
   }
 
   TimeSeries close_prices = extract_price_series(price_history, price_type_);

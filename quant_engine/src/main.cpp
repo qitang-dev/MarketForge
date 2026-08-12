@@ -14,6 +14,7 @@
 #include "../include/execution/order_manager.hpp"
 #include "../include/execution/order_validator.hpp"
 #include "../include/performance/performance_analyzer.hpp"
+#include "../include/strategy/bollinger_strategy.hpp"
 #include "../include/strategy/moving_average_strategy.hpp"
 
 int main() {
@@ -50,7 +51,8 @@ int main() {
   };
   */
 
-  MovingAverageStrategy sma(3, 5);
+  // MovingAverageStrategy sma(3, 5);
+  BollingerStrategy boll(20, 2.0);
   FullPositionSizer sizer;
   OrderManager manager;
   BacktestConfig config;
@@ -59,8 +61,11 @@ int main() {
   OrderValidator order_validator(execution_model);
   ExecutionEngine execution(execution_model);
 
+  // Backtester backtester(
+  //    sma, sizer, manager, order_validator, execution, portfolio);
+
   Backtester backtester(
-      sma, sizer, manager, order_validator, execution, portfolio);
+      boll, sizer, manager, order_validator, execution, portfolio);
 
   BacktestResult result = backtester.run("sh600231", history);
 
@@ -142,6 +147,7 @@ return 0;
 
   ClosedTradeHistory closed_trades =
       PerformanceAnalyzer::extract_closed_trades(result);
+
   std::cout << "Closed Trades: " << closed_trades.size() << '\n';
 
   std::cout << "Win Rate: " << PerformanceAnalyzer::win_rate(closed_trades)
@@ -164,4 +170,16 @@ return 0;
 
   std::cout << history.size() << '\n';
   std::cout << result.equity_history.size() << '\n';
+
+  std::cout << "Trade Details: " << '\n';
+  for (const auto& closed_trade : closed_trades) {
+    std::cout << "\nSymbol: " << closed_trade.symbol << '\n'
+              << "Entry Timestamp: " << closed_trade.entry_timestamp << '\n'
+              << "Exit Timestamp: " << closed_trade.exit_timestamp << '\n'
+              << "Quantity: " << closed_trade.quantity << '\n'
+              << "Entry Price: " << closed_trade.entry_price << '\n'
+              << "Exit Price: " << closed_trade.exit_price << '\n'
+              << "Profit & Loss: " << closed_trade.pnl << '\n'
+              << "Return Rate: " << closed_trade.return_rate << '\n';
+  }
 }
