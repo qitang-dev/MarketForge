@@ -1087,3 +1087,64 @@ Shares: 0
 ...
 ```
 
+============================================================================
+
+### Aug 12, 2026: Backtest Result Recording and Performance Analysis Integration
+
+- Introduced `BacktestResult` to store structured outputs generated during backtesting.
+  - Added trade history recording.
+  - Added equity history recording.
+  - Replaced terminal-only backtest observation with reusable result data.
+
+- Added `EquityPoint` structure to record portfolio state at each market bar.
+  - Stores:
+    - Timestamp
+    - Cash
+    - Shares
+    - Market value
+    - Equity
+  - Updated portfolio market value on every bar, including periods without trade execution.
+  - Ensured equity history correctly reflects mark-to-market portfolio changes during HOLD periods.
+
+- Refactored `BackTester::run()` to return `BacktestResult`.
+  -  Records each executed `Trade`.
+  - Records portfolio equity state for every historical bar.
+  - Prepared backtest results for downstream performance analysis and report generation.
+
+- Resolved missing symbol propagation in the trading pipeline.
+  - Removed `symbol` from `PriceBar` because symbol information belongs to the market-data context rather than individual OHLCV bars.
+  - Passed symbol directly into `BackTester::run()`.
+  - Forwarded symbol from Backtester to `OrderManager`.
+  - Verified symbol propagation through:
+    - Order
+    - Validated Order
+    - Trade
+
+- Refactored time-series return handling.
+  - Reused existing `TimeSeries` infrastructure for portfolio equity analysis.
+  - Added equity-history extraction from `BacktestResult`.
+  - Generalized `simple_return()` to operate on arbitrary value series rather than price-only inputs.
+  - Preserved timestamps and NaN positions during time-series transformations.
+
+- Revised NaN handling policy.
+  - Removed unnecessary `drop_nan()` calls from time-series transformation functions.
+  - Preserved original time structure when calculating returns and drawdowns.
+  - Kept NaN filtering inside statistical aggregation functions such as:
+
+    - `mean()`
+    - `var()`
+    - `stdev()`
+    - `max()`
+    - `min()`
+  - Added empty-series protection to `max()` and `min()`.
+
+- Integrated portfolio-level performance metrics with `BacktestResult`.
+  - Implemented:
+    - Total Return
+    - Annualized Return
+    - Annualized Volatility
+    - Sharpe Ratio
+    - Maximum Drawdown
+  - Calculated strategy returns from portfolio equity instead of underlying asset prices.
+  - Generalized period-related naming to support both daily and intraday backtests.
+
