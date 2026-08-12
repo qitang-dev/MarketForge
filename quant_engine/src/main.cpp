@@ -13,6 +13,7 @@
 #include "../include/execution/full_position_sizer.hpp"
 #include "../include/execution/order_manager.hpp"
 #include "../include/execution/order_validator.hpp"
+#include "../include/performance/performance_analyzer.hpp"
 #include "../include/strategy/moving_average_strategy.hpp"
 
 int main() {
@@ -61,7 +62,7 @@ int main() {
   Backtester backtester(
       sma, sizer, manager, order_validator, execution, portfolio);
 
-  backtester.run("sh600231", history);
+  BacktestResult result = backtester.run("sh600231", history);
 
   /*
 MovingAverageStrategy strategy;
@@ -120,4 +121,47 @@ if (order) {
 }
 return 0;
 */
+  std::cout << "Total Return: " << PerformanceAnalyzer::total_return(result)
+            << '\n';
+
+  std::cout << "Annualized Return: "
+            << PerformanceAnalyzer::annualized_return(result, 252) << '\n';
+
+  std::cout << "Annualized Volatility: "
+            << PerformanceAnalyzer::annualized_volatility(result, 252) << '\n';
+
+  std::cout << "Sharpe Ratio: "
+            << PerformanceAnalyzer::sharpe_ratio(result, 0.0, 252) << '\n';
+
+  std::cout << "Max Drawdown: " << PerformanceAnalyzer::max_drawdown(result)
+            << '\n';
+  std::cout << "Sortino Ratio: "
+            << PerformanceAnalyzer::sortino_ratio(result, 0.0, 252) << '\n';
+  std::cout << "Calmar Ratio: "
+            << PerformanceAnalyzer::calmar_ratio(result, 252) << '\n';
+
+  ClosedTradeHistory closed_trades =
+      PerformanceAnalyzer::extract_closed_trades(result);
+  std::cout << "Closed Trades: " << closed_trades.size() << '\n';
+
+  std::cout << "Win Rate: " << PerformanceAnalyzer::win_rate(closed_trades)
+            << '\n';
+
+  std::cout << "Average Win: "
+            << PerformanceAnalyzer::average_win(closed_trades) << '\n';
+
+  std::cout << "Average Loss: "
+            << PerformanceAnalyzer::average_loss(closed_trades) << '\n';
+
+  std::cout << "Profit-Loss Ratio: "
+            << PerformanceAnalyzer::profit_loss_ratio(closed_trades) << '\n';
+
+  std::cout << "Max Win: " << PerformanceAnalyzer::max_win(closed_trades)
+            << '\n';
+
+  std::cout << "Max Loss: " << PerformanceAnalyzer::max_loss(closed_trades)
+            << '\n';
+
+  std::cout << history.size() << '\n';
+  std::cout << result.equity_history.size() << '\n';
 }

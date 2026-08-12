@@ -24,6 +24,7 @@ set(SOURCES
     src/data/data_utils.cpp
     src/backtest/backtester.cpp
     src/data/market_data.cpp
+    src/performance/performance_analyzer.cpp
 )
 
 add_executable(

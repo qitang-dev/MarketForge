@@ -13,8 +13,8 @@ Trade ExecutionEngine::execute(const Order& valid_order, double market_price) {
       execution_model_.generate_quote(valid_order, market_price);
 
   return Trade{
-      .timestamp = valid_order.timestamp,
       .symbol = valid_order.symbol,
+      .timestamp = valid_order.timestamp,
       .side = valid_order.side,
       .quantity = valid_order.quantity,
       .execution_price = kExecutionQuote.execution_price,

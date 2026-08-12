@@ -1148,3 +1148,58 @@ Shares: 0
   - Calculated strategy returns from portfolio equity instead of underlying asset prices.
   - Generalized period-related naming to support both daily and intraday backtests.
 
+
+### Aug 12, 2026: Closed Trade Analysis and Performance Module Completion
+
+- Introduced `ClosedTrade` and `ClosedTradeHistory` to represent completed BUY-to-SELL trading cycles.
+
+  - Added extraction logic to pair entry and exit trades from `BacktestResult::trades`.
+  - Calculated realized PnL and return rate for each completed trade.
+  - Kept unfinished open positions excluded from closed-trade statistics.
+  - Reused execution prices directly so slippage costs were not deducted twice.
+
+- Extended `PerformanceAnalyzer` with trade-level performance statistics based on `ClosedTradeHistory`.
+
+  - Added win/loss statistics, profit-loss ratio, and maximum profit/loss analysis.
+  - Used STL algorithms such as `std::max_element` and `std::min_element` with custom comparators for ClosedTrade lookup.
+  - Added defensive handling for empty histories and strategies containing no winning or losing trades.
+
+- Added Sortino Ratio and Calmar Ratio to complete the required risk-adjusted performance metrics.
+
+  - Sortino Ratio measures return relative to downside volatility.
+  - Calmar Ratio compares annualized return against maximum drawdown.
+
+- Completed end-to-end integration testing of the performance analysis pipeline:
+
+```text
+BackTester
+    ↓
+BacktestResult
+    ├── Trade History
+    └── Equity History
+            ↓
+ClosedTradeHistory
+            ↓
+PerformanceAnalyzer
+```
+
+- Identified an equity-history recording issue during performance testing.
+
+  - `BackTester` previously used `continue` when no order was generated.
+  - HOLD periods therefore skipped mark-to-market updates and equity recording.
+  - A 243-bar backtest initially produced only 51 equity records, causing annualized performance metrics to be significantly overstated.
+
+- Refactored the Backtester loop so market value and equity are updated and recorded for every market bar regardless of whether an order is generated or executed.
+
+  - Verified that 243 price bars now produce 243 equity-history records.
+  - Re-tested annualized return, volatility, Sharpe Ratio, Sortino Ratio, Calmar Ratio, and maximum drawdown after the correction.
+  - Confirmed that trade-level statistics remained unchanged because the fix affected portfolio mark-to-market recording rather than actual trade execution.
+
+- Completed and validated the Performance module with both portfolio-level and trade-level metrics.
+
+- Improved performance output formatting for readability.
+
+  - percentage metrics are displayed in `%` form
+  - ratios are displayed as concise decimal values
+  - PnL statistics use fixed decimal precision
+  - prepared performance results for cleaner terminal and future report output
