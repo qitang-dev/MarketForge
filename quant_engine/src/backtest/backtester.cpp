@@ -16,14 +16,17 @@ Backtester::Backtester(Strategy& strategy,
       execution_engine_(execution_engine),
       portfolio_(portfolio) {}
 
-void Backtester::run(std::span<const PriceBar> price_history) {
+BacktestResult Backtester::run(const std::string& symbol,
+                               std::span<const PriceBar> price_history) {
+  EquityHistory equity_history;
+  TradeHistory trades;
   for (std::size_t i = 0; i < price_history.size(); ++i) {
     std::span<const PriceBar> rolling_history(price_history.data(), i + 1);
 
     Signal signal = strategy_.generate_signal(rolling_history);
 
     std::optional<Order> order = order_manager_.generate_order(
-        signal, portfolio_, rolling_history[i], sizer_);
+        symbol, signal, portfolio_, rolling_history[i], sizer_);
 
     if (!order) {
       std::cout << "ON HOLD, no order generated.\n";
@@ -52,6 +55,8 @@ void Backtester::run(std::span<const PriceBar> price_history) {
     Trade trade =
         execution_engine_.execute(*valid_order, rolling_history[i].close);
 
+    trades.push_back(trade);
+
     std::cout << "\nTrade Symbol: " << trade.symbol << '\n'
               << "Trade Time: " << trade.timestamp << '\n'
               << "Trade Type: " << to_string(trade.side) << '\n'
@@ -64,9 +69,20 @@ void Backtester::run(std::span<const PriceBar> price_history) {
     portfolio_.apply_trade(trade);
     portfolio_.update_market_value(rolling_history[i].close);
 
+    equity_history.push_back(
+        EquityPoint{.timestamp = trade.timestamp,
+                    .shares = portfolio_.shares,
+                    .cash = portfolio_.cash,
+                    .market_value = portfolio_.market_value,
+                    .equity = portfolio_.equity});
+
     std::cout << "\nAccount Cash: " << portfolio_.cash << '\n'
               << "Market Value: " << portfolio_.market_value << '\n'
               << "Equity: " << portfolio_.equity << '\n'
               << "Shares: " << portfolio_.shares << '\n';
   }
+  return BacktestResult{
+      .equity_history = equity_history,
+      .trade_history = trades,
+  };
 }

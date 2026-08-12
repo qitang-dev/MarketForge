@@ -1,5 +1,6 @@
 #pragma once
 #include <optional>
+#include <string>
 
 #include "../core/order.hpp"
 #include "../core/portfolio.hpp"
@@ -9,7 +10,8 @@
 
 class OrderManager {
  public:
-  std::optional<Order> generate_order(const Signal& signal,
+  std::optional<Order> generate_order(const std::string& symbol,
+                                      const Signal& signal,
                                       const Portfolio& portfolio,
                                       const PriceBar& price_bar,
                                       const PositionSizer& sizer);

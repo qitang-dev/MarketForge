@@ -10,18 +10,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-09
 Order Side: BUY
 Order Quantity: 59500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-09
 Order Side: BUY
 Order Quantity: 59400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-01-09
 Trade Type: BUY
 Execution Price: 1.68084
@@ -36,18 +36,18 @@ Equity: 99900.2
 Shares: 59400
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-10
 Order Side: SELL
 Order Quantity: 59400
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-10
 Order Side: SELL
 Order Quantity: 59400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-01-10
 Trade Type: SELL
 Execution Price: 1.61919
@@ -65,18 +65,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-16
 Order Side: BUY
 Order Quantity: 56900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-16
 Order Side: BUY
 Order Quantity: 56800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-01-16
 Trade Type: BUY
 Execution Price: 1.69084
@@ -93,18 +93,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-21
 Order Side: SELL
 Order Quantity: 56800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-21
 Order Side: SELL
 Order Quantity: 56800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-01-21
 Trade Type: SELL
 Execution Price: 1.69915
@@ -120,18 +120,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-23
 Order Side: BUY
 Order Quantity: 57100
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-01-23
 Order Side: BUY
 Order Quantity: 57000
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-01-23
 Trade Type: BUY
 Execution Price: 1.69084
@@ -154,18 +154,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-02-13
 Order Side: SELL
 Order Quantity: 57000
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-02-13
 Order Side: SELL
 Order Quantity: 57000
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-02-13
 Trade Type: SELL
 Execution Price: 1.75912
@@ -189,18 +189,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-02-27
 Order Side: BUY
 Order Quantity: 54700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-02-27
 Order Side: BUY
 Order Quantity: 54700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-02-27
 Trade Type: BUY
 Execution Price: 1.83092
@@ -218,18 +218,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-05
 Order Side: SELL
 Order Quantity: 54700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-05
 Order Side: SELL
 Order Quantity: 54700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-05
 Trade Type: SELL
 Execution Price: 1.77911
@@ -246,18 +246,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-10
 Order Side: BUY
 Order Quantity: 53700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-10
 Order Side: BUY
 Order Quantity: 53600
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-10
 Trade Type: BUY
 Execution Price: 1.8109
@@ -273,18 +273,18 @@ Shares: 53600
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-12
 Order Side: SELL
 Order Quantity: 53600
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-12
 Order Side: SELL
 Order Quantity: 53600
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-12
 Trade Type: SELL
 Execution Price: 1.77911
@@ -302,18 +302,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-18
 Order Side: BUY
 Order Quantity: 53300
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-18
 Order Side: BUY
 Order Quantity: 53200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-18
 Trade Type: BUY
 Execution Price: 1.79089
@@ -329,18 +329,18 @@ Shares: 53200
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-20
 Order Side: SELL
 Order Quantity: 53200
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-20
 Order Side: SELL
 Order Quantity: 53200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-20
 Trade Type: SELL
 Execution Price: 1.76912
@@ -356,18 +356,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-24
 Order Side: BUY
 Order Quantity: 52800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-24
 Order Side: BUY
 Order Quantity: 52800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-24
 Trade Type: BUY
 Execution Price: 1.78089
@@ -384,18 +384,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-27
 Order Side: SELL
 Order Quantity: 52800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-03-27
 Order Side: SELL
 Order Quantity: 52800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-03-27
 Trade Type: SELL
 Execution Price: 1.75912
@@ -419,18 +419,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-11
 Order Side: BUY
 Order Quantity: 58000
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-11
 Order Side: BUY
 Order Quantity: 57900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-04-11
 Trade Type: BUY
 Execution Price: 1.6008
@@ -448,18 +448,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-17
 Order Side: SELL
 Order Quantity: 57900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-17
 Order Side: SELL
 Order Quantity: 57900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-04-17
 Trade Type: SELL
 Execution Price: 1.62918
@@ -475,18 +475,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-21
 Order Side: BUY
 Order Quantity: 57800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-21
 Order Side: BUY
 Order Quantity: 57800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-04-21
 Trade Type: BUY
 Execution Price: 1.63081
@@ -505,18 +505,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-28
 Order Side: SELL
 Order Quantity: 57800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-28
 Order Side: SELL
 Order Quantity: 57800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-04-28
 Trade Type: SELL
 Execution Price: 1.63918
@@ -531,18 +531,18 @@ Equity: 94687.7
 Shares: 0
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-29
 Order Side: BUY
 Order Quantity: 57000
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-04-29
 Order Side: BUY
 Order Quantity: 56900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-04-29
 Trade Type: BUY
 Execution Price: 1.66083
@@ -563,18 +563,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-13
 Order Side: SELL
 Order Quantity: 56900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-13
 Order Side: SELL
 Order Quantity: 56900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-05-13
 Trade Type: SELL
 Execution Price: 1.67916
@@ -590,18 +590,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-15
 Order Side: BUY
 Order Quantity: 56500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-15
 Order Side: BUY
 Order Quantity: 56500
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-05-15
 Trade Type: BUY
 Execution Price: 1.69084
@@ -622,18 +622,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-26
 Order Side: SELL
 Order Quantity: 56500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-05-26
 Order Side: SELL
 Order Quantity: 56500
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-05-26
 Trade Type: SELL
 Execution Price: 1.69915
@@ -654,18 +654,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-05
 Order Side: BUY
 Order Quantity: 56400
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-05
 Order Side: BUY
 Order Quantity: 56300
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-06-05
 Trade Type: BUY
 Execution Price: 1.70085
@@ -686,18 +686,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-16
 Order Side: SELL
 Order Quantity: 56300
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-16
 Order Side: SELL
 Order Quantity: 56300
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-06-16
 Trade Type: SELL
 Execution Price: 1.69915
@@ -713,18 +713,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-18
 Order Side: BUY
 Order Quantity: 55900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-18
 Order Side: BUY
 Order Quantity: 55800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-06-18
 Trade Type: BUY
 Execution Price: 1.71085
@@ -740,18 +740,18 @@ Shares: 55800
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-20
 Order Side: SELL
 Order Quantity: 55800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-20
 Order Side: SELL
 Order Quantity: 55800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-06-20
 Trade Type: SELL
 Execution Price: 1.68915
@@ -768,18 +768,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-25
 Order Side: BUY
 Order Quantity: 54500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-06-25
 Order Side: BUY
 Order Quantity: 54400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-06-25
 Trade Type: BUY
 Execution Price: 1.73086
@@ -808,18 +808,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-16
 Order Side: SELL
 Order Quantity: 54400
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-16
 Order Side: SELL
 Order Quantity: 54400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-07-16
 Trade Type: SELL
 Execution Price: 1.85907
@@ -836,18 +836,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-21
 Order Side: BUY
 Order Quantity: 50300
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-21
 Order Side: BUY
 Order Quantity: 50200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-07-21
 Trade Type: BUY
 Execution Price: 2.011
@@ -866,18 +866,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-28
 Order Side: SELL
 Order Quantity: 50200
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-07-28
 Order Side: SELL
 Order Quantity: 50200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-07-28
 Trade Type: SELL
 Execution Price: 2.05897
@@ -895,18 +895,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-01
 Order Side: BUY
 Order Quantity: 50900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-01
 Order Side: BUY
 Order Quantity: 50800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-01
 Trade Type: BUY
 Execution Price: 2.03101
@@ -921,18 +921,18 @@ Equity: 103298
 Shares: 50800
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-04
 Order Side: SELL
 Order Quantity: 50800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-04
 Order Side: SELL
 Order Quantity: 50800
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-04
 Trade Type: SELL
 Execution Price: 1.999
@@ -948,18 +948,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-06
 Order Side: BUY
 Order Quantity: 49500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-06
 Order Side: BUY
 Order Quantity: 49500
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-06
 Trade Type: BUY
 Execution Price: 2.05102
@@ -980,18 +980,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-15
 Order Side: SELL
 Order Quantity: 49500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-15
 Order Side: SELL
 Order Quantity: 49500
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-15
 Trade Type: SELL
 Execution Price: 2.04897
@@ -1008,18 +1008,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-20
 Order Side: BUY
 Order Quantity: 49200
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-20
 Order Side: BUY
 Order Quantity: 49100
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-20
 Trade Type: BUY
 Execution Price: 2.06103
@@ -1039,18 +1039,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-28
 Order Side: SELL
 Order Quantity: 49100
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-08-28
 Order Side: SELL
 Order Quantity: 49100
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-08-28
 Trade Type: SELL
 Execution Price: 2.02899
@@ -1072,18 +1072,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-09
 Order Side: BUY
 Order Quantity: 49800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-09
 Order Side: BUY
 Order Quantity: 49700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-09-09
 Trade Type: BUY
 Execution Price: 2.001
@@ -1100,18 +1100,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-12
 Order Side: SELL
 Order Quantity: 49700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-12
 Order Side: SELL
 Order Quantity: 49700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-09-12
 Trade Type: SELL
 Execution Price: 2.01899
@@ -1126,18 +1126,18 @@ Equity: 100389
 Shares: 0
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-15
 Order Side: BUY
 Order Quantity: 48700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-15
 Order Side: BUY
 Order Quantity: 48600
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-09-15
 Trade Type: BUY
 Execution Price: 2.06103
@@ -1156,18 +1156,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-22
 Order Side: SELL
 Order Quantity: 48600
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-09-22
 Order Side: SELL
 Order Quantity: 48600
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-09-22
 Trade Type: SELL
 Execution Price: 2.05897
@@ -1188,18 +1188,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-09
 Order Side: BUY
 Order Quantity: 48800
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-09
 Order Side: BUY
 Order Quantity: 48700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-10-09
 Trade Type: BUY
 Execution Price: 2.05102
@@ -1226,18 +1226,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-28
 Order Side: SELL
 Order Quantity: 48700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-28
 Order Side: SELL
 Order Quantity: 48700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-10-28
 Trade Type: SELL
 Execution Price: 2.24887
@@ -1254,18 +1254,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-31
 Order Side: BUY
 Order Quantity: 47000
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-10-31
 Order Side: BUY
 Order Quantity: 46900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-10-31
 Trade Type: BUY
 Execution Price: 2.33116
@@ -1285,18 +1285,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-10
 Order Side: SELL
 Order Quantity: 46900
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-10
 Order Side: SELL
 Order Quantity: 46900
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-11-10
 Trade Type: SELL
 Execution Price: 2.29885
@@ -1312,18 +1312,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-12
 Order Side: BUY
 Order Quantity: 45500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-12
 Order Side: BUY
 Order Quantity: 45400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-11-12
 Trade Type: BUY
 Execution Price: 2.37119
@@ -1342,18 +1342,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-19
 Order Side: SELL
 Order Quantity: 45400
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-11-19
 Order Side: SELL
 Order Quantity: 45400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-11-19
 Trade Type: SELL
 Execution Price: 2.4088
@@ -1377,18 +1377,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-03
 Order Side: BUY
 Order Quantity: 49700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-03
 Order Side: BUY
 Order Quantity: 49700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-12-03
 Trade Type: BUY
 Execution Price: 2.2011
@@ -1403,18 +1403,18 @@ Equity: 109371
 Shares: 49700
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-04
 Order Side: SELL
 Order Quantity: 49700
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-04
 Order Side: SELL
 Order Quantity: 49700
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-12-04
 Trade Type: SELL
 Execution Price: 2.12893
@@ -1439,18 +1439,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-19
 Order Side: BUY
 Order Quantity: 51300
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-19
 Order Side: BUY
 Order Quantity: 51200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-12-19
 Trade Type: BUY
 Execution Price: 2.06103
@@ -1468,18 +1468,18 @@ ON HOLD, no order generated.
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-25
 Order Side: SELL
 Order Quantity: 51200
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-25
 Order Side: SELL
 Order Quantity: 51200
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-12-25
 Trade Type: SELL
 Execution Price: 2.06896
@@ -1495,18 +1495,18 @@ Shares: 0
 ON HOLD, no order generated.
 
 Original Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-29
 Order Side: BUY
 Order Quantity: 49500
 
 Adjusted Order
-Order Symbol: 
+Order Symbol: sh600231
 Order Timestamp: 2025-12-29
 Order Side: BUY
 Order Quantity: 49400
 
-Trade Symbol: 
+Trade Symbol: sh600231
 Trade Time: 2025-12-29
 Trade Type: BUY
 Execution Price: 2.14107

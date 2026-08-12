@@ -61,7 +61,7 @@ int main() {
   Backtester backtester(
       sma, sizer, manager, order_validator, execution, portfolio);
 
-  backtester.run(history);
+  backtester.run("sh600231", history);
 
   /*
 MovingAverageStrategy strategy;

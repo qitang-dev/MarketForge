@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+
+#include "../data/backtest_result.hpp"
 #include "../data/price_bar.hpp"
 #include "../data/signal.hpp"
 #include "../data/time_series.hpp"
@@ -21,7 +24,8 @@ class Backtester {
              ExecutionEngine& execution_engine,
              Portfolio& portfolio);
 
-  void run(std::span<const PriceBar> price_history);
+  BacktestResult run(const std::string& symbol,
+                     std::span<const PriceBar> price_history);
 
  private:
   Strategy& strategy_;

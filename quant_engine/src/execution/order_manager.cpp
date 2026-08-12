@@ -3,7 +3,8 @@
 #include <optional>
 #include <stdexcept>
 
-std::optional<Order> OrderManager::generate_order(const Signal& signal,
+std::optional<Order> OrderManager::generate_order(const std::string& symbol,
+                                                  const Signal& signal,
                                                   const Portfolio& portfolio,
                                                   const PriceBar& price_bar,
                                                   const PositionSizer& sizer) {
@@ -11,7 +12,7 @@ std::optional<Order> OrderManager::generate_order(const Signal& signal,
 
   Order order;
   order.timestamp = price_bar.timestamp;
-  order.symbol = price_bar.symbol;
+  order.symbol = symbol;
 
   if (signal.type == SignalType::BUY) {
     int quantity = sizer.calculate_quantity(portfolio, price_bar.close);
