@@ -10,11 +10,11 @@ MovingAverageStrategy::MovingAverageStrategy(std::size_t short_window,
     : short_window_(short_window),
       long_window_(long_window),
       price_type_(price_type) {
-  if (short_window <= 1 || long_window <= 1) {
+  if (short_window_ <= 1 || long_window_ <= 1) {
     throw std::invalid_argument(
         "Moving-average windows must be greater than 1.");
   }
-  if (short_window >= long_window) {
+  if (short_window_ >= long_window_) {
     throw std::invalid_argument(
         "The short window cannot be greater than the long window.");
   }
@@ -52,4 +52,10 @@ Signal MovingAverageStrategy::generate_signal(
   }
 
   return Signal{SignalType::HOLD};
+}
+
+std::string MovingAverageStrategy::name() const { return "MovingAverage"; }
+std::string MovingAverageStrategy::parameters() const {
+  return "short=" + std::to_string(short_window_) +
+         ", long=" + std::to_string(long_window_);
 }

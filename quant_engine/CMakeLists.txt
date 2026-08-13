@@ -27,6 +27,9 @@ set(SOURCES
     src/performance/performance_analyzer.cpp
     src/strategy/bollinger_strategy.cpp
     src/indicator/volatility.cpp
+    src/strategy/rsi_strategy.cpp
+    src/indicator/rsi.cpp
+    src/backtest/run_backtest.cpp
 )
 
 add_executable(

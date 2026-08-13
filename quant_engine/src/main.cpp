@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
 
 #include "../include/backtest/backtester.hpp"
+#include "../include/backtest/run_backtest.hpp"
 #include "../include/core/backtest_config.hpp"
 #include "../include/core/order.hpp"
 #include "../include/core/portfolio.hpp"
@@ -8,16 +10,76 @@
 #include "../include/core/transaction_cost.hpp"
 #include "../include/data/data_loader.hpp"
 #include "../include/data/market_data.hpp"
+#include "../include/data/strategy_parameter.hpp"
 #include "../include/execution/execution_engine.hpp"
 #include "../include/execution/execution_model.hpp"
 #include "../include/execution/full_position_sizer.hpp"
 #include "../include/execution/order_manager.hpp"
 #include "../include/execution/order_validator.hpp"
+#include "../include/indicator/rsi.hpp"
 #include "../include/performance/performance_analyzer.hpp"
 #include "../include/strategy/bollinger_strategy.hpp"
 #include "../include/strategy/moving_average_strategy.hpp"
+#include "../include/strategy/rsi_strategy.hpp"
+#include "../include/visualization/print_backtest_summaries.hpp"
 
 int main() {
+  std::vector<MAParams> ma_params{
+      {5, 20},
+      {10, 30},
+      {20, 60},
+  };
+
+  std::vector<BollingerParams> bollinger_params{
+      {10, 2.0},
+      {20, 2.0},
+      {20, 2.5},
+  };
+
+  std::vector<RSIParams> rsi_params{
+      {9, 30.0, 70.0},
+      {14, 30.0, 70.0},
+      {14, 25.0, 75.0},
+  };
+
+  std::vector<BacktestSummary> summaries;
+  DataLoader loader(',');
+  PriceFrame test_data =
+      loader.load_csv("data/day_1/cleaned_sh600231_daily_qfq_tx.csv");
+
+  // MA
+  for (const auto& para : ma_params) {
+    MovingAverageStrategy sma(
+        para.short_window, para.long_window, &PriceBar::close);
+    std::size_t periods_per_year = 252;
+    BacktestSummary summary = run_backtest(
+        "sh600231", TimeFrame::DAY_1, test_data, periods_per_year, sma);
+    print_backtest_summary(summary);
+  }
+
+  // Bollinger
+  for (const auto& para : bollinger_params) {
+    BollingerStrategy bollinger(
+        para.window, para.num_std_dev, &PriceBar::close);
+    std::size_t periods_per_year = 252;
+    BacktestSummary summary = run_backtest(
+        "sh600231", TimeFrame::DAY_1, test_data, periods_per_year, bollinger);
+    print_backtest_summary(summary);
+  }
+
+  // RSI
+  for (const auto& para : rsi_params) {
+    RSIStrategy rsi(para.window,
+                    para.oversold_threshold,
+                    para.overbought_threshold,
+                    &PriceBar::close);
+    std::size_t periods_per_year = 252;
+    BacktestSummary summary = run_backtest(
+        "sh600231", TimeFrame::DAY_1, test_data, periods_per_year, rsi);
+    print_backtest_summary(summary);
+  }
+
+  /*
   Portfolio portfolio;
   portfolio.cash = 100000;
 
@@ -49,10 +111,11 @@ int main() {
       {"2026-01-09", "sh001", 23, 23, 23, 23, 1000},
       {"2026-01-10", "sh001", 26, 26, 26, 26, 1000},
   };
-  */
+
 
   // MovingAverageStrategy sma(3, 5);
-  BollingerStrategy boll(20, 2.0);
+  // BollingerStrategy boll(20, 2.0);
+  RSIStrategy rsi(14, 30.0, 70.0);
   FullPositionSizer sizer;
   OrderManager manager;
   BacktestConfig config;
@@ -64,8 +127,11 @@ int main() {
   // Backtester backtester(
   //    sma, sizer, manager, order_validator, execution, portfolio);
 
+  // Backtester backtester(
+  //     boll, sizer, manager, order_validator, execution, portfolio);
+
   Backtester backtester(
-      boll, sizer, manager, order_validator, execution, portfolio);
+      rsi, sizer, manager, order_validator, execution, portfolio);
 
   BacktestResult result = backtester.run("sh600231", history);
 
@@ -125,7 +191,7 @@ if (order) {
   std::cout << "No orders and trades generated." << '\n';
 }
 return 0;
-*/
+
   std::cout << "Total Return: " << PerformanceAnalyzer::total_return(result)
             << '\n';
 
@@ -182,4 +248,48 @@ return 0;
               << "Profit & Loss: " << closed_trade.pnl << '\n'
               << "Return Rate: " << closed_trade.return_rate << '\n';
   }
+  /*
+  TimeSeries rising_prices{
+      {"t0", 1.0},
+      {"t1", 2.0},
+      {"t2", 3.0},
+      {"t3", 4.0},
+      {"t4", 5.0},
+      {"t5", 6.0},
+  };
+
+  TimeSeries falling_prices{
+      {"t0", 6.0},
+      {"t1", 5.0},
+      {"t2", 4.0},
+      {"t3", 3.0},
+      {"t4", 2.0},
+      {"t5", 1.0},
+  };
+
+  TimeSeries flat_prices{
+      {"t0", 3.0},
+      {"t1", 3.0},
+      {"t2", 3.0},
+      {"t3", 3.0},
+      {"t4", 3.0},
+      {"t5", 3.0},
+  };
+
+  std::cout << "Rising RSI: " << calculate_rsi(rising_prices, 5, 5) << '\n';
+
+  std::cout << "Falling RSI: " << calculate_rsi(falling_prices, 5, 5) << '\n';
+
+  std::cout << "Flat RSI: " << calculate_rsi(flat_prices, 5, 5) << '\n';
+
+  TimeSeries mixed_prices{
+      {"t0", 10.0},
+      {"t1", 12.0},  // +2
+      {"t2", 11.0},  // -1
+      {"t3", 14.0},  // +3
+      {"t4", 12.0},  // -2
+      {"t5", 13.0},  // +1
+  };
+  std::cout << "Mixed RSI: " << calculate_rsi(mixed_prices, 5, 5) << '\n';
+  */
 }

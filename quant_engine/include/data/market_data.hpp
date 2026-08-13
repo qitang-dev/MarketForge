@@ -26,3 +26,13 @@ class MarketData {
  private:
   std::unordered_map<std::string, TimeFrameData> market_data_;
 };
+
+inline std::string to_string(TimeFrame timeframe) {
+  switch (timeframe) {
+    case TimeFrame::DAY_1:
+      return "DAY_1";
+    case TimeFrame::MIN_5:
+      return "MIN_5";
+  }
+  return "UNKNOWN";
+}

@@ -13,6 +13,9 @@ class MovingAverageStrategy : public Strategy {
   Signal generate_signal(
       std::span<const PriceBar> price_history) const override;
 
+  std::string name() const override;
+  std::string parameters() const override;
+
  private:
   std::size_t short_window_;
   std::size_t long_window_;

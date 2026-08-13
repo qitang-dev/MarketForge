@@ -10,7 +10,7 @@ BollingerStrategy::BollingerStrategy(std::size_t window,
                                      double num_std_dev,
                                      double PriceBar::* price_type)
     : window_(window), num_std_dev_(num_std_dev), price_type_(price_type) {
-  if (window == 0) {
+  if (window_ == 0) {
     throw std::invalid_argument("Window must be greater than 0.");
   }
 }
@@ -24,7 +24,8 @@ Signal BollingerStrategy::generate_signal(
   const std::size_t today_index = price_history.size() - 1;
   const std::size_t yesterday_index = price_history.size() - 2;
 
-  TimeSeries close_prices = extract_price_series(price_history, price_type_);
+  const TimeSeries close_prices =
+      extract_price_series(price_history, price_type_);
 
   const double sma_today = calculate_sma(close_prices, window_, today_index);
   const double sma_yesterday =
@@ -52,4 +53,10 @@ Signal BollingerStrategy::generate_signal(
     return Signal{.type = SignalType::SELL};
   }
   return Signal{.type = SignalType::HOLD};
+}
+
+std::string BollingerStrategy::name() const { return "Bollinger"; }
+std::string BollingerStrategy::parameters() const {
+  return "window: " + std::to_string(window_) +
+         ", std_dev_multiplier: " + std::to_string(num_std_dev_);
 }

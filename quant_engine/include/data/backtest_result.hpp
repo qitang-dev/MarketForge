@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "../core/trade.hpp"
+#include "../data/market_data.hpp"
+#include "constant.hpp"
 
 struct EquityPoint {
   std::string timestamp{};
@@ -18,4 +20,23 @@ using EquityHistory = std::vector<EquityPoint>;
 struct BacktestResult {
   EquityHistory equity_history{};
   TradeHistory trade_history{};
+};
+
+struct BacktestSummary {
+  std::string symbol{};
+  TimeFrame timeframe{};
+  std::string strategy_name{};
+  std::string parameters{};
+
+  double total_return{NaN};
+  double annualized_return{NaN};
+  double annualized_volatility{NaN};
+  double sharpe_ratio{NaN};
+  double sortino_ratio{NaN};
+  double calmar_ratio{NaN};
+  double max_drawdown{NaN};
+
+  std::size_t closed_trades{0};
+  double win_rate{NaN};
+  double profit_loss_ratio{NaN};
 };

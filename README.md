@@ -1236,3 +1236,64 @@ PerformanceAnalyzer
 - Validated the resulting portfolio-level and trade-level performance metrics, including return, volatility, Sharpe Ratio, Sortino Ratio, Calmar Ratio, maximum drawdown, win rate, and profit-loss statistics.
 
 - Confirmed that the strategy abstraction supports replacing the trading strategy while reusing the complete order, execution, portfolio, backtesting, and performance-analysis infrastructure.
+
+============================================================================
+
+### Aug 13, 2026: RSI Strategy Integration and Parameter Sweep Framework
+
+- Added RSI calculation as a reusable indicator function.
+
+  - implemented average gain and average loss calculation over a rolling window
+  - handled RSI edge cases for fully rising, fully falling, and flat price series
+  - validated the implementation with manually constructed test cases
+  - confirmed expected RSI outputs of 100, 0, 50, and 66.67 for representative scenarios
+
+- Added `RSIStrategy` as the third concrete strategy derived from the common `Strategy` interface.
+
+  - added configurable RSI window, oversold threshold, overbought threshold, and selected price field
+  - implemented crossing-based mean-reversion signals
+  - generated BUY signals when RSI recovered above the oversold threshold
+  - generated SELL signals when RSI fell back below the overbought threshold
+  - added parameter and minimum-history validation
+
+- Tested `RSIStrategy` with real A-share daily historical data.
+
+  - verified complete backtest execution through order generation, validation, execution, portfolio updates, and performance analysis
+  - inspected closed-trade details including entry/exit timestamps, prices, quantities, PnL, and return rates
+  - confirmed trade-level statistics matched the underlying closed trades
+  - confirmed that 243 market bars produced 243 equity-history records
+
+- Extended the `Strategy` abstraction with strategy metadata.
+
+  - added virtual strategy name and parameter-description interfaces
+  - allowed each concrete strategy to report its own strategy name and parameter configuration
+  - removed the need for the backtest runner to manually identify individual strategy types
+
+- Added `BacktestSummary` to represent one complete backtest experiment.
+
+  - stored symbol, timeframe, strategy name, parameter description, portfolio-level metrics, and trade-level statistics
+  - created a common result format for parameter comparison and future CSV export
+
+- Added a reusable `run_backtest()` function to execute one independent strategy experiment.
+
+  - initialized a fresh portfolio for every run to prevent state leakage between parameter combinations
+  - reused the existing strategy, order, execution, portfolio, backtesting, and performance components
+  - converted each completed run into a `BacktestSummary`
+
+- Added timeframe-aware annualization support.
+
+  - mapped each `TimeFrame` to its corresponding `periods_per_year`
+  - kept `PerformanceAnalyzer` stateless by passing annualization frequency explicitly
+
+- Added parameter configurations for Moving Average, Bollinger, and RSI strategies.
+
+  - executed multiple parameter combinations for each strategy
+  - stored all experiment results in `std::vector<BacktestSummary>`
+
+- Added formatted summary output for parameter-sweep results.
+
+  - displayed returns, volatility, drawdown, risk-adjusted ratios, trade counts, win rate, and profit-loss ratio
+  - converted return-based metrics into percentage form for readability
+  - verified that all nine strategy-parameter combinations executed independently and produced distinct performance results
+
+- Confirmed that the backtesting engine now supports batch strategy experiments through a shared execution pipeline, preparing the system for parameter ranking, best-versus-second-best comparison, multi-symbol testing, multi-timeframe testing, and CSV result export.
