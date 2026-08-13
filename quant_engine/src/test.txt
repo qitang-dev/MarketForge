@@ -213,3 +213,34 @@ return 0;
   };
   std::cout << "Mixed RSI: " << calculate_rsi(mixed_prices, 5, 5) << '\n';
   */
+
+  const std::string file_name =
+                symbol + "_" + to_string(timeframe) + "_MovingAverage.txt";
+
+            const std::filesystem::path summary_path = summary_dir / file_name;
+
+            const std::filesystem::path sensitivity_path = sensitivity_dir / file_name;
+
+            std::ofstream summary_file(summary_path);
+
+            std::ofstream sensitivity_file(sensitivity_path);
+
+            if (!summary_file.is_open()) {
+              throw std::runtime_error("Failed to open file: " + summary_path.string());
+            }
+
+            if (!sensitivity_file.is_open()) {
+              throw std::runtime_error("Failed to open file: " + sensitivity_path.string());
+            }
+
+            for (const auto& summary : summaries_ma) {
+              print_backtest_summary(summary_file, summary);
+
+              summary_file << '\n';
+            }
+
+            print_parameter_sensitivity(sensitivity_file, sensitivity);
+
+  const std::filesystem::path summary_dir = "report/backtest_summary";
+
+  const std::filesystem::path sensitivity_dir = "report/strategy_parameter_sensitivity";

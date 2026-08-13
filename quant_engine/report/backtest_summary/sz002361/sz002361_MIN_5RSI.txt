@@ -1,0 +1,66 @@
+========== Backtest Summary ==========
+Symbol:                 sz002361
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=9, oversold=30.00, overbought=70.00
+--------------------------------------
+Total Return:           -78.31%
+Annualized Return:      -54.80%
+Annualized Volatility:  43.47%
+Max Drawdown:           -82.67%
+Sharpe Ratio:           -1.61
+Sortino Ratio:          -2.55
+Calmar Ratio:           -0.66
+Closed Trades:          491
+Win Rate:               46.84%
+Average Win:            388.92
+Average Loss:           -629.93
+Max Win:                6465.49
+Max Loss:               -11300.93
+Profit-Loss Ratio:      0.62
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sz002361
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=14, oversold=30.00, overbought=70.00
+--------------------------------------
+Total Return:           -55.91%
+Annualized Return:      -34.66%
+Annualized Volatility:  42.38%
+Max Drawdown:           -65.59%
+Sharpe Ratio:           -0.79
+Sortino Ratio:          -1.24
+Calmar Ratio:           -0.53
+Closed Trades:          260
+Win Rate:               51.15%
+Average Win:            810.27
+Average Loss:           -1264.28
+Max Win:                5704.50
+Max Loss:               -11182.32
+Profit-Loss Ratio:      0.64
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sz002361
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=14, oversold=25.00, overbought=75.00
+--------------------------------------
+Total Return:           -51.30%
+Annualized Return:      -31.19%
+Annualized Volatility:  42.54%
+Max Drawdown:           -63.28%
+Sharpe Ratio:           -0.67
+Sortino Ratio:          -1.04
+Calmar Ratio:           -0.49
+Closed Trades:          165
+Win Rate:               52.12%
+Average Win:            1071.22
+Average Loss:           -1811.35
+Max Win:                6367.81
+Max Loss:               -22135.49
+Profit-Loss Ratio:      0.59
+======================================
+

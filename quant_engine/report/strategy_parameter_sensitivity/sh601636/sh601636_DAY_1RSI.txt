@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sh601636
+Timeframe:              DAY_1
+Strategy:               RSI
+-------------------------------------
+Best Parameters:        window=14, oversold=30.00, overbought=70.00
+Best Return:            50.59%
+Second Parameters:      window=9, oversold=30.00, overbought=70.00
+Second Return:          50.33%
+Return Gap:             0.26%
+=====================================

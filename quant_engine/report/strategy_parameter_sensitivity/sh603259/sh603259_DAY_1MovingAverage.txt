@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sh603259
+Timeframe:              DAY_1
+Strategy:               MovingAverage
+-------------------------------------
+Best Parameters:        short=20, long=60
+Best Return:            58.43%
+Second Parameters:      short=10, long=30
+Second Return:          33.15%
+Return Gap:             25.28%
+=====================================

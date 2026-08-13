@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sz002129
+Timeframe:              DAY_1
+Strategy:               Bollinger
+-------------------------------------
+Best Parameters:        window=20, std_dev_multiplier=2.50
+Best Return:            -2.92%
+Second Parameters:      window=10, std_dev_multiplier=2.00
+Second Return:          -35.44%
+Return Gap:             32.51%
+=====================================

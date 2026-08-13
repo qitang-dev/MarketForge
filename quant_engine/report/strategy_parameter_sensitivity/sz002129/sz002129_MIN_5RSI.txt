@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sz002129
+Timeframe:              MIN_5
+Strategy:               RSI
+-------------------------------------
+Best Parameters:        window=14, oversold=30.00, overbought=70.00
+Best Return:            -67.61%
+Second Parameters:      window=14, oversold=25.00, overbought=75.00
+Second Return:          -74.76%
+Return Gap:             7.15%
+=====================================

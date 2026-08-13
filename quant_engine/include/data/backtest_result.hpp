@@ -39,6 +39,10 @@ struct BacktestSummary {
 
   std::size_t closed_trades{0};
   double win_rate{NaN};
+  double average_win{NaN};
+  double average_loss{NaN};
+  double max_win{NaN};
+  double max_loss{NaN};
   double profit_loss_ratio{NaN};
 };
 

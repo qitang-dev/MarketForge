@@ -22,10 +22,6 @@ BacktestResult Backtester::run(const std::string& symbol, std::span<const PriceB
   EquityHistory equity_history;
   TradeHistory trades;
   for (std::size_t i = 0; i < price_history.size(); ++i) {
-    if (i % 1000 == 0) {
-      std::cerr << "[PROGRESS] " << symbol << " " << i << " / " << price_history.size() << '\n';
-    }
-
     std::span<const PriceBar> rolling_history(price_history.data(), i + 1);
 
     Signal signal = strategy_.generate_signal(rolling_history);

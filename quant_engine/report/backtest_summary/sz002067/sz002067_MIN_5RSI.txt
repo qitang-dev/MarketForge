@@ -1,0 +1,66 @@
+========== Backtest Summary ==========
+Symbol:                 sz002067
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=9, oversold=30.00, overbought=70.00
+--------------------------------------
+Total Return:           -83.34%
+Annualized Return:      -60.60%
+Annualized Volatility:  45.37%
+Max Drawdown:           -84.13%
+Sharpe Ratio:           -1.83
+Sortino Ratio:          -3.00
+Calmar Ratio:           -0.72
+Closed Trades:          478
+Win Rate:               41.21%
+Average Win:            483.91
+Average Loss:           -629.91
+Max Win:                5712.19
+Max Loss:               -7395.74
+Profit-Loss Ratio:      0.77
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sz002067
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=14, oversold=30.00, overbought=70.00
+--------------------------------------
+Total Return:           -55.33%
+Annualized Return:      -34.22%
+Annualized Volatility:  45.09%
+Max Drawdown:           -59.06%
+Sharpe Ratio:           -0.71
+Sortino Ratio:          -1.16
+Calmar Ratio:           -0.58
+Closed Trades:          233
+Win Rate:               51.50%
+Average Win:            1184.14
+Average Loss:           -1730.70
+Max Win:                7719.79
+Max Loss:               -10411.90
+Profit-Loss Ratio:      0.68
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sz002067
+Timeframe:              MIN_5
+Strategy:               RSI
+Parameters:             window=14, oversold=25.00, overbought=75.00
+--------------------------------------
+Total Return:           5.56%
+Annualized Return:      2.85%
+Annualized Volatility:  44.57%
+Max Drawdown:           -30.35%
+Sharpe Ratio:           0.28
+Sortino Ratio:          0.48
+Calmar Ratio:           0.09
+Closed Trades:          148
+Win Rate:               60.14%
+Average Win:            2428.25
+Average Loss:           -3538.23
+Max Win:                9852.31
+Max Loss:               -18190.41
+Profit-Loss Ratio:      0.69
+======================================
+

@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sh600231
+Timeframe:              MIN_5
+Strategy:               Bollinger
+-------------------------------------
+Best Parameters:        window=20, std_dev_multiplier=2.50
+Best Return:            -71.35%
+Second Parameters:      window=20, std_dev_multiplier=2.00
+Second Return:          -83.71%
+Return Gap:             12.35%
+=====================================

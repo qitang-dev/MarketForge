@@ -1,0 +1,66 @@
+========== Backtest Summary ==========
+Symbol:                 sh600438
+Timeframe:              DAY_1
+Strategy:               MovingAverage
+Parameters:             short=5, long=20
+--------------------------------------
+Total Return:           9.80%
+Annualized Return:      4.99%
+Annualized Volatility:  32.39%
+Max Drawdown:           -37.37%
+Sharpe Ratio:           0.31
+Sortino Ratio:          0.49
+Calmar Ratio:           0.13
+Closed Trades:          12
+Win Rate:               33.33%
+Average Win:            12992.34
+Average Loss:           -5271.11
+Max Win:                24860.38
+Max Loss:               -11068.03
+Profit-Loss Ratio:      2.46
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sh600438
+Timeframe:              DAY_1
+Strategy:               MovingAverage
+Parameters:             short=10, long=30
+--------------------------------------
+Total Return:           -8.56%
+Annualized Return:      -4.55%
+Annualized Volatility:  30.94%
+Max Drawdown:           -31.17%
+Sharpe Ratio:           0.00
+Sortino Ratio:          0.00
+Calmar Ratio:           -0.15
+Closed Trades:          10
+Win Rate:               30.00%
+Average Win:            8835.85
+Average Loss:           -5009.88
+Max Win:                14819.99
+Max Loss:               -7920.49
+Profit-Loss Ratio:      1.76
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sh600438
+Timeframe:              DAY_1
+Strategy:               MovingAverage
+Parameters:             short=20, long=60
+--------------------------------------
+Total Return:           32.68%
+Annualized Return:      15.86%
+Annualized Volatility:  31.72%
+Max Drawdown:           -27.87%
+Sharpe Ratio:           0.62
+Sortino Ratio:          0.98
+Calmar Ratio:           0.57
+Closed Trades:          2
+Win Rate:               100.00%
+Average Win:            16340.87
+Average Loss:           nan
+Max Win:                30218.44
+Max Loss:               nan
+Profit-Loss Ratio:      nan
+======================================
+

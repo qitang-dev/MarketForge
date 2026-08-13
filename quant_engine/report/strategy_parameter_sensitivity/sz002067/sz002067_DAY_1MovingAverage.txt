@@ -1,0 +1,11 @@
+======= Parameter Sensitivity =======
+Symbol:                 sz002067
+Timeframe:              DAY_1
+Strategy:               MovingAverage
+-------------------------------------
+Best Parameters:        short=10, long=30
+Best Return:            42.99%
+Second Parameters:      short=5, long=20
+Second Return:          34.15%
+Return Gap:             8.84%
+=====================================

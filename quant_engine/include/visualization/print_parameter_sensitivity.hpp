@@ -5,94 +5,29 @@
 #include "../data/backtest_result.hpp"
 #include "../data/market_data.hpp"
 
-void print_parameter_sensitivity(
-    const std::pair<BacktestSummary, BacktestSummary>& sensitivity) {
-  std::cout << std::fixed << std::setprecision(2);
+void print_parameter_sensitivity(std::ostream& os, const ParameterSensitivity& sensitivity) {
+  os << "======= Parameter Sensitivity =======\n";
 
-  std::cout << "\n==========" << sensitivity.first.strategy_name
-            << "==========\n";
+  os << std::left << std::setw(24) << "Symbol:" << sensitivity.best.symbol << '\n';
 
-  std::cout << "Best Performance Parameter Set: "
-            << sensitivity.first.parameters << '\n';
+  os << std::left << std::setw(24) << "Timeframe:" << to_string(sensitivity.best.timeframe) << '\n';
 
-  std::cout << "Symbol:              " << sensitivity.first.symbol << '\n';
+  os << std::left << std::setw(24) << "Strategy:" << sensitivity.best.strategy_name << '\n';
 
-  std::cout << "Timeframe:           " << to_string(sensitivity.first.timeframe)
-            << '\n';
+  os << "-------------------------------------\n";
 
-  std::cout << "--------------------------------------\n";
+  os << std::left << std::setw(24) << "Best Parameters:" << sensitivity.best.parameters << '\n';
 
-  std::cout << "Total Return:        " << sensitivity.first.total_return * 100.0
-            << "%\n";
+  os << std::left << std::setw(24) << "Best Return:" << std::fixed << std::setprecision(2)
+     << sensitivity.best.total_return * 100.0 << "%\n";
 
-  std::cout << "Annualized Return:   "
-            << sensitivity.first.annualized_return * 100.0 << "%\n";
+  os << std::left << std::setw(24) << "Second Parameters:" << sensitivity.second_best.parameters
+     << '\n';
 
-  std::cout << "Annualized Volatility: "
-            << sensitivity.first.annualized_volatility * 100.0 << "%\n";
+  os << std::left << std::setw(24)
+     << "Second Return:" << sensitivity.second_best.total_return * 100.0 << "%\n";
 
-  std::cout << "Max Drawdown:        " << sensitivity.first.max_drawdown * 100.0
-            << "%\n";
+  os << std::left << std::setw(24) << "Return Gap:" << sensitivity.return_gap * 100.0 << "%\n";
 
-  std::cout << "Sharpe Ratio:        " << sensitivity.first.sharpe_ratio
-            << '\n';
-
-  std::cout << "Sortino Ratio:       " << sensitivity.first.sortino_ratio
-            << '\n';
-
-  std::cout << "Calmar Ratio:        " << sensitivity.first.calmar_ratio
-            << '\n';
-
-  std::cout << "Closed Trades:       " << sensitivity.first.closed_trades
-            << '\n';
-
-  std::cout << "Win Rate:            " << sensitivity.first.win_rate * 100.0
-            << "%\n";
-
-  std::cout << "Profit-Loss Ratio:   " << sensitivity.first.profit_loss_ratio
-            << '\n';
-
-  std::cout << "======================================\n";
-
-  std::cout << "Second Best Performance Parameter Set: "
-            << sensitivity.first.parameters << '\n';
-
-  std::cout << "Symbol:              " << sensitivity.second.symbol << '\n';
-
-  std::cout << "Timeframe:           "
-            << to_string(sensitivity.second.timeframe) << '\n';
-
-  std::cout << "--------------------------------------\n";
-
-  std::cout << "Total Return:        "
-            << sensitivity.second.total_return * 100.0 << "%\n";
-
-  std::cout << "Annualized Return:   "
-            << sensitivity.second.annualized_return * 100.0 << "%\n";
-
-  std::cout << "Annualized Volatility: "
-            << sensitivity.second.annualized_volatility * 100.0 << "%\n";
-
-  std::cout << "Max Drawdown:        "
-            << sensitivity.second.max_drawdown * 100.0 << "%\n";
-
-  std::cout << "Sharpe Ratio:        " << sensitivity.second.sharpe_ratio
-            << '\n';
-
-  std::cout << "Sortino Ratio:       " << sensitivity.second.sortino_ratio
-            << '\n';
-
-  std::cout << "Calmar Ratio:        " << sensitivity.second.calmar_ratio
-            << '\n';
-
-  std::cout << "Closed Trades:       " << sensitivity.second.closed_trades
-            << '\n';
-
-  std::cout << "Win Rate:            " << sensitivity.second.win_rate * 100.0
-            << "%\n";
-
-  std::cout << "Profit-Loss Ratio:   " << sensitivity.second.profit_loss_ratio
-            << '\n';
-
-  std::cout << "======================================\n";
+  os << "=====================================\n";
 }

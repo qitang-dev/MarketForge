@@ -50,6 +50,7 @@ Signal MovingAverageStrategy::generate_signal(std::span<const PriceBar> price_hi
 }
 
 std::string MovingAverageStrategy::name() const { return "MovingAverage"; }
+
 std::string MovingAverageStrategy::parameters() const {
   return "short=" + std::to_string(short_window_) + ", long=" + std::to_string(long_window_);
 }

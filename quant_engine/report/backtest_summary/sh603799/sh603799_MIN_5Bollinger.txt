@@ -1,0 +1,66 @@
+========== Backtest Summary ==========
+Symbol:                 sh603799
+Timeframe:              MIN_5
+Strategy:               Bollinger
+Parameters:             window=10, std_dev_multiplier=2.00
+--------------------------------------
+Total Return:           -1.14%
+Annualized Return:      -0.59%
+Annualized Volatility:  35.12%
+Max Drawdown:           -37.62%
+Sharpe Ratio:           0.16
+Sortino Ratio:          0.26
+Calmar Ratio:           -0.02
+Closed Trades:          339
+Win Rate:               34.81%
+Average Win:            2300.32
+Average Loss:           -1231.33
+Max Win:                25953.38
+Max Loss:               -5680.55
+Profit-Loss Ratio:      1.87
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sh603799
+Timeframe:              MIN_5
+Strategy:               Bollinger
+Parameters:             window=20, std_dev_multiplier=2.00
+--------------------------------------
+Total Return:           74.26%
+Annualized Return:      33.45%
+Annualized Volatility:  35.78%
+Max Drawdown:           -33.39%
+Sharpe Ratio:           0.98
+Sortino Ratio:          1.70
+Calmar Ratio:           1.00
+Closed Trades:          246
+Win Rate:               35.77%
+Average Win:            4060.05
+Average Loss:           -1813.33
+Max Win:                27809.41
+Max Loss:               -10230.03
+Profit-Loss Ratio:      2.24
+======================================
+
+========== Backtest Summary ==========
+Symbol:                 sh603799
+Timeframe:              MIN_5
+Strategy:               Bollinger
+Parameters:             window=20, std_dev_multiplier=2.50
+--------------------------------------
+Total Return:           34.96%
+Annualized Return:      16.86%
+Annualized Volatility:  35.77%
+Max Drawdown:           -36.30%
+Sharpe Ratio:           0.61
+Sortino Ratio:          1.03
+Calmar Ratio:           0.46
+Closed Trades:          148
+Win Rate:               38.51%
+Average Win:            3717.48
+Average Loss:           -1907.07
+Max Win:                25948.14
+Max Loss:               -6669.45
+Profit-Loss Ratio:      1.95
+======================================
+

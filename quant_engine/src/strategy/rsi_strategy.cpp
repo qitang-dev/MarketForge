@@ -1,5 +1,7 @@
 #include "../../include/strategy/rsi_strategy.hpp"
 
+#include <iomanip>
+#include <sstream>
 #include <stdexcept>
 
 #include "../../include/data/data_utils.hpp"
@@ -54,6 +56,19 @@ Signal RSIStrategy::generate_signal(std::span<const PriceBar> price_history) con
 std::string RSIStrategy::name() const { return "RSI"; }
 
 std::string RSIStrategy::parameters() const {
-  return "window=" + std::to_string(window_) + ", oversold=" + std::to_string(oversold_threshold_) +
-         ", overbought=" + std::to_string(overbought_threshold_);
+  std::ostringstream oss;
+
+  oss << "window=" << std::to_string(window_)
+
+      << ", oversold="
+
+      << std::fixed << std::setprecision(2)
+
+      << oversold_threshold_
+
+      << ", overbought="
+
+      << overbought_threshold_;
+
+  return oss.str();
 }

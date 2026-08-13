@@ -1,5 +1,7 @@
 #include "../../include/strategy/bollinger_strategy.hpp"
 
+#include <iomanip>
+#include <sstream>
 #include <stdexcept>
 
 #include "../../include/data/data_utils.hpp"
@@ -48,7 +50,16 @@ Signal BollingerStrategy::generate_signal(std::span<const PriceBar> price_histor
 }
 
 std::string BollingerStrategy::name() const { return "Bollinger"; }
+
 std::string BollingerStrategy::parameters() const {
-  return "window: " + std::to_string(window_) +
-         ", std_dev_multiplier: " + std::to_string(num_std_dev_);
+  std::ostringstream oss;
+  oss << "window=" << std::to_string(window_)
+
+      << ", std_dev_multiplier="
+
+      << std::fixed << std::setprecision(2)
+
+      << num_std_dev_;
+
+  return oss.str();
 }

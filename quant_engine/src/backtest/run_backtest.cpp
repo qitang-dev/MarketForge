@@ -55,6 +55,14 @@ BacktestSummary run_backtest(
 
   const double win_rate = PerformanceAnalyzer::win_rate(closed_trades);
 
+  const double average_win = PerformanceAnalyzer::average_win(closed_trades);
+
+  const double average_loss = PerformanceAnalyzer::average_loss(closed_trades);
+
+  const double max_win = PerformanceAnalyzer::max_win(closed_trades);
+
+  const double max_loss = PerformanceAnalyzer::max_loss(closed_trades);
+
   const double profit_loss_ratio = PerformanceAnalyzer::profit_loss_ratio(closed_trades);
 
   return BacktestSummary{
@@ -71,6 +79,10 @@ BacktestSummary run_backtest(
       .max_drawdown = max_drawdown,
       .closed_trades = closed_trades.size(),
       .win_rate = win_rate,
+      .average_win = average_win,
+      .average_loss = average_loss,
+      .max_win = max_win,
+      .max_loss = max_loss,
       .profit_loss_ratio = profit_loss_ratio,
   };
 }

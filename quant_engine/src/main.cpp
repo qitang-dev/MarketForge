@@ -1,4 +1,6 @@
 #include <chrono>
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -26,6 +28,7 @@
 #include "../include/strategy/rsi_strategy.hpp"
 #include "../include/visualization/print_backtest_summaries.hpp"
 #include "../include/visualization/print_parameter_sensitivity.hpp"
+#include "../include/visualization/write_strategy_report.hpp"
 
 int main() {
   const std::vector<std::string> symbols{
@@ -93,7 +96,16 @@ int main() {
     }
   }
 
+  const std::filesystem::path summary_dir = "report/backtest_summary";
+  const std::filesystem::path sensitivity_dir = "report/strategy_parameter_sensitivity";
+
+  std::filesystem::create_directories(summary_dir);
+  std::filesystem::create_directories(sensitivity_dir);
+
   for (const auto& symbol : symbols) {
+    std::filesystem::path symbol_summary_dir = summary_dir / symbol;
+    std::filesystem::path symbol_sensitivity_dir = sensitivity_dir / symbol;
+
     for (const auto timeframe : timeframes) {
       const std::size_t periods_per_year = get_periods_per_year(timeframe);
 
@@ -107,9 +119,6 @@ int main() {
             for (const auto& para : ma_params) {
               MovingAverageStrategy sma(para.short_window, para.long_window, &PriceBar::close);
 
-              std::cerr << "[START] " << symbol << " " << to_string(timeframe) << " " << sma.name()
-                        << " " << sma.parameters() << '\n';
-
               auto start = std::chrono::steady_clock::now();
 
               BacktestSummary summary =
@@ -121,15 +130,23 @@ int main() {
               std::cerr << "[TIME] " << symbol << " " << to_string(timeframe) << " " << sma.name()
                         << " " << sma.parameters() << ": " << duration.count() << " ms\n";
 
-              std::cerr << "[DONE] " << symbol << " " << to_string(timeframe) << " " << sma.name()
-                        << " " << sma.parameters() << '\n';
-
               summaries_ma.push_back(summary);
 
-              print_backtest_summary(summary);
+              print_backtest_summary(std::cout, summary);
             }
 
-            ParameterSensitivity sensitity = analyze_parameter_sensitivity(summaries_ma);
+            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(summaries_ma);
+
+            const std::string file_name = symbol + "_" + to_string(timeframe) + "MovingAverage.txt";
+
+            write_strategy_report(
+                symbol_summary_dir,
+                symbol_sensitivity_dir,
+                file_name,
+                summaries_ma,
+                sensitivity
+            );
+
             break;
           }
 
@@ -137,9 +154,6 @@ int main() {
             std::vector<BacktestSummary> summaries_bollinger;
             for (const auto& para : bollinger_params) {
               BollingerStrategy bollinger(para.window, para.num_std_dev, &PriceBar::close);
-
-              std::cerr << "[START] " << symbol << " " << to_string(timeframe) << " "
-                        << bollinger.parameters() << '\n';
 
               auto start = std::chrono::steady_clock::now();
 
@@ -153,15 +167,24 @@ int main() {
                         << bollinger.name() << " " << bollinger.parameters() << ": "
                         << duration.count() << " ms\n";
 
-              std::cerr << "[DONE] " << symbol << " " << to_string(timeframe) << " "
-                        << bollinger.parameters() << '\n';
-
               summaries_bollinger.push_back(summary);
 
-              print_backtest_summary(summary);
+              print_backtest_summary(std::cout, summary);
             }
 
-            ParameterSensitivity sensitity = analyze_parameter_sensitivity(summaries_bollinger);
+            const ParameterSensitivity sensitivity =
+                analyze_parameter_sensitivity(summaries_bollinger);
+
+            const std::string file_name = symbol + "_" + to_string(timeframe) + "Bollinger.txt";
+
+            write_strategy_report(
+                symbol_summary_dir,
+                symbol_sensitivity_dir,
+                file_name,
+                summaries_bollinger,
+                sensitivity
+            );
+
             break;
           }
 
@@ -175,9 +198,6 @@ int main() {
                   &PriceBar::close
               );
 
-              std::cerr << "[START] " << symbol << " " << to_string(timeframe) << " "
-                        << rsi.parameters() << '\n';
-
               auto start = std::chrono::steady_clock::now();
 
               BacktestSummary summary =
@@ -190,15 +210,23 @@ int main() {
               std::cerr << "[TIME] " << symbol << " " << to_string(timeframe) << " " << rsi.name()
                         << " " << rsi.parameters() << ": " << duration.count() << " ms\n";
 
-              std::cerr << "[DONE] " << symbol << " " << to_string(timeframe) << " "
-                        << rsi.parameters() << '\n';
-
               summaries_rsi.push_back(summary);
 
-              print_backtest_summary(summary);
+              print_backtest_summary(std::cout, summary);
             }
 
-            ParameterSensitivity sensitity = analyze_parameter_sensitivity(summaries_rsi);
+            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(summaries_rsi);
+
+            const std::string file_name = symbol + "_" + to_string(timeframe) + "RSI.txt";
+
+            write_strategy_report(
+                symbol_summary_dir,
+                symbol_sensitivity_dir,
+                file_name,
+                summaries_rsi,
+                sensitivity
+            );
+
             break;
           }
         }

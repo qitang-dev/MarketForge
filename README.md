@@ -1323,3 +1323,27 @@ PerformanceAnalyzer
   - Reduced unnecessary data copying and simplified the data flow from `PriceFrame` to strategy indicators.
   - After optimization, a single strategy-parameter backtest over approximately 23,000 five-minute bars completes in about 94 ms.
   - Confirmed that the optimized implementation is fast enough to support the full multi-symbol, multi-timeframe parameter sweep.
+
+============================================================================
+
+### Aug 14, 2026: QuantLab 2.0 Report Pipeline and Finalization
+
+- Completed formatted output functions for both `BacktestSummary` and `ParameterSensitivity` using `std::ostream` and `std::iomanip`.
+
+- Improved strategy parameter formatting to remove unnecessary decimal digits and produce cleaner human-readable reports.
+
+- Integrated `std::ofstream` output into the batch backtesting workflow so backtest summaries and parameter sensitivity results are automatically written to report files.
+
+- Added automatic report directory creation using `std::filesystem`.
+
+- Organized generated reports into two main categories:
+  - `report/backtest_summary/`
+  - `report/strategy_parameter_sensitivity/`
+
+- Added symbol-level subdirectories under both report categories, keeping the six strategy/timeframe reports for each stock together and making large batch results easier to inspect.
+
+- Reused a common report-writing workflow across Moving Average, Bollinger, and RSI strategies to avoid duplicated file-output logic.
+
+- Successfully completed and validated the full multi-symbol, multi-timeframe, multi-strategy parameter sweep and report generation pipeline.
+
+- Finalized QuantLab 2.0 with an end-to-end workflow covering market data loading, strategy execution, transaction simulation, portfolio accounting, performance analysis, parameter sensitivity analysis, runtime optimization, and structured result reporting.
