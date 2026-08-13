@@ -3,11 +3,13 @@
 #include <optional>
 #include <stdexcept>
 
-std::optional<Order> OrderManager::generate_order(const std::string& symbol,
-                                                  const Signal& signal,
-                                                  const Portfolio& portfolio,
-                                                  const PriceBar& price_bar,
-                                                  const PositionSizer& sizer) {
+std::optional<Order> OrderManager::generate_order(
+    const std::string& symbol,
+    const Signal& signal,
+    const Portfolio& portfolio,
+    const PriceBar& price_bar,
+    const PositionSizer& sizer
+) {
   if (signal.type == SignalType::HOLD) return std::nullopt;
 
   Order order;

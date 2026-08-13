@@ -10,8 +10,7 @@
 class Strategy {
  public:
   virtual ~Strategy() = default;
-  virtual Signal generate_signal(
-      std::span<const PriceBar> price_history) const = 0;
+  virtual Signal generate_signal(std::span<const PriceBar> price_history) const = 0;
   virtual std::string name() const = 0;
   virtual std::string parameters() const = 0;
 };

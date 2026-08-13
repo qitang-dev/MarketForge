@@ -7,9 +7,12 @@
 #include "../../include/data/constant.hpp"
 #include "../../include/data/data_utils.hpp"
 
-double calculate_stddev(const TimeSeries& values,
-                        std::size_t window,
-                        std::size_t end_index) {
+double calculate_stddev(
+    std::span<const PriceBar> values,
+    std::size_t window,
+    std::size_t end_index,
+    double PriceBar::* price_type
+) {
   if (window == 0 || end_index >= values.size()) {
     throw std::invalid_argument("Invalid standard deviation parameters.");
   }
@@ -22,16 +25,16 @@ double calculate_stddev(const TimeSeries& values,
 
   double window_sum = 0.0;
   for (std::size_t i = start_index; i <= end_index; ++i) {
-    if (std::isnan(values[i].value)) {
+    if (std::isnan(values[i].*price_type)) {
       return NaN;
     }
-    window_sum += values[i].value;
+    window_sum += values[i].*price_type;
   }
   const double window_mean = window_sum / static_cast<double>(window);
 
   double squared_diff_sum = 0.0;
   for (std::size_t i = start_index; i <= end_index; ++i) {
-    const double diff = values[i].value - window_mean;
+    const double diff = values[i].*price_type - window_mean;
     squared_diff_sum += diff * diff;
   }
   // using population variance here (ddof = n)
@@ -48,12 +51,12 @@ TimeSeries rolling_volatility(TimeSeries returns, std::size_t time_period) {
   const std::size_t kCleanLength = kCleanReturns.size();
 
   if (kCleanReturns.empty()) {
-    throw std::invalid_argument(
-        "The length of valid returns must greater than 0.");
+    throw std::invalid_argument("The length of valid returns must greater than 0.");
   }
   if (kCleanLength < time_period) {
     throw std::invalid_argument(
-        "The time period must not be greater than the number of valid prices.");
+        "The time period must not be greater than the number of valid prices."
+    );
   }
 
   TimeSeries results;
@@ -72,24 +75,20 @@ TimeSeries rolling_volatility(TimeSeries returns, std::size_t time_period) {
     const std::size_t kEndWindowIndex = j + time_period - 1;
 
     if (j > 0) {
-      rolling_sum = rolling_sum + kCleanReturns[kEndWindowIndex].value -
-                    kCleanReturns[j - 1].value;
+      rolling_sum = rolling_sum + kCleanReturns[kEndWindowIndex].value - kCleanReturns[j - 1].value;
 
       rolling_square_sum =
           rolling_square_sum +
-          (kCleanReturns[kEndWindowIndex].value *
-           kCleanReturns[kEndWindowIndex].value) -
+          (kCleanReturns[kEndWindowIndex].value * kCleanReturns[kEndWindowIndex].value) -
           (kCleanReturns[j - 1].value * kCleanReturns[j - 1].value);
     }
 
-    const double kNumerator =
-        rolling_square_sum - (rolling_sum * rolling_sum / kTimePeriod);
+    const double kNumerator = rolling_square_sum - (rolling_sum * rolling_sum / kTimePeriod);
     const double kWindowVariance = kNumerator / (kTimePeriod - 1.0);
 
     const double kWindowVolatility = std::sqrt(kWindowVariance);
 
-    results.push_back(TimeSeriesPoint{kCleanReturns[kEndWindowIndex].timestamp,
-                                      kWindowVolatility});
+    results.push_back(TimeSeriesPoint{kCleanReturns[kEndWindowIndex].timestamp, kWindowVolatility});
   }
 
   return results;

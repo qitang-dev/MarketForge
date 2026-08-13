@@ -2,11 +2,9 @@
 
 #include <stdexcept>
 
-ExecutionModel::ExecutionModel(const TransactionCostModel& cost_model)
-    : cost_model_(cost_model) {}
+ExecutionModel::ExecutionModel(const TransactionCostModel& cost_model) : cost_model_(cost_model) {}
 
-ExecutionQuote ExecutionModel::generate_quote(const Order& order,
-                                              double market_price) const {
+ExecutionQuote ExecutionModel::generate_quote(const Order& order, double market_price) const {
   if (order.side == OrderSide::HOLD) {
     throw std::runtime_error("HOLD is not a valid order side.");
   }
@@ -21,8 +19,8 @@ ExecutionQuote ExecutionModel::generate_quote(const Order& order,
   double trade_value = execution_price * order.quantity;
   double commission = cost_model_.calculate_commission(trade_value);
   double stamp_duty = cost_model_.calculate_stamp_duty(trade_value, order.side);
-  double slippage_cost = cost_model_.calculate_slippage(
-      market_price, execution_price, order.quantity);
+  double slippage_cost =
+      cost_model_.calculate_slippage(market_price, execution_price, order.quantity);
 
   double total_fee = commission + stamp_duty;
 

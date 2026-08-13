@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <string>
 #include <vector>
 
@@ -39,4 +40,15 @@ struct BacktestSummary {
   std::size_t closed_trades{0};
   double win_rate{NaN};
   double profit_loss_ratio{NaN};
+};
+
+struct ParameterSensitivity {
+  std::string symbol{};
+  TimeFrame timeframe{};
+  std::string strategy_name{};
+
+  BacktestSummary best{};
+  BacktestSummary second_best{};
+
+  double return_gap{0.0};
 };

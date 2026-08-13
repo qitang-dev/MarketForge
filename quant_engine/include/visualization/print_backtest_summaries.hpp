@@ -22,11 +22,9 @@ void print_backtest_summary(const BacktestSummary& summary) {
 
   std::cout << "Total Return:        " << summary.total_return * 100.0 << "%\n";
 
-  std::cout << "Annualized Return:   " << summary.annualized_return * 100.0
-            << "%\n";
+  std::cout << "Annualized Return:   " << summary.annualized_return * 100.0 << "%\n";
 
-  std::cout << "Annualized Volatility: "
-            << summary.annualized_volatility * 100.0 << "%\n";
+  std::cout << "Annualized Volatility: " << summary.annualized_volatility * 100.0 << "%\n";
 
   std::cout << "Max Drawdown:        " << summary.max_drawdown * 100.0 << "%\n";
 

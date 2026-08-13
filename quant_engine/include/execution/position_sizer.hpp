@@ -5,6 +5,5 @@
 class PositionSizer {
  public:
   virtual ~PositionSizer() = default;
-  virtual int calculate_quantity(const Portfolio& portfolio,
-                                 double price) const = 0;
+  virtual int calculate_quantity(const Portfolio& portfolio, double price) const = 0;
 };

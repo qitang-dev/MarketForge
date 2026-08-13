@@ -10,9 +10,11 @@
 
 class OrderManager {
  public:
-  std::optional<Order> generate_order(const std::string& symbol,
-                                      const Signal& signal,
-                                      const Portfolio& portfolio,
-                                      const PriceBar& price_bar,
-                                      const PositionSizer& sizer);
+  std::optional<Order> generate_order(
+      const std::string& symbol,
+      const Signal& signal,
+      const Portfolio& portfolio,
+      const PriceBar& price_bar,
+      const PositionSizer& sizer
+  );
 };

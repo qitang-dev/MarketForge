@@ -1297,3 +1297,29 @@ PerformanceAnalyzer
   - verified that all nine strategy-parameter combinations executed independently and produced distinct performance results
 
 - Confirmed that the backtesting engine now supports batch strategy experiments through a shared execution pipeline, preparing the system for parameter ranking, best-versus-second-best comparison, multi-symbol testing, multi-timeframe testing, and CSV result export.
+
+
+### Aug 13, 2026: Batch Backtesting Integration and Runtime Optimization
+
+- Completed the multi-parameter execution workflow in `main()` for Moving Average, Bollinger, and RSI strategies.
+
+- Extended the backtesting pipeline to support multiple symbols and both daily and 5-minute timeframes.
+
+- Integrated `MarketData` into the batch workflow by loading market data into the centralized container and retrieving `PriceFrame` objects by symbol and timeframe.
+
+- Improved `DataLoader` to support different CSV schemas by resolving OHLCV fields from column headers instead of relying on fixed column positions.
+
+- Simplified parameter sensitivity analysis so that each analysis operates directly on summaries from a single strategy group.
+
+- Updated `.clang-format` to improve code layout consistency and overall readability.
+
+- Diagnosed and resolved a major runtime performance issue during batch backtesting:
+  - Observed that Moving Average and Bollinger backtests completed within fractions of a second, while RSI backtests became significantly slower as more data was processed.
+  - Added runtime measurements and progress checks to isolate the bottleneck to the RSI signal-generation path.
+  - Identified that strategy calculations were repeatedly converting the entire historical `std::span<const PriceBar>` into a new `TimeSeries` through `extract_price_series()` on every market bar.
+  - This introduced unnecessary full-history traversal, dynamic allocation, and repeated construction of `TimeSeriesPoint` objects during signal generation.
+  - Refactored indicator calculations to operate directly on `std::span<const PriceBar>` and access the selected price field through the `PriceBar` member pointer.
+  - Removed the redundant intermediate `TimeSeries` construction from the strategy hot path while preserving the same indicator and signal logic.
+  - Reduced unnecessary data copying and simplified the data flow from `PriceFrame` to strategy indicators.
+  - After optimization, a single strategy-parameter backtest over approximately 23,000 five-minute bars completes in about 94 ms.
+  - Confirmed that the optimized implementation is fast enough to support the full multi-symbol, multi-timeframe parameter sweep.

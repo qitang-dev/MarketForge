@@ -9,12 +9,13 @@
 
 class BollingerStrategy : public Strategy {
  public:
-  BollingerStrategy(std::size_t window = 20,
-                    double num_std_dev = 2.0,
-                    double PriceBar::* price_type = &PriceBar::close);
+  BollingerStrategy(
+      std::size_t window = 20,
+      double num_std_dev = 2.0,
+      double PriceBar::* price_type = &PriceBar::close
+  );
 
-  Signal generate_signal(
-      std::span<const PriceBar> price_history) const override;
+  Signal generate_signal(std::span<const PriceBar> price_history) const override;
 
   std::string name() const override;
   std::string parameters() const override;

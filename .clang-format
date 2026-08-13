@@ -1,14 +1,23 @@
 ---
 BasedOnStyle: Google
-IndenWidth: '2'
-TabWidth: '2'
+
+IndentWidth: 2
+TabWidth: 2
+ContinuationIndentWidth: 4
+
+ColumnLimit: 100
+
 BinPackArguments: false
 BinPackParameters: false
+AllowAllArgumentsOnNextLine: false
+AlignAfterOpenBracket: BlockIndent
+
 Cpp11BracedListStyle: true
-ColumnLimit: 80
+MaxEmptyLinesToKeep: 1
+
 SortIncludes: true
 IncludeBlocks: Regroup
-MaxEmptyLinesToKeep: 1
+
 IncludeCategories:
   - Regex: '^<.*>'
     Priority: 1

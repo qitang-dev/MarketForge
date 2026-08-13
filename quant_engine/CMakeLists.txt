@@ -30,6 +30,7 @@ set(SOURCES
     src/strategy/rsi_strategy.cpp
     src/indicator/rsi.cpp
     src/backtest/run_backtest.cpp
+    src/backtest/analyze_parameter_sensitivity.cpp
 )
 
 add_executable(

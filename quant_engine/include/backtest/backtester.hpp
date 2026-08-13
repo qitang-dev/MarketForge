@@ -17,15 +17,16 @@
 
 class Backtester {
  public:
-  Backtester(Strategy& strategy,
-             PositionSizer& sizer,
-             OrderManager& order_manager,
-             OrderValidator& order_validator,
-             ExecutionEngine& execution_engine,
-             Portfolio& portfolio);
+  Backtester(
+      Strategy& strategy,
+      PositionSizer& sizer,
+      OrderManager& order_manager,
+      OrderValidator& order_validator,
+      ExecutionEngine& execution_engine,
+      Portfolio& portfolio
+  );
 
-  BacktestResult run(const std::string& symbol,
-                     std::span<const PriceBar> price_history);
+  BacktestResult run(const std::string& symbol, std::span<const PriceBar> price_history);
 
  private:
   Strategy& strategy_;

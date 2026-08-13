@@ -9,8 +9,7 @@ Trade ExecutionEngine::execute(const Order& valid_order, double market_price) {
   if (valid_order.side == OrderSide::HOLD) {
     throw std::runtime_error("HOLD order cannot be executed.");
   }
-  const ExecutionQuote kExecutionQuote =
-      execution_model_.generate_quote(valid_order, market_price);
+  const ExecutionQuote kExecutionQuote = execution_model_.generate_quote(valid_order, market_price);
 
   return Trade{
       .symbol = valid_order.symbol,

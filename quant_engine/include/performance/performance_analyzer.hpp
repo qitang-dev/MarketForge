@@ -10,21 +10,20 @@
 class PerformanceAnalyzer {
  public:
   static double total_return(const BacktestResult& result);
-  static double annualized_return(const BacktestResult& result,
-                                  std::size_t periods_per_year = 252);
-  static double annualized_volatility(const BacktestResult& result,
-                                      std::size_t periods_per_year = 252);
-  static double sharpe_ratio(const BacktestResult& result,
-                             double risk_free_rate = 0.0,
-                             std::size_t periods_per_year = 252);
+  static double annualized_return(const BacktestResult& result, std::size_t periods_per_year = 252);
+  static double annualized_volatility(
+      const BacktestResult& result, std::size_t periods_per_year = 252
+  );
+  static double sharpe_ratio(
+      const BacktestResult& result, double risk_free_rate = 0.0, std::size_t periods_per_year = 252
+  );
   static double max_drawdown(const BacktestResult& result);
 
-  static double sortino_ratio(const BacktestResult& result,
-                              double risk_free_rate = 0.0,
-                              std::size_t periods_per_year = 252);
+  static double sortino_ratio(
+      const BacktestResult& result, double risk_free_rate = 0.0, std::size_t periods_per_year = 252
+  );
 
-  static double calmar_ratio(const BacktestResult& result,
-                             std::size_t periods_per_year = 252);
+  static double calmar_ratio(const BacktestResult& result, std::size_t periods_per_year = 252);
 
   static double average_win(const ClosedTradeHistory& closed_trades);
 
@@ -38,7 +37,7 @@ class PerformanceAnalyzer {
 
   static double max_loss(const ClosedTradeHistory& closed_trades);
 
-    static ClosedTradeHistory extract_closed_trades(const BacktestResult& result);
+  static ClosedTradeHistory extract_closed_trades(const BacktestResult& result);
 
  private:
   static TimeSeries extract_equity_curve(const BacktestResult& result);

@@ -21,8 +21,7 @@ TimeSeries extract_price_series(const T& df, double PriceBar::* price_type) {
   results.reserve(df.size());
 
   for (const auto& price_bar : df) {
-    results.push_back(
-        TimeSeriesPoint{price_bar.timestamp, price_bar.*price_type});
+    results.push_back(TimeSeriesPoint{price_bar.timestamp, price_bar.*price_type});
   }
   return results;
 }
