@@ -80,6 +80,8 @@ int main() {
       {14, 25.0, 75.0},
   };
 
+  const double kInitialCash = 100000;
+
   MarketData market_data;
   DataLoader loader(',');
 
@@ -98,13 +100,19 @@ int main() {
 
   const std::filesystem::path summary_dir = "report/backtest_summary";
   const std::filesystem::path sensitivity_dir = "report/strategy_parameter_sensitivity";
+  const std::filesystem::path best_equity_history_dir = "report/best_equity_history";
+  const std::filesystem::path best_trade_history_dir = "report/best_trade_history";
 
   std::filesystem::create_directories(summary_dir);
   std::filesystem::create_directories(sensitivity_dir);
+  std::filesystem::create_directories(best_equity_history_dir);
+  std::filesystem::create_directories(best_trade_history_dir);
 
   for (const auto& symbol : symbols) {
     std::filesystem::path symbol_summary_dir = summary_dir / symbol;
     std::filesystem::path symbol_sensitivity_dir = sensitivity_dir / symbol;
+    std::filesystem::path symbol_best_equity_history_dir = best_equity_history_dir / symbol;
+    std::filesystem::path symbol_best_trade_history_dir = best_trade_history_dir / symbol;
 
     for (const auto timeframe : timeframes) {
       const std::size_t periods_per_year = get_periods_per_year(timeframe);
@@ -114,15 +122,15 @@ int main() {
       for (const auto strategy_type : strategy_type_list) {
         switch (strategy_type) {
           case StrategyType::MOVINGAVERGAE: {
-            std::vector<BacktestSummary> summaries_ma;
+            std::vector<BacktestRun> ma_runs;
 
             for (const auto& para : ma_params) {
               MovingAverageStrategy sma(para.short_window, para.long_window, &PriceBar::close);
 
               auto start = std::chrono::steady_clock::now();
 
-              BacktestSummary summary =
-                  run_backtest(symbol, timeframe, data_frame, periods_per_year, sma);
+              BacktestRun run =
+                  run_backtest(symbol, timeframe, data_frame, periods_per_year, kInitialCash, sma);
               auto end = std::chrono::steady_clock::now();
 
               auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -130,35 +138,60 @@ int main() {
               std::cerr << "[TIME] " << symbol << " " << to_string(timeframe) << " " << sma.name()
                         << " " << sma.parameters() << ": " << duration.count() << " ms\n";
 
-              summaries_ma.push_back(summary);
+              ma_runs.push_back(run);
 
-              print_backtest_summary(std::cout, summary);
+              print_backtest_summary(std::cout, run.summary);
             }
 
-            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(summaries_ma);
+            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(ma_runs);
 
-            const std::string file_name = symbol + "_" + to_string(timeframe) + "MovingAverage.txt";
+            const auto buy_hold = calculate_buy_hold_curve(data_frame, kInitialCash);
+
+            const auto drawdowns =
+                calculate_drawdown_curve(sensitivity.best_history.equity_history);
+
+            const std::string summary_file_name =
+                symbol + "_" + to_string(timeframe) + "_MovingAverage.txt";
+
+            const std::string equity_history_file_name =
+                "best_MovingAverage_equity_" + to_string(timeframe) + ".csv";
+
+            const std::string trade_history_file_name =
+                "best_MovingAverage_trade_" + to_string(timeframe) + ".csv";
 
             write_strategy_report(
                 symbol_summary_dir,
                 symbol_sensitivity_dir,
-                file_name,
-                summaries_ma,
-                sensitivity
+                symbol_best_equity_history_dir,
+                symbol_best_trade_history_dir,
+                summary_file_name,
+                equity_history_file_name,
+                trade_history_file_name,
+                ma_runs,
+                sensitivity,
+                buy_hold,
+                drawdowns
             );
 
             break;
           }
 
           case StrategyType::BOLLINGER: {
-            std::vector<BacktestSummary> summaries_bollinger;
+            std::vector<BacktestRun> bollinger_runs;
+
             for (const auto& para : bollinger_params) {
               BollingerStrategy bollinger(para.window, para.num_std_dev, &PriceBar::close);
 
               auto start = std::chrono::steady_clock::now();
 
-              BacktestSummary summary =
-                  run_backtest(symbol, timeframe, data_frame, periods_per_year, bollinger);
+              BacktestRun run = run_backtest(
+                  symbol,
+                  timeframe,
+                  data_frame,
+                  periods_per_year,
+                  kInitialCash,
+                  bollinger
+              );
               auto end = std::chrono::steady_clock::now();
 
               auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -167,29 +200,46 @@ int main() {
                         << bollinger.name() << " " << bollinger.parameters() << ": "
                         << duration.count() << " ms\n";
 
-              summaries_bollinger.push_back(summary);
+              bollinger_runs.push_back(run);
 
-              print_backtest_summary(std::cout, summary);
+              print_backtest_summary(std::cout, run.summary);
             }
 
-            const ParameterSensitivity sensitivity =
-                analyze_parameter_sensitivity(summaries_bollinger);
+            const ParameterSensitivity sensitivity = analyze_parameter_sensitivity(bollinger_runs);
 
-            const std::string file_name = symbol + "_" + to_string(timeframe) + "Bollinger.txt";
+            const auto buy_hold = calculate_buy_hold_curve(data_frame, kInitialCash);
+
+            const auto drawdowns =
+                calculate_drawdown_curve(sensitivity.best_history.equity_history);
+
+            const std::string summary_file_name =
+                symbol + "_" + to_string(timeframe) + "_Bollinger.txt";
+
+            const std::string equity_history_file_name =
+                "best_Bollinger_equity_" + to_string(timeframe) + ".csv";
+
+            const std::string trade_history_file_name =
+                "best_Bollinger_trade_" + to_string(timeframe) + ".csv";
 
             write_strategy_report(
                 symbol_summary_dir,
                 symbol_sensitivity_dir,
-                file_name,
-                summaries_bollinger,
-                sensitivity
+                symbol_best_equity_history_dir,
+                symbol_best_trade_history_dir,
+                summary_file_name,
+                equity_history_file_name,
+                trade_history_file_name,
+                bollinger_runs,
+                sensitivity,
+                buy_hold,
+                drawdowns
             );
 
             break;
           }
 
           case StrategyType::RSI: {
-            std::vector<BacktestSummary> summaries_rsi;
+            std::vector<BacktestRun> rsi_runs;
             for (const auto& para : rsi_params) {
               RSIStrategy rsi(
                   para.window,
@@ -200,8 +250,8 @@ int main() {
 
               auto start = std::chrono::steady_clock::now();
 
-              BacktestSummary summary =
-                  run_backtest(symbol, timeframe, data_frame, periods_per_year, rsi);
+              BacktestRun run =
+                  run_backtest(symbol, timeframe, data_frame, periods_per_year, kInitialCash, rsi);
 
               auto end = std::chrono::steady_clock::now();
 
@@ -210,21 +260,38 @@ int main() {
               std::cerr << "[TIME] " << symbol << " " << to_string(timeframe) << " " << rsi.name()
                         << " " << rsi.parameters() << ": " << duration.count() << " ms\n";
 
-              summaries_rsi.push_back(summary);
+              rsi_runs.push_back(run);
 
-              print_backtest_summary(std::cout, summary);
+              print_backtest_summary(std::cout, run.summary);
             }
 
-            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(summaries_rsi);
+            ParameterSensitivity sensitivity = analyze_parameter_sensitivity(rsi_runs);
 
-            const std::string file_name = symbol + "_" + to_string(timeframe) + "RSI.txt";
+            const auto buy_hold = calculate_buy_hold_curve(data_frame, kInitialCash);
+
+            const auto drawdowns =
+                calculate_drawdown_curve(sensitivity.best_history.equity_history);
+
+            const std::string summary_file_name = symbol + "_" + to_string(timeframe) + "_RSI.txt";
+
+            const std::string equity_history_file_name =
+                "best_RSI_equity_" + to_string(timeframe) + ".csv";
+
+            const std::string trade_history_file_name =
+                "best_RSI_trade_" + to_string(timeframe) + ".csv";
 
             write_strategy_report(
                 symbol_summary_dir,
                 symbol_sensitivity_dir,
-                file_name,
-                summaries_rsi,
-                sensitivity
+                symbol_best_equity_history_dir,
+                symbol_best_trade_history_dir,
+                summary_file_name,
+                equity_history_file_name,
+                trade_history_file_name,
+                rsi_runs,
+                sensitivity,
+                buy_hold,
+                drawdowns
             );
 
             break;

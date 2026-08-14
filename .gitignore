@@ -28,7 +28,13 @@ integrated_analysis/market_forge_dashboard/
 
 minute_kline/website/
 
+quant_engine/dashboard/
+
 # C++
 quant_engine/build/
 
 quant_engine/data/
+
+quant_engine/report/
+
+

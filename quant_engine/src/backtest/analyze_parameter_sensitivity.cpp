@@ -39,30 +39,33 @@ std::pair<BacktestSummary, BacktestSummary> analyze_parameter_sensitivity(
   return {*best, *second_best};
 }
 
-ParameterSensitivity analyze_parameter_sensitivity(const std::vector<BacktestSummary>& summaries) {
-  if (summaries.size() < 2) {
+ParameterSensitivity analyze_parameter_sensitivity(const std::vector<BacktestRun>& runs) {
+  if (runs.size() < 2) {
     throw std::invalid_argument("At least 2 summaries are needed for the target strategy.");
   }
-  std::vector<BacktestSummary> summaries_copy = summaries;
+  std::vector<BacktestRun> runs_copy = runs;
+
   std::sort(
-      summaries_copy.begin(),
-      summaries_copy.end(),
-      [](const BacktestSummary& a, const BacktestSummary& b) {
-        return a.total_return > b.total_return;
+      runs_copy.begin(),
+      runs_copy.end(),
+
+      [](const BacktestRun& a, const BacktestRun& b) {
+        return a.summary.total_return > b.summary.total_return;
       }
   );
 
-  auto best = summaries_copy.begin();
+  auto best = runs_copy.begin();
   auto second_best = std::next(best);
 
-  double return_gap = best->total_return - second_best->total_return;
+  double return_gap = best->summary.total_return - second_best->summary.total_return;
 
   return ParameterSensitivity{
-      .symbol = best->symbol,
-      .timeframe = best->timeframe,
-      .strategy_name = best->strategy_name,
-      .best = *best,
-      .second_best = *second_best,
+      .symbol = best->summary.symbol,
+      .timeframe = best->summary.timeframe,
+      .strategy_name = best->summary.strategy_name,
+      .best = best->summary,
+      .second_best = second_best->summary,
+      .best_history = best->result,
       .return_gap = return_gap,
   };
 }

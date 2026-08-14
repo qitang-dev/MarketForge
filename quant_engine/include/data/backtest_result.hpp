@@ -46,6 +46,11 @@ struct BacktestSummary {
   double profit_loss_ratio{NaN};
 };
 
+struct BacktestRun {
+  BacktestSummary summary{};
+  BacktestResult result{};
+};
+
 struct ParameterSensitivity {
   std::string symbol{};
   TimeFrame timeframe{};
@@ -53,6 +58,8 @@ struct ParameterSensitivity {
 
   BacktestSummary best{};
   BacktestSummary second_best{};
+
+  BacktestResult best_history{};
 
   double return_gap{0.0};
 };

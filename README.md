@@ -1,15 +1,82 @@
 # MarketForge
 
-MarketForge is a quantitative research platform designed for financial data acquisition, storage, cleaning, analysis, strategy development, and backtesting.
+## Copyright & Usage
 
-## Initial Data Sources
+© 2026 Qi Tang. All rights reserved.
 
-- AKShare
-- A-share market data
-- ETHUSDT market data
+For research and educational presentation only.
 
-## Project Status
-## Phase 1: Environment Setup & Data Fetching and Processing Pipeline
+Copying, modification, and reuse for learning and research are permitted. Please retain appropriate attribution and do not redistribute or present this project, or substantial portions of its source code, as your own original work.
+
+### 版权与使用说明
+
+© 2026 Qi Tang. 保留所有权利。
+
+本项目仅用于研究与教育展示。
+
+允许出于学习和研究目的复制、修改和复用代码，但请保留适当署名，不得将本项目或其中较大比例的源代码冒充为自己的原创成果重新发布或展示。
+
+## Project Summary
+
+MarketForge is a quantitative research and backtesting project that combines market-data processing, strategy research, execution simulation, portfolio accounting, performance analysis, and result reporting. The project is organized as a modular workflow in which Python handles data acquisition and preprocessing, while the core quantitative strategy and backtesting engine, **QuantLab 2.0**, is implemented in modern C++20.
+
+### C++ / QuantLab 2.0
+
+The C++ engine is designed around clear separation of responsibilities and reusable interfaces. Market data is loaded into a centralized `MarketData` container and exposed to strategies through lightweight read-only `std::span<const PriceBar>` views, avoiding unnecessary data copying during backtests.
+
+The trading pipeline separates strategy logic, position sizing, order generation, order validation, execution modeling, trade execution, portfolio accounting, and performance analysis into independent components. This allows different strategies and execution rules to reuse the same backtesting infrastructure.
+
+Implemented capabilities include:
+
+- Multi-symbol and multi-timeframe backtesting for daily and 5-minute A-share data.
+- Strategy abstraction through a common `Strategy` interface.
+- Moving Average Crossover, Bollinger Breakout, and RSI Mean-Reversion strategies.
+- Reusable technical indicators and configurable strategy parameters.
+- Position sizing, executable-order validation, A-share lot-size handling, slippage simulation, commission, and sell-side stamp duty.
+- Portfolio cash, position, market value, and equity tracking on every market bar.
+- Structured `BacktestResult`, trade history, equity history, and completed-trade analysis.
+- Portfolio and trade-level metrics including total/annualized return, volatility, Sharpe, Sortino, Calmar, maximum drawdown, win rate, profit-loss ratio, and win/loss statistics.
+- Batch parameter sweeps, best-versus-second-best parameter sensitivity analysis, and structured report generation.
+- Export of the best strategy equity history, trade history, buy-and-hold benchmark, and drawdown series for visualization.
+- Runtime optimization by operating indicators directly on `std::span` data views and removing repeated full-history conversions from the strategy hot path.
+
+### Python Data Pipeline
+
+Python scripts support the surrounding research workflow, including market-data acquisition, cleaning and validation, daily and 5-minute data preparation, financial-statement processing, fundamental-factor construction, valuation and trading-activity analysis, price-limit event analysis, integrated stock profiling, and conversion of analysis outputs into visualization-ready datasets.
+
+## 项目总结
+
+MarketForge 是一个面向量化研究与回测的综合项目，覆盖市场数据处理、策略研究、交易执行模拟、账户管理、绩效分析和结果输出。项目采用模块化设计：Python 主要负责数据获取、清洗和分析预处理，核心量化策略与回测引擎 **QuantLab 2.0** 则使用现代 C++20 实现。
+
+### C++ / QuantLab 2.0
+
+C++ 引擎强调职责分离、接口复用与运行效率。市场数据由统一的 `MarketData` 容器管理，策略通过轻量级只读 `std::span<const PriceBar>` 访问历史数据，避免回测过程中不必要的数据复制。
+
+交易流程将策略逻辑、仓位计算、订单生成、订单验证、执行模型、成交生成、Portfolio 更新和绩效分析拆分为独立模块，使不同策略能够复用同一套回测基础设施。
+
+主要实现功能包括：
+
+- 支持多股票、多时间频率（日线与 5 分钟）的批量回测。
+- 通过统一 `Strategy` 接口实现策略多态。
+- 实现双均线交叉、布林带突破和 RSI 均值回归策略。
+- 提供可复用技术指标和可配置策略参数。
+- 实现仓位管理、订单可执行性验证、A 股整手规则、滑点、佣金和卖出印花税模拟。
+- 在每个市场 bar 上记录现金、持仓、市值和权益变化。
+- 使用结构化 `BacktestResult` 保存交易记录、权益历史和完整交易周期。
+- 计算总收益率、年化收益率、波动率、Sharpe、Sortino、Calmar、最大回撤、胜率、盈亏比及各类胜负交易统计。
+- 支持批量参数扫描、最优与次优参数敏感性分析以及结构化报告输出。
+- 导出最优参数组合的权益曲线、交易历史、Buy & Hold 基准和回撤序列，用于后续可视化。
+- 通过直接在 `std::span` 上计算指标，移除策略热路径中的重复历史数据转换，大幅提升分钟级批量回测效率。
+
+### Python 数据脚本
+
+Python 脚本负责项目外围的数据与研究流程，包括行情数据获取、清洗与质量检查、日线与 5 分钟数据处理、财务报表整理、基本面因子构建、估值与交易活跃度分析、涨跌停事件分析、股票综合画像，以及将分析结果转换为便于可视化使用的数据格式。
+
+
+## DEVELOPMENT LOG
+
+### Project Status
+### Phase 1: Environment Setup & Data Fetching and Processing Pipeline
 
 ### Jul 18, 2026 - Progress
 - Set up the project directory, GitHub repository, Conda environment, and VS Code interpreter.
@@ -198,8 +265,8 @@ data/crypto/
 
 ============================================================================
 
-## Project Status
-## Phase 2: Minute-Level Data Fetching and Processing Pipeline & Interactive K-Line Website
+### Project Status
+### Phase 2: Minute-Level Data Fetching and Processing Pipeline & Interactive K-Line Website
 
 ### July 27, 2026 — Minute-Level Data Interface Test
 
@@ -675,10 +742,10 @@ integrated_analysis/
 
 ============================================================================
 
-## Project Status
-## Phase 2: C++ Quantitative Strategy and Backtesting Engine Development
+### Project Status
+### Phase 2: C++ Quantitative Strategy and Backtesting Engine Development
 
-## Quant Engine Framework Construction
+### Quant Engine Framework Construction
 
 ### August 9, 2026: Strategy and Order Management Framework
 
@@ -1347,3 +1414,38 @@ PerformanceAnalyzer
 - Successfully completed and validated the full multi-symbol, multi-timeframe, multi-strategy parameter sweep and report generation pipeline.
 
 - Finalized QuantLab 2.0 with an end-to-end workflow covering market data loading, strategy execution, transaction simulation, portfolio accounting, performance analysis, parameter sensitivity analysis, runtime optimization, and structured result reporting.
+
+
+### Aug 14, 2026: Best Strategy History Export
+
+- Refactored the backtesting workflow to preserve both `BacktestResult` and `BacktestSummary` for each parameter configuration.
+
+- Updated parameter sensitivity analysis to retain the complete backtest history of the best-performing parameter combination.
+
+- Added CSV output for the best strategy equity history, including portfolio cash, shares, market value, and equity.
+
+- Added CSV output for the best strategy trade history, including execution price, quantity, commission, stamp duty, and slippage cost.
+
+- Added buy-and-hold benchmark equity and drawdown time series for visualization and further analysis.
+
+- Organized best equity and trade histories by symbol, timeframe, and strategy.
+
+- Verified that all existing backtest summary and parameter sensitivity functionality remained unchanged after the refactor.
+
+============================================================================
+
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Python                          38           2351            195           7938
+C++                             16            348              1           1235
+Markdown                         1            318              0           1099
+C/C++ Header                    28            177              0            566
+Text                             1             54              0            192
+CMake                            1              6              0             43
+JSON                             2              0              0             20
+YAML                             1              6              0             19
+Jupyter Notebook                 1              0             89             17
+-------------------------------------------------------------------------------
+SUM:                            89           3260            285          11129
+-------------------------------------------------------------------------------

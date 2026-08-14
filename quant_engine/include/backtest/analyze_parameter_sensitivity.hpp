@@ -14,4 +14,4 @@ std::pair<BacktestSummary, BacktestSummary> analyze_parameter_sensitivity(
     const std::vector<BacktestSummary>& summaries
 );
 
-ParameterSensitivity analyze_parameter_sensitivity(const std::vector<BacktestSummary>& summaries);
+ParameterSensitivity analyze_parameter_sensitivity(const std::vector<BacktestRun>& runs);

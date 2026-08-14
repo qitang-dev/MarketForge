@@ -17,21 +17,20 @@ PriceFrame DataLoader::load_csv(const std::string& filepath) const {
 
   std::string line;
 
-  // 1. Read header
   if (!std::getline(file, line)) {
     throw std::runtime_error("CSV file is empty: " + filepath);
   }
 
   const std::vector<std::string> headers = split_line(line, delimiter_);
 
-  // 2. Build: column name -> index
+  // Build: column name -> index
   std::unordered_map<std::string, std::size_t> column_index;
 
   for (std::size_t i = 0; i < headers.size(); ++i) {
     column_index[headers[i]] = i;
   }
 
-  // 3. Detect timestamp column
+  // Detect timestamp column
   std::size_t timestamp_index = 0;
 
   if (column_index.contains("datetime")) {
@@ -42,7 +41,7 @@ PriceFrame DataLoader::load_csv(const std::string& filepath) const {
     throw std::runtime_error("CSV must contain 'date' or 'datetime' column.");
   }
 
-  // 4. Validate required OHLCV columns
+  // Validate required OHLCV columns
   const std::vector<std::string> required_columns{
       "open",
       "high",
@@ -59,7 +58,7 @@ PriceFrame DataLoader::load_csv(const std::string& filepath) const {
 
   PriceFrame price_frame;
 
-  // 5. Read data rows
+  // Read data rows
   while (std::getline(file, line)) {
     if (line.empty()) {
       continue;
