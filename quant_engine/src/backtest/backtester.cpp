@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <iostream>
 #include <optional>
+
 Backtester::Backtester(
     Strategy& strategy,
     PositionSizer& sizer,
@@ -21,37 +22,58 @@ Backtester::Backtester(
 BacktestResult Backtester::run(const std::string& symbol, std::span<const PriceBar> price_history) {
   EquityHistory equity_history;
   TradeHistory trades;
+
+  std::optional<Signal> pending_signal;
+
   for (std::size_t i = 0; i < price_history.size(); ++i) {
-    std::span<const PriceBar> rolling_history(price_history.data(), i + 1);
+    const PriceBar& current_bar = price_history[i];
 
-    Signal signal = strategy_.generate_signal(rolling_history);
+    // Excute the signal generated at the previous bar's close.
+    if (pending_signal) {
+      std::optional<Order> order = order_manager_.generate_order(
+          symbol,
+          *pending_signal,
+          portfolio_,
+          current_bar,
+          current_bar.open,
+          sizer_
+      );
 
-    std::optional<Order> order =
-        order_manager_.generate_order(symbol, signal, portfolio_, rolling_history[i], sizer_);
+      if (order) {
+        std::optional<Order> valid_order =
+            order_validator_.validate_order(*order, portfolio_, current_bar.open);
+        if (valid_order) {
+          Trade trade = execution_engine_.execute(*valid_order, current_bar.open);
 
-    if (order) {
-      std::optional<Order> valid_order =
-          order_validator_.validate_order(*order, portfolio_, rolling_history[i].close);
-      if (valid_order) {
-        Trade trade = execution_engine_.execute(*valid_order, rolling_history[i].close);
+          // std::cout << "Trade executed at: " << current_bar.timestamp << '\n';
 
-        trades.push_back(trade);
-        portfolio_.apply_trade(trade);
-        portfolio_.update_market_value(rolling_history[i].close);
+          // std::cout << "Reference open price: " << current_bar.open << '\n';
+
+          // std::cout << "Execution price: " << trade.execution_price << '\n';
+
+          trades.push_back(trade);
+          portfolio_.apply_trade(trade);
+        }
       }
     }
-
-    portfolio_.update_market_value(rolling_history[i].close);
+    portfolio_.update_market_value(current_bar.close);
 
     equity_history.push_back(
         EquityPoint{
-            .timestamp = rolling_history[i].timestamp,
+            .timestamp = current_bar.timestamp,
             .shares = portfolio_.shares,
             .cash = portfolio_.cash,
             .market_value = portfolio_.market_value,
             .equity = portfolio_.equity
         }
     );
+    // Generate the signal after the current bar has closed.
+    std::span<const PriceBar> rolling_history(price_history.data(), i + 1);
+    pending_signal = strategy_.generate_signal(rolling_history);
+
+    // if (pending_signal->type != SignalType::HOLD) {
+    // std::cout << "Signal generated at: " << current_bar.timestamp << '\n';
+    // }
   }
   return BacktestResult{
       .equity_history = equity_history,

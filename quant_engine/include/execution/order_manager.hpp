@@ -15,6 +15,7 @@ class OrderManager {
       const Signal& signal,
       const Portfolio& portfolio,
       const PriceBar& price_bar,
+      double market_price,
       const PositionSizer& sizer
   );
 };

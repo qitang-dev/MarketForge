@@ -1432,4 +1432,18 @@ PerformanceAnalyzer
 
 - Verified that all existing backtest summary and parameter sensitivity functionality remained unchanged after the refactor.
 
+
+### Aug 14, 2026: Backtest Execution Timing Correction
+
+- Reviewed the backtesting workflow for potential look-ahead bias.
+- Identified same-bar execution risk where signals generated from the current bar close could be executed using the same bar price.
+- Refactored `Backtester` to use a one-bar execution delay:
+  - Signals are generated after the current bar closes.
+  - Pending signals are executed at the next bar open.
+- Updated position sizing, order validation, and trade execution to consistently use the next-bar opening price.
+- Preserved close-price mark-to-market valuation for equity history.
+- Verified the corrected timing using 5-minute market data, confirming that signals and trades occur on consecutive bars.
+- Re-ran the full backtest dataset and confirmed that overall strategy results remained broadly stable after the correction.
+- Updated dashboard data and documented the next-bar execution methodology.
+
 ============================================================================
