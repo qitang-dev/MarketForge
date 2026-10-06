@@ -1,79 +1,203 @@
 # MarketForge
 
-## Copyright & Usage
+MarketForge is a quantitative research and backtesting project that combines
+Python-based financial data pipelines with a modular C++20 backtesting engine.
 
-© 2026 Qi Tang. All rights reserved.
+The project covers the full research workflow from market-data acquisition and
+cleaning to fundamental analysis, strategy implementation, execution simulation,
+portfolio accounting, and performance evaluation.
 
-For research and educational presentation only.
+## Overview
 
-Copying, modification, and reuse for learning and research are permitted. Please retain appropriate attribution and do not redistribute or present this project, or substantial portions of its source code, as your own original work.
+MarketForge consists of two primary components:
 
-### 版权与使用说明
+### Python Research Pipeline
 
-© 2026 Qi Tang. 保留所有权利。
+The Python research layer handles data acquisition, cleaning, validation,
+financial-statement processing, factor construction, market analysis, and
+visualization.
 
-本项目仅用于研究与教育展示。
+It supports:
 
-允许出于学习和研究目的复制、修改和复用代码，但请保留适当署名，不得将本项目或其中较大比例的源代码冒充为自己的原创成果重新发布或展示。
+- Daily and 5-minute market-data acquisition
+- Data cleaning, validation, and standardization
+- Financial-statement processing
+- Fundamental-factor construction
+- Historical valuation analysis
+- Trading-activity and price-limit analysis
+- Cross-sectional stock profiling
+- Visualization-ready dataset generation
 
-## Project Summary
+### QuantLab 2.0 — C++20 Backtesting Engine
 
-MarketForge is a quantitative research and backtesting project that combines market-data processing, strategy research, execution simulation, portfolio accounting, performance analysis, and result reporting. The project is organized as a modular workflow in which Python handles data acquisition and preprocessing, while the core quantitative strategy and backtesting engine, **QuantLab 2.0**, is implemented in modern C++20.
+QuantLab 2.0 is a modular quantitative research and backtesting engine written
+in modern C++.
 
-### C++ / QuantLab 2.0
+The engine separates market data, strategy logic, position sizing, order
+generation, validation, execution, portfolio accounting, and performance
+analysis into independent components.
 
-The C++ engine is designed around clear separation of responsibilities and reusable interfaces. Market data is loaded into a centralized `MarketData` container and exposed to strategies through lightweight read-only `std::span<const PriceBar>` views, avoiding unnecessary data copying during backtests.
+It supports:
 
-The trading pipeline separates strategy logic, position sizing, order generation, order validation, execution modeling, trade execution, portfolio accounting, and performance analysis into independent components. This allows different strategies and execution rules to reuse the same backtesting infrastructure.
+- Multi-symbol and multi-timeframe backtesting
+- Daily and 5-minute market data
+- Moving Average Crossover
+- Bollinger Breakout
+- RSI Mean-Reversion
+- Position sizing and order generation
+- Pre-trade validation
+- Slippage and transaction-cost simulation
+- Cash, position, and equity tracking
+- Parameter sweeps and sensitivity analysis
+- Structured backtest reporting
 
-Implemented capabilities include:
+Performance metrics include:
 
-- Multi-symbol and multi-timeframe backtesting for daily and 5-minute A-share data.
-- Strategy abstraction through a common `Strategy` interface.
-- Moving Average Crossover, Bollinger Breakout, and RSI Mean-Reversion strategies.
-- Reusable technical indicators and configurable strategy parameters.
-- Position sizing, executable-order validation, A-share lot-size handling, slippage simulation, commission, and sell-side stamp duty.
-- Portfolio cash, position, market value, and equity tracking on every market bar.
-- Structured `BacktestResult`, trade history, equity history, and completed-trade analysis.
-- Portfolio and trade-level metrics including total/annualized return, volatility, Sharpe, Sortino, Calmar, maximum drawdown, win rate, profit-loss ratio, and win/loss statistics.
-- Batch parameter sweeps, best-versus-second-best parameter sensitivity analysis, and structured report generation.
-- Export of the best strategy equity history, trade history, buy-and-hold benchmark, and drawdown series for visualization.
-- Runtime optimization by operating indicators directly on `std::span` data views and removing repeated full-history conversions from the strategy hot path.
+- Total return
+- Annualized return
+- Annualized volatility
+- Sharpe ratio
+- Sortino ratio
+- Calmar ratio
+- Maximum drawdown
+- Win rate
+- Profit and loss statistics
 
-### Python Data Pipeline
+## Project Structure
 
-Python scripts support the surrounding research workflow, including market-data acquisition, cleaning and validation, daily and 5-minute data preparation, financial-statement processing, fundamental-factor construction, valuation and trading-activity analysis, price-limit event analysis, integrated stock profiling, and conversion of analysis outputs into visualization-ready datasets.
+```text
+MarketForge/
+├── market_data_pipeline/          # Daily market-data acquisition and analysis
+│   ├── src/                       # Fetching, cleaning, indicators, and analysis
+│   ├── notebooks/                 # Exploratory notebooks
+│   └── data/                      # Local raw and processed data (not tracked)
+│
+├── minute_kline/                  # Intraday market-data pipeline
+│   ├── src/                       # 5-minute stock and crypto data processing
+│   ├── data/                      # Local minute-level datasets (not tracked)
+│   ├── figure/                    # Generated candlestick charts
+│   └── website/                   # Interactive K-line visualization
+│
+├── fundamentals/                  # Fundamental-data research pipeline
+│   ├── src/                       # Financial statements and factor construction
+│   └── data/                      # Local financial datasets (not tracked)
+│
+├── integrated_analysis/           # Cross-sectional stock analysis
+│   ├── src/                       # Dataset integration and stock profiling
+│   ├── data/                      # Example analytical datasets and outputs
+│   └── market_forge_dashboard/    # Generated interactive dashboard
+│
+├── quant_engine/                  # C++20 quantitative backtesting engine
+│   ├── include/
+│   │   ├── backtest/              # Backtesting interfaces
+│   │   ├── core/                  # Core types and data structures
+│   │   ├── data/                  # Market-data abstractions
+│   │   ├── execution/             # Orders, sizing, validation, and execution
+│   │   ├── indicator/             # Technical indicators
+│   │   ├── performance/           # Performance metrics
+│   │   ├── strategy/              # Strategy interfaces
+│   │   └── visualization/
+│   │
+│   ├── src/
+│   │   ├── backtest/              # Backtesting and parameter sweeps
+│   │   ├── data/                  # Data loading and MarketData implementation
+│   │   ├── execution/             # Execution simulation
+│   │   ├── indicator/             # MA, RSI, and volatility indicators
+│   │   ├── performance/           # Performance analysis
+│   │   ├── strategy/              # MA, Bollinger, and RSI strategies
+│   │   └── main.cpp
+│   │
+│   ├── dashboard/                 # Generated backtest visualization
+│   ├── data/                      # Local backtest inputs (not tracked)
+│   ├── report/                    # Generated reports (not tracked)
+│   └── CMakeLists.txt
+│
+├── requirements.txt
+├── .clang-format
+├── .gitignore
+└── README.md
+```
 
-## 项目总结
+## Technologies
 
-MarketForge 是一个面向量化研究与回测的综合项目，覆盖市场数据处理、策略研究、交易执行模拟、账户管理、绩效分析和结果输出。项目采用模块化设计：Python 主要负责数据获取、清洗和分析预处理，核心量化策略与回测引擎 **QuantLab 2.0** 则使用现代 C++20 实现。
+### Python
 
-### C++ / QuantLab 2.0
+- Python
+- pandas
+- NumPy
+- Matplotlib
+- AKShare
+- BaoStock
+- Requests
 
-C++ 引擎强调职责分离、接口复用与运行效率。市场数据由统一的 `MarketData` 容器管理，策略通过轻量级只读 `std::span<const PriceBar>` 访问历史数据，避免回测过程中不必要的数据复制。
+### C++
 
-交易流程将策略逻辑、仓位计算、订单生成、订单验证、执行模型、成交生成、Portfolio 更新和绩效分析拆分为独立模块，使不同策略能够复用同一套回测基础设施。
+- C++20
+- C++ Standard Library
+- CMake
 
-主要实现功能包括：
+### Development
 
-- 支持多股票、多时间频率（日线与 5 分钟）的批量回测。
-- 通过统一 `Strategy` 接口实现策略多态。
-- 实现双均线交叉、布林带突破和 RSI 均值回归策略。
-- 提供可复用技术指标和可配置策略参数。
-- 实现仓位管理、订单可执行性验证、A 股整手规则、滑点、佣金和卖出印花税模拟。
-- 在每个市场 bar 上记录现金、持仓、市值和权益变化。
-- 使用结构化 `BacktestResult` 保存交易记录、权益历史和完整交易周期。
-- 计算总收益率、年化收益率、波动率、Sharpe、Sortino、Calmar、最大回撤、胜率、盈亏比及各类胜负交易统计。
-- 支持批量参数扫描、最优与次优参数敏感性分析以及结构化报告输出。
-- 导出最优参数组合的权益曲线、交易历史、Buy & Hold 基准和回撤序列，用于后续可视化。
-- 通过直接在 `std::span` 上计算指标，移除策略热路径中的重复历史数据转换，大幅提升分钟级批量回测效率。
+- Git / GitHub
+- Jupyter Notebook
+- VS Code
+- Linux / WSL2
 
-### Python 数据脚本
+## Research Methodology
 
-Python 脚本负责项目外围的数据与研究流程，包括行情数据获取、清洗与质量检查、日线与 5 分钟数据处理、财务报表整理、基本面因子构建、估值与交易活跃度分析、涨跌停事件分析、股票综合画像，以及将分析结果转换为便于可视化使用的数据格式。
+MarketForge separates data acquisition, data processing, research logic,
+execution modeling, and performance evaluation to reduce coupling between
+components and improve reproducibility.
 
+Market data are first acquired and validated through Python pipelines before
+being transformed into standardized datasets for quantitative analysis and
+backtesting.
 
-## DEVELOPMENT LOG
+The C++ backtesting engine uses a one-bar delay between signal generation and
+execution to avoid same-bar look-ahead bias. Orders are executed using the next
+available bar while accounting for transaction costs, slippage, position
+constraints, and portfolio cash.
+
+This design allows strategy logic to remain independent from execution and
+portfolio accounting while supporting consistent comparisons across assets,
+timeframes, and parameter configurations.
+
+## Data
+
+Large raw market datasets are not included in this repository.
+
+The Python pipelines contain the code used to acquire, clean, validate, and
+transform the underlying datasets. Small analytical outputs may be included as
+examples of the resulting research workflow.
+
+## Building QuantLab 2.0
+
+From the repository root:
+
+```bash
+cd quant_engine
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+A compiler with C++20 support and CMake are required.
+
+## Python Environment
+
+Install the Python dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
+
+A virtual environment is recommended.
+
+## Development Log
+
+The following section documents the development of MarketForge and the major
+research and engineering milestones completed throughout the project.
 
 ### Project Status
 ### Phase 1: Environment Setup & Data Fetching and Processing Pipeline

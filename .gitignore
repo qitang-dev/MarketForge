@@ -1,40 +1,61 @@
-# Conda / virtual environments
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
 .venv/
 venv/
 env/
 
-# VS Code
+# Environment variables / secrets
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ============================================================
+# IDE / OS
+# ============================================================
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db
 
-# Data Files
-market_data_pipeline/data/
-
-minute_kline/data/
-
-fundamentals/data/
-
-# Figure Files
-minute_kline/figure/
-
-# Python
-market_data_pipeline/src/__pycache__/
-
-minute_kline/src/__pycache__/
-
-fundamentals/src/__pycache__/
-
-# Website
-integrated_analysis/market_forge_dashboard/
-
-minute_kline/website/
-
-quant_engine/dashboard/
-
-# C++
+# ============================================================
+# C++ / CMake
+# ============================================================
 quant_engine/build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
+*.o
+*.obj
+*.exe
+*.out
+
+# ============================================================
+# Downloaded / Generated Market Data
+# ============================================================
+market_data_pipeline/data/
+minute_kline/data/
+fundamentals/data/
 quant_engine/data/
 
-quant_engine/report/
+# ============================================================
+# Generated Figures / Reports / Dashboards
+# ============================================================
+minute_kline/figure/
+minute_kline/website/
 
+integrated_analysis/market_forge_dashboard/
+
+quant_engine/dashboard/
+quant_engine/report/
 
